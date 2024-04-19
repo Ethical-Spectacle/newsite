@@ -2,12 +2,23 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { API_URL_PROD } from '../../config/config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link';
+
 
 function ProfileCard({userEmail}) {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+
+    const links = [
+      { icon: faGlobe, url: profile?.website, label: 'Website' },
+      { icon: faGithub, url: profile?.github, label: 'GitHub' },
+      { icon: faLinkedin, url: profile?.linkedin, label: 'LinkedIn' }
+    ].filter(link => link.url);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -48,7 +59,16 @@ function ProfileCard({userEmail}) {
 
   return (
     <div>
-        <h1>Hey {profile?.fname},</h1>
+      <h1>Hey {profile?.fname},</h1>
+      <p>Member #{profile.id}</p>
+      <p><strong>Bio:</strong>{profile.bio ? profile.bio : '...'}</p>
+      <div>
+      {links.map((link, index) => (
+        <Link key={index} href={link.url}> 
+          <FontAwesomeIcon icon={link.icon} />
+        </Link>
+      ))}
+      </div>
     </div>
   )
 }
