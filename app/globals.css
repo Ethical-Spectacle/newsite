@@ -45,6 +45,17 @@ li {
   fill: rgb(30 41 59);;
 }
 
+.cardwrapper::before {
+  content: '';
+  background: conic-gradient(from 0deg at 50% 50%, #FE93B1 0%, #FE93B100 18%);
+
+  @apply absolute h-[500%] w-[150%] left-[-20%] top-[-190%] animate-border-spin;
+}
+
+.cardcontent {
+  @apply absolute w-[calc(100%-8px)] h-[calc(100%-8px)] top-[4px] left-[4px] bg-slate-800 rounded-2xl;
+}
+
 @media (min-width: 768px) {
   h1 {
     font-size: 3.5rem;

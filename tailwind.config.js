@@ -17,6 +17,14 @@ module.exports = {
       },
       colors: {
         'cpink': '#FE93B1',
+      },
+      keyframes: {
+        'border-spin': {
+          '100%': { transform: 'rotate(-360deg)' }
+        }
+      },
+      animation: {
+        'border-spin': 'border-spin 4s linear infinite',
       }
     },
     fontFamily: {
