@@ -18,7 +18,7 @@ function NavBar() {
   const hoverClasses = 'text-slate-50 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
 
   return (
-    <nav className='w-full fixed justify-center bg-slate-800 drop-shadow-md'>
+    <nav className='w-full fixed justify-center bg-slate-800 drop-shadow-md z-20'>
       <div className='max-w-1440 p-2 flex md:flex-row justify-between mx-auto'>
         <Link href="/">
           <Image src={whitelogo} alt="Ethical Spectacle Research" width={70} height={70} />
