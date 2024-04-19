@@ -15,7 +15,7 @@ function MobileMenu({ toggleMobileMenu }) {
     <div className="absolute top-0 left-0 w-screen h-screen z-10">
         <div className="bg-slate-50 w-full h-full py-4 flex flex-col justify-between items-stretch">
             <div className='bg-slate-800 mx-2 h-20 p-2 rounded-lg text-white flex items-center justify-between'>
-                <Link href="/">
+                <Link href="/" onClick={toggleMobileMenu}>
                     <Image src={whitelogo} alt="Ethical Spectacle Research" width={70} height={70} />
                 </Link>
                 <div className='w-10 h-10 md:hidden bg-slate-50 flex items-center justify-center rounded-lg' onClick={toggleMobileMenu}>
@@ -24,20 +24,20 @@ function MobileMenu({ toggleMobileMenu }) {
             </div>
             <ul className="h-1/3 p-2 flex flex-col justify-around text-black">
                 <li className={liClasses}>
-                    <Link href="/about">Events</Link>
+                    <Link href="/about" onClick={toggleMobileMenu}>Events</Link>
                     <span className={dividerClasses} />
                 </li>
                 <li className={liClasses}>
-                    <Link href="/contact">About</Link>
+                    <Link href="/contact" onClick={toggleMobileMenu}>About</Link>
                     <span className={dividerClasses} />
                 </li>
                 <li className={liClasses}>
-                    <Link href="/contact">Leaderboard</Link>
+                    <Link href="/contact" onClick={toggleMobileMenu}>Leaderboard</Link>
                     <span className={dividerClasses} />
                 </li>
             </ul>
             <div className='bg-slate-800 mx-2 h-20 p-2 rounded-lg text-white flex items-center justify-between'>
-                <Button title='Log in' href='/join/login'/>
+                <Button title='Log in' href='/join/login' clickFunction={toggleMobileMenu} />
 
                 <div className='space-x-2'>
                     <FontAwesomeIcon icon={faGithub} className='w-10 h-10' />
