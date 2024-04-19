@@ -25,13 +25,13 @@ function NavBar() {
         </Link>
         <ul className='space-x-4 hidden md:flex text-black space-x-7'>
           <li className={hoverClasses}>
-            <Link href="/about"> Events </Link>
+            <Link href="/"> Events </Link>
           </li>
           <li className={hoverClasses}>
-            <Link href="/contact"> About </Link>
+            <Link href="/"> About </Link>
           </li>
           <li className={hoverClasses}>
-            <Link href="/contact"> Leaderboard </Link>
+            <Link href="/"> Leaderboard </Link>
           </li>
         </ul>
         <Button title='Log in' additionalClass='hidden'/>

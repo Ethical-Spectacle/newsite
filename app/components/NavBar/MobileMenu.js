@@ -37,7 +37,7 @@ function MobileMenu({ toggleMobileMenu }) {
                 </li>
             </ul>
             <div className='bg-slate-800 mx-2 h-20 p-2 rounded-lg text-white flex items-center justify-between'>
-                <Button title='Log in' />
+                <Button title='Log in' href='/join/login'/>
 
                 <div className='space-x-2'>
                     <FontAwesomeIcon icon={faGithub} className='w-10 h-10' />

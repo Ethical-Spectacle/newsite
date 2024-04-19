@@ -50,7 +50,7 @@ const Authentication = () => {
     };
 
   return (
-    <div className="w-1/2 bg-white rounded-xl p-10 flex flex-col justify-center items-center shadow-md">
+    <div className="w-full md:w-1/2 bg-white rounded-xl p-5 md:p-10 flex flex-col space-y-5 justify-center items-center shadow-md">
         <Image 
           src={blacklogo} 
           alt="Ethical Spectacle Logo"
