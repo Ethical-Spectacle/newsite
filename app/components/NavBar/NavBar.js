@@ -40,7 +40,9 @@ function NavBar() {
         </div>
       </div>
       {showMobileMenu && (
-        <MobileMenu />  
+        <MobileMenu 
+          toggleMobileMenu={toggleMobileMenu}
+        />  
       )}
     </nav>
   )

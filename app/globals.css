@@ -24,10 +24,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Serif Display', serif;
   font-weight: 800;
+  color: rgb(30 41 59);
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 li {
@@ -36,9 +37,13 @@ li {
   transition: all 0.2s ease;
 }
 
+.black-svg path {
+  fill: rgb(30 41 59);;
+}
+
 @media (min-width: 768px) {
   h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   
 }

@@ -5,11 +5,11 @@ import ailadyjustice from "./assets/ailadyjustice.jpeg";
 export default function Home() {
   return (
     <main className="w-full flex justify-center">
-      <section className="max-w-1440 flex min-h-screen flex-col md:flex-row items-center p-5 md:p-10 md:space-x-12">
-        <header className="flex-1 space-y-4">
-          <div className="space-y-1">
+      <section className="w-full max-w-1440 flex min-h-screen flex-col md:flex-row items-center p-5 md:p-10 md:space-x-12">
+        <header className="flex-1 flex flex-col justify-center space-y-10">
+          <div className="space-y-3">
             <h1 className="leading-none">Ethical Spectacle<br />Research</h1>
-            <h2 className="font-jost font-normal">A melting pot of ethical leaders and techies that write clean code.</h2>
+            <h2 className="font-jost font-normal text-2xl md:text-3xl md:font-light">A melting pot of ethical leaders and techies that write clean code.</h2>
           </div>
           <Button 
             title="Join Us"
