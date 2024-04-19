@@ -14,6 +14,9 @@ module.exports = {
       },
       maxWidth: {
         '1440': '1440px'
+      },
+      colors: {
+        'cpink': '#FE93B1',
       }
     },
     fontFamily: {
