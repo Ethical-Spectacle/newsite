@@ -18,12 +18,29 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(248 250 252);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+li {
+  font-family: 'Jost', sans-serif;
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+  
 }
 
 @layer utilities {
