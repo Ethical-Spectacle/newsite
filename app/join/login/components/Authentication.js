@@ -30,7 +30,7 @@ const Authentication = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL_PROD}/auth`, {
+      const response = await fetch(`https://ethical-spectacle-backend-e4d474b5c453.herokuapp.com/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

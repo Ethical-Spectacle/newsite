@@ -23,7 +23,7 @@ function ProfileCard({userEmail}) {
     useEffect(() => {
         const fetchProfile = async () => {
           try {
-            const response = await fetch(`${API_URL_PROD}/get_profile`, {
+            const response = await fetch(`https://ethical-spectacle-backend-e4d474b5c453.herokuapp.com/get_profile`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

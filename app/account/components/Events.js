@@ -24,7 +24,7 @@ function Events() {
     };
 
   return (
-        <div className="events-container">
+      <div className="bg-white rounded-lg shadow-md p-4 my-10">
         <h2>Upcoming Events</h2>
         <p>
         Come and get involved in our events, network, learn about the industry,
@@ -32,14 +32,14 @@ function Events() {
         </p>
         {events.length > 0 ? (
         events.map((event, index) => (
-            <div key={index} className="event">
-            <div className="event-info">
-                <span className="event-name">{event.name}</span>
-                <span className="event-date">Date to be announced soon</span>
+            <div key={index} className="event bg-gray-100 rounded-md p-2 mt-5">
+            <div className="event-info flex flex-col">
+                <span className="event-name text-xl font-bold">{event.name}</span>
+                <span className="event-date text-lg">{event.date}</span>
                 {/*<span className="event-date">{formatDate(event.date)}</span>*/}
                 {/*<span className="event-address">{event.address}</span>*/}
             </div>
-            <div className="event-description">
+            <div className="event-description text-xl mt-4">
                 {event.description}
                 {/*
                 {event.url && (
