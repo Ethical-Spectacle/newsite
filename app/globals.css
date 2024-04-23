@@ -16,9 +16,14 @@
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(248 250 252);
+  @apply bg-cream;
 }
 
 h1, h2, h3, h4, h5, h6 {
