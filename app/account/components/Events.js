@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { API_URL_PROD } from '../../config/config'
+import { API_BASE_URL } from '../../config/config'
 
 function Events() {
     const [events, setEvents] = useState([]);
@@ -12,7 +12,7 @@ function Events() {
 
     const fetchEvents = async () => {
         try {
-          const response = await fetch(`${API_URL_PROD}/get_upcoming_events`);
+          const response = await fetch(`${API_BASE_URL}/get_upcoming_events`);
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }

@@ -1,3 +1,3 @@
-const API_URL_PROD = "https://ethical-spectacle-backend-e4d474b5c453.herokuapp.com";
+const API_BASE_URL = "https://api.ethicalspectacle.com";
 
-module.exports = { API_URL_PROD };
+module.exports = { API_BASE_URL };

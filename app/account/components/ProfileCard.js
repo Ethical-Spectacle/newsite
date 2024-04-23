@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { API_URL_PROD } from '../../config/config';
+import { API_BASE_URL } from '@/config/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
@@ -22,8 +22,9 @@ function ProfileCard({userEmail}) {
 
     useEffect(() => {
         const fetchProfile = async () => {
+          console.log('Loading...', API_BASE_URL);
           try {
-            const response = await fetch(`https://ethical-spectacle-backend-e4d474b5c453.herokuapp.com/get_profile`, {
+            const response = await fetch(`${API_BASE_URL}/get_profile`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -51,6 +52,7 @@ function ProfileCard({userEmail}) {
 
     if (loading) {
         return <div>Loading...</div>;
+
     }
 
     if (error) {
