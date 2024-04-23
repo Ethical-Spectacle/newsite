@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import ProfileCard from './components/ProfileCard';
 import Events from './components/Events';
 import Button from '../components/Button';
+import Divider from './components/Divider';
 import Link from 'next/link';
 
 const AccountPage = () => {
@@ -13,9 +14,14 @@ const AccountPage = () => {
   const [isEmailVerified, setIsEmailVerified] = useState(false); // Define isEmailVerified state
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-    if (isLoggedIn === "true") {
+    console.log('Checking if user is logged in');
+    const isLoggedInValue = localStorage.getItem("isLoggedIn");
+    console.log('isLoggedIn:', isLoggedInValue);
+    if (isLoggedInValue !== "false") {
       setUserEmail(localStorage.getItem("userEmail"));
+      setIsLoggedIn(true); // Set isLoggedIn state to true if the user is logged in
+      setIsEmailVerified(localStorage.getItem("isEmailVerified"));
+      setIsAdmin(localStorage.getItem("isAdmin"));
     } else {
       // User is not logged in, redirect to login page
       redirect('/join/login');
@@ -39,11 +45,13 @@ const AccountPage = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center bg-slate-100">
+    <div className="min-h-screen flex items-start bg-slate-100 py-20">
+
       <div className="boxed-container flex flex-col justify-center">
-        <Link href='/join/login' onClick={handleLogout} >Log Out</Link>
+        <Link href='/join/login' onClick={handleLogout} className='bg-cpink w-20 text-slate-50 rounded-lg p-2' >Log Out</Link>
         <ProfileCard userEmail={userEmail} />
         <Events />
+        <Divider />
       </div>
 
     </div>

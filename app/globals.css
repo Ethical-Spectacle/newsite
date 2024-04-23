@@ -24,15 +24,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Serif Display', serif;
   font-weight: 800;
-  color: rgb(30 41 59);
+  @apply text-slate-800;
 }
 
 h1 {
-  font-size: 2.5rem;
+  @apply text-4xl;
 }
 
 h2 {
-  font-size: 1.75rem;
+  @apply text-2xl;
 }
 
 label, p {
@@ -66,6 +66,19 @@ input {
 
 .cardcontent {
   @apply absolute w-[calc(100%-8px)] h-[calc(100%-8px)] top-[4px] left-[4px] bg-slate-800 rounded-2xl;
+}
+
+.pink-pill {
+  @apply bg-pink-200 text-sm text-center text-slate-800 px-4 py-1 rounded-full w-fit border border-slate-800;
+
+}
+
+.box-shadow-style {
+  box-shadow: 5px 5px black;
+}
+
+.box-shadow-style-0 {
+  box-shadow: 5px 5px 0px 0px transparent !important;
 }
 
 @media (min-width: 768px) {

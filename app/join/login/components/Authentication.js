@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import LoginForm from '../../components/Forms/LoginForm';
-import API_URL_PROD from '../../../config/config';
+import {API_BASE_URL} from '@/config/config';
 import Image from 'next/image';
 import blacklogo from '../../../assets/blacklogo.svg';
 
@@ -30,7 +30,7 @@ const Authentication = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL_PROD}/auth`, {
+      const response = await fetch(`${API_BASE_URL}/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

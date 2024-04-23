@@ -1,11 +1,12 @@
 'use client';
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { API_URL_PROD } from '../../config/config';
+import { API_BASE_URL } from '@/config/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link';
+import Badges from './Badges';
 
 
 function ProfileCard({userEmail}) {
@@ -22,8 +23,9 @@ function ProfileCard({userEmail}) {
 
     useEffect(() => {
         const fetchProfile = async () => {
+          console.log('Loading...', API_BASE_URL);
           try {
-            const response = await fetch(`${API_URL_PROD}/get_profile`, {
+            const response = await fetch(`${API_BASE_URL}/get_profile`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -51,6 +53,7 @@ function ProfileCard({userEmail}) {
 
     if (loading) {
         return <div>Loading...</div>;
+
     }
 
     if (error) {
@@ -58,17 +61,25 @@ function ProfileCard({userEmail}) {
     }
 
   return (
-    <div>
+    <div className='border border-slate-800 p-5'>
+      <p className='pink-pill mb-4'>Member #{profile.id}</p>
       <h1>Hey {profile?.fname},</h1>
-      <p>Member #{profile.id}</p>
-      <p><strong>Bio:</strong>{profile.bio ? profile.bio : '...'}</p>
-      <div>
-      {links.map((link, index) => (
-        <Link key={index} href={link.url}> 
-          <FontAwesomeIcon icon={link.icon} />
-        </Link>
-      ))}
-      </div>
+
+      <section className='w-full flex flex-col md:flex-row'>
+        <div className='flex-1 p-2'>
+          <p><span className='font-semibold'>Bio:</span>{profile.bio ? profile.bio : ' No bio yet'}</p>
+            {links.map((link, index) => (
+              <Link key={index} href={link.url}> 
+                <FontAwesomeIcon icon={link.icon} />
+              </Link>
+            ))}
+        </div>
+        <div className='flex-1 px-2 py-4'>
+          <h2 className="text-lg font-semibold">Badges:</h2>
+          <Badges userEmail={userEmail} />
+        </div>
+      </section>
+
     </div>
   )
 }
