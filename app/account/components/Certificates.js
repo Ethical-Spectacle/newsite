@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Certificates from './Certificates.css'
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
+import { API_BASE_URL } from '@/config/config';
 
 const CertificatesList = ({ userEmail }) => {
   const [certificates, setCertificates] = useState([]);
@@ -12,7 +10,7 @@ const CertificatesList = ({ userEmail }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_URL_PROD}/get_certificates`, {
+      const response = await fetch(`${API_BASE_URL}/get_certificates`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -35,7 +33,7 @@ const CertificatesList = ({ userEmail }) => {
 
   const claimCertificate = async (id) => {
     try {
-      const response = await fetch(`${API_URL_PROD}/claim_hackathon_certificate`, {
+      const response = await fetch(`${API_BASE_URL}/claim_hackathon_certificate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -59,12 +57,13 @@ const CertificatesList = ({ userEmail }) => {
 
   return (
     <div className="certificates-list">
-      {certificates.map(cert => (
-        <div key={cert.id} className="certificate-card">
-          <h2>{cert.hackathon_name} - {cert.team_name}</h2>
-          <p>Dates: {cert.start_date} to {cert.end_date}</p>
+      {certificates.map((cert, index) => (
+        <div key={index} className="flex flex-col justify-center border  border-gray-300 bg-white px-3 py-2 rounded-lg w-fit min-w-[250px]">
+          <span className='text-lg font-semibold'>{cert.hackathon_name} - {cert.team_name}</span>
+          <p className='text-base'>Dates:</p>
+          <p className='text-base'>{cert.start_date} To: {cert.end_date}</p>
           {cert.claimed ? (
-            <a href={`/#/hackathon-certificate/${cert.id}`} className="view-link">View Certificate</a>
+            <a href={`/#/hackathon-certificate/${cert.id}`} className='underline decoration-cpink decoration-2 underline-offset-4' >View Certificate</a>
           ) : (
             <button onClick={() => claimCertificate(cert.id)} className="claim-btn">Claim</button>
           )}

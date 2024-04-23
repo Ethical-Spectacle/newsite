@@ -100,7 +100,7 @@ function Badges({ userEmail }) {
         badges.map((badge, index) => {
           const details = badgeDetails[badge.badge_name.toLowerCase()];
           return (
-            <div key={index} className="flex justify-center items-center border  border-gray-300 bg-white px-3 py-2 rounded-lg space-x-1 w-fit ">
+            <div key={index} className="flex justify-center items-center border  border-gray-300 bg-white px-3 py-2 rounded-lg space-x-1 w-fit min-w-[250px] ">
               <span className="badge-emoji">{details?.emoji || "❓"}</span>
               <span className="badge-name">
                 {capitalizeFirstLetters(badge.badge_name)}

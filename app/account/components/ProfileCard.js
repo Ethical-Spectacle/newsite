@@ -7,6 +7,7 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link';
 import Badges from './Badges';
+import CertificatesList from './Certificates';
 
 
 function ProfileCard({userEmail}) {
@@ -77,6 +78,10 @@ function ProfileCard({userEmail}) {
         <div className='flex-1 px-2 py-4'>
           <h2 className="text-lg font-semibold">Badges:</h2>
           <Badges userEmail={userEmail} />
+        </div>
+        <div className='flex-1 px-2 py-4'>
+          <h2 className="text-lg font-semibold">Certificates:</h2>
+          <CertificatesList userEmail={userEmail} />
         </div>
       </section>
 

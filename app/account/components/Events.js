@@ -40,7 +40,7 @@ function Events() {
           events.map((event, index) => (
               <div key={index} className="bg-white px-2 py-4 border border-slate-800 -mr-4">
                 <div className="event-info flex flex-col">
-                    <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit">
+                    <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit min-w-[225px]">
                       {event.name}
                     </span>
                     <span className="event-date text-lg">{formatDate(event.date)}</span>

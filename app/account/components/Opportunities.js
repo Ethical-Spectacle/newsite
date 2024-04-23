@@ -15,7 +15,7 @@ function Opportunities() {
                 </p>
                 <div className="bg-white px-2 py-4 border border-slate-800 -mr-4">
                     <div className="event-info flex flex-col">
-                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit">
+                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit min-w-[225px]">
                         Apply as researcher
                         </span>
                         <span className="event-date text-lg">Join a research project or start one of your own</span>
@@ -31,7 +31,7 @@ function Opportunities() {
             <div className='h-full border-l border-slate-800 ml-8 px-4 py-2 space-y-4'>
                 <div className="bg-white px-2 py-4 border border-slate-800 -mr-4">
                     <div className="event-info flex flex-col">
-                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit">
+                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit min-w-[225px]">
                         Write for our blog
                         </span>
                         <span className="event-date text-lg">Contribute to our community's knowledge base</span>
@@ -47,7 +47,7 @@ function Opportunities() {
             <div className='h-full border-l border-slate-800 ml-8 px-4 py-2 space-y-4'>
                 <div className="bg-white px-2 py-4 border border-slate-800 -mr-4">
                     <div className="event-info flex flex-col">
-                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit">
+                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit min-w-[225px]">
                         Host an event
                         </span>
                         <span className="event-date text-lg">Organize an event that brings other passionate members together</span>
@@ -63,7 +63,7 @@ function Opportunities() {
             <div className='h-full border-l border-slate-800 ml-8 px-4 py-2 space-y-4'>
                 <div className="bg-white px-2 py-4 border border-slate-800 -mr-4">
                     <div className="event-info flex flex-col">
-                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit">
+                        <span className="text-xl bg-pink-200 rounded-full p-2 border border-slate-800 w-fit min-w-[225px]">
                         Volunteer
                         </span>
                         <span className="event-date text-lg">Organize an event that brings other passionate members together</span>
