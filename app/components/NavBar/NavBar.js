@@ -36,7 +36,6 @@ function NavBar() {
     setIsLoggedIn(false);
     setIsAdmin(false);
     setIsEmailVerified(false);
-    console.log('Logged out');
     redirect('/join/login');
   };
 
@@ -60,7 +59,7 @@ function NavBar() {
           </li>
         </ul>
         <div className='flex space-x-4 justify-center items-center'>
-          <Button title={buttonText} clickFunction={buttonText === 'Log out' ? handleLogout:null } href={buttonText === 'Log in' ? '/join/login': null } />
+          <Button title={buttonText} clickFunction={buttonText === 'Log out' ? handleLogout:null } href='/join/login' />
           <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={faBars} className='w-full h-full' />
           </div>

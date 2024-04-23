@@ -29,10 +29,6 @@ const AccountPage = () => {
     }
   }, []);
 
-  const redirectToLogin = () => {
-    redirect('/join/login');
-  };
-
   return (
     <div className="min-h-screen flex items-start bg-slate-100 py-20">
           <div className="boxed-container flex flex-col justify-center">
