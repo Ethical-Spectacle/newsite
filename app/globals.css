@@ -74,7 +74,13 @@ input {
 }
 
 .pink-box-shadow-style {
-  box-shadow: 7px 7px #FE93B1;
+  z-index: -1;
+  @apply absolute w-[100%] h-[100%] top-5 left-5 bg-cpink;
+}
+
+.shape-wrap::before {
+  content: '';
+  @apply absolute w-[100%] h-[100%] top-3 left-3 bg-cpink z-0 border border-slate-800;
 }
 
 @layer utilities {
