@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link';
+import Badges from './Badges';
 
 
 function ProfileCard({userEmail}) {
@@ -60,17 +61,25 @@ function ProfileCard({userEmail}) {
     }
 
   return (
-    <div>
+    <div className='md:border-b border-slate-800 px-3'>
+      <p className='pink-pill'>Member #{profile.id}</p>
       <h1>Hey {profile?.fname},</h1>
-      <p>Member #{profile.id}</p>
-      <p><strong>Bio:</strong>{profile.bio ? profile.bio : '...'}</p>
-      <div>
-      {links.map((link, index) => (
-        <Link key={index} href={link.url}> 
-          <FontAwesomeIcon icon={link.icon} />
-        </Link>
-      ))}
-      </div>
+
+      <section className='w-full flex flex-col md:flex-row'>
+        <div className='flex-1 p-2 md:border-r border-slate-800'>
+          <p><strong>Bio:</strong>{profile.bio ? profile.bio : ' No bio yet'}</p>
+            {links.map((link, index) => (
+              <Link key={index} href={link.url}> 
+                <FontAwesomeIcon icon={link.icon} />
+              </Link>
+            ))}
+        </div>
+        <div className='flex-1 p-2 border border-slate-800 md:border-0'>
+          <h2 className="text-lg font-semibold">Badges:</h2>
+          <Badges userEmail={userEmail} />
+        </div>
+      </section>
+
     </div>
   )
 }

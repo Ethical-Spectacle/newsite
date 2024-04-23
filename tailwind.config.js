@@ -17,6 +17,7 @@ module.exports = {
       },
       colors: {
         'cpink': '#FE93B1',
+        'cpinklight': '#FE93B1',
       },
       keyframes: {
         'border-spin': {

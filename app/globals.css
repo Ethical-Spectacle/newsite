@@ -24,7 +24,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Serif Display', serif;
   font-weight: 800;
-  color: rgb(30 41 59);
+  @apply text-slate-800;
 }
 
 h1 {
@@ -66,6 +66,11 @@ input {
 
 .cardcontent {
   @apply absolute w-[calc(100%-8px)] h-[calc(100%-8px)] top-[4px] left-[4px] bg-slate-800 rounded-2xl;
+}
+
+.pink-pill {
+  @apply bg-pink-200 text-sm text-center text-slate-800 px-4 py-1 rounded-full max-w-[110px] border border-slate-800;
+
 }
 
 @media (min-width: 768px) {
