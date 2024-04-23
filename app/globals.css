@@ -73,6 +73,10 @@ input {
   box-shadow: 7px 7px black;
 }
 
+.pink-box-shadow-style {
+  box-shadow: 7px 7px #FE93B1;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
