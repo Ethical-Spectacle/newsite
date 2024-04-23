@@ -56,7 +56,7 @@ const Authentication = () => {
   }, [isLoggedIn]);
 
   return (
-    <div className="w-full md:w-1/2 bg-white rounded-xl p-5 md:p-10 flex flex-col space-y-5 justify-center items-center shadow-md">
+    <div className="w-full md:w-1/2 bg-white p-5 md:p-10 flex flex-col space-y-5 justify-center items-center shadow-md pink-box-shadow-style border border-slate-800">
       <Image src={blacklogo} alt="Ethical Spectacle Logo" width={100} />
       <h2>Register</h2>
       <LoginForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
