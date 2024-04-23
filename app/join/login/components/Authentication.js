@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useLogged } from '@/context/store';
 import { redirect } from 'next/navigation';
 import LoginForm from '../../components/Forms/LoginForm';
 import {API_BASE_URL} from '@/config/config';
@@ -7,6 +8,7 @@ import Image from 'next/image';
 import blacklogo from '../../../assets/blacklogo.svg';
 
 const Authentication = () => {
+  const { logged, setLogged } = useLogged();
   const [formData, setFormData] = useState({ email: "", password: "", });
   const [userEmail, setUserEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +27,7 @@ const Authentication = () => {
     localStorage.setItem("userEmail", email);
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("isEmailVerified", emailVerified);
+    setLogged(true);
   };
 
   const handleSubmit = async (e) => {

@@ -1,5 +1,7 @@
-'use client'
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLogged } from '@/context/store';
 import whitelogo from '../../assets/whitelogo.svg'
 import Image from 'next/image'
@@ -8,7 +10,6 @@ import Button from '../Button'
 import MobileMenu from './MobileMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { redirect } from 'next/navigation';
 
 function NavBar() {
   const { logged, setLogged } = useLogged();
@@ -18,6 +19,7 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Define isLoggedIn state
   const [isAdmin, setIsAdmin] = useState(false); // Define isAdmin state
   const [isEmailVerified, setIsEmailVerified] = useState(false); // Define isEmailVerified state
+  const router = useRouter();
 
   useEffect(() => {
     const isLoggedInValue = localStorage.getItem("isLoggedIn");
@@ -44,8 +46,12 @@ function NavBar() {
     setIsAdmin(false);
     setIsEmailVerified(false);
     setLogged(false);
-    redirect('/join/login');
+    router && router.push('/join/login');
   };
+
+  const handleLogin = () => {
+    router && router.push('/join/login');
+  }
 
   const hoverClasses = 'text-slate-50 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
 
@@ -67,7 +73,7 @@ function NavBar() {
           </li>
         </ul>
         <div className='flex space-x-4 justify-center items-center'>
-          <Button title={logged ? 'Log out':'Log in'} clickFunction={logged ? handleLogout : null } />
+          <Button title={logged ? 'Log out':'Log in'} clickFunction={logged ? handleLogout : handleLogin } />
           <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={faBars} className='w-full h-full' />
           </div>
@@ -83,4 +89,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default NavBar;
