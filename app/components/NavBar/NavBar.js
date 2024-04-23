@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import whitelogo from '../../assets/whitelogo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,12 +7,37 @@ import Button from '../Button'
 import MobileMenu from './MobileMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { redirect } from 'next/navigation';
 
 function NavBar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [buttonText, setButtonText] = useState('Log in');
+  const [userEmail, setUserEmail] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Define isLoggedIn state
+  const [isAdmin, setIsAdmin] = useState(false); // Define isAdmin state
+  const [isEmailVerified, setIsEmailVerified] = useState(false); // Define isEmailVerified state
+
+  useEffect(() => {
+    const isLoggedInValue = localStorage.getItem("isLoggedIn");
+    if (isLoggedInValue !== "false") {
+      setButtonText('Log out');
+    }
+  }, []);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("isEmailVerified");
+    setUserEmail(null);
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    setIsEmailVerified(false);
+    console.log('Logged out');
+    redirect('/join/login');
   };
 
   const hoverClasses = 'text-slate-50 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
@@ -34,10 +59,13 @@ function NavBar() {
             <Link href="/"> Leaderboard </Link>
           </li>
         </ul>
-        <Button title='Log in' additionalClass='hidden'/>
-        <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
-          <FontAwesomeIcon icon={faBars} className='w-full h-full' />
+        <div className='flex space-x-4 justify-center items-center'>
+          <Button title={buttonText} clickFunction={buttonText === 'Log out' ? handleLogout:null } href={buttonText === 'Log in' ? '/join/login': null } />
+          <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
+            <FontAwesomeIcon icon={faBars} className='w-full h-full' />
+          </div>
         </div>
+
       </div>
       {showMobileMenu && (
         <MobileMenu 

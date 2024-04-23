@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { redirect } from 'next/navigation';
 import ProfileCard from './components/ProfileCard';
 import Events from './components/Events';
 import Button from '../components/Button';
 import Divider from './components/Divider';
 import Opportunities from './components/Opportunities';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const AccountPage = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -29,33 +29,18 @@ const AccountPage = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("isEmailVerified");
-    setUserEmail(null);
-    setIsLoggedIn(false);
-    setIsAdmin(false);
-    setIsEmailVerified(false);
-    console.log('Logged out');
+  const redirectToLogin = () => {
     redirect('/join/login');
   };
 
-  if (isLoggedIn === false) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="min-h-screen flex items-start bg-slate-100 py-20">
-
-      <div className="boxed-container flex flex-col justify-center">
-        <Link href='/join/login' onClick={handleLogout} className='bg-cpink w-20 text-slate-50 rounded-lg p-2' >Log Out</Link>
-        <ProfileCard userEmail={userEmail} />
-        <Events />
-        <Divider />
-        <Opportunities />
-      </div>
-
+          <div className="boxed-container flex flex-col justify-center">
+          <ProfileCard userEmail={userEmail} />
+          <Events />
+          <Divider />
+          <Opportunities />
+        </div>
     </div>
   );
 };

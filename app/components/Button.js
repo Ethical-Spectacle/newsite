@@ -6,7 +6,7 @@ function Button(props) {
 
   if (href) {
     return (
-      <Link href={href} passHref className={buttonClasses} onClick={clickFunction}>
+      <Link href={href} passHref className={buttonClasses} >
         {title}
       </Link>
     );
@@ -16,6 +16,7 @@ function Button(props) {
     <button
       type={type}
       className={buttonClasses}
+      onClick={clickFunction}
     >
       {title}
     </button>
