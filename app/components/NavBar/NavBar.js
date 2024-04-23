@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { useLogged } from '@/context/store';
 import whitelogo from '../../assets/whitelogo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +11,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { redirect } from 'next/navigation';
 
 function NavBar() {
+  const { logged, setLogged } = useLogged();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [buttonText, setButtonText] = useState('Log in');
   const [userEmail, setUserEmail] = useState('');
@@ -21,6 +23,11 @@ function NavBar() {
     const isLoggedInValue = localStorage.getItem("isLoggedIn");
     if (isLoggedInValue !== "false") {
       setButtonText('Log out');
+      setLogged(true);
+    }
+    else {
+      setButtonText('Log in');
+      setLogged(false);
     }
   }, []);
 
@@ -36,6 +43,7 @@ function NavBar() {
     setIsLoggedIn(false);
     setIsAdmin(false);
     setIsEmailVerified(false);
+    setLogged(false);
     redirect('/join/login');
   };
 
@@ -59,7 +67,7 @@ function NavBar() {
           </li>
         </ul>
         <div className='flex space-x-4 justify-center items-center'>
-          <Button title={buttonText} clickFunction={buttonText === 'Log out' ? handleLogout:null } href='/join/login' />
+          <Button title={logged ? 'Log out':'Log in'} clickFunction={logged ? handleLogout : null } />
           <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={faBars} className='w-full h-full' />
           </div>
