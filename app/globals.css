@@ -61,7 +61,7 @@ input {
 }
 
 .cardcontent {
-  @apply absolute w-[calc(100%-8px)] h-[calc(100%-8px)] top-[4px] left-[4px] bg-slate-800 rounded-2xl;
+  @apply absolute w-[calc(100%-4px)] h-[calc(100%-4px)] top-[2px] left-[2px] bg-slate-800;
 }
 
 .pink-pill {
@@ -70,11 +70,7 @@ input {
 }
 
 .box-shadow-style {
-  box-shadow: 5px 5px black;
-}
-
-.box-shadow-style-0 {
-  box-shadow: 5px 5px 0px 0px transparent !important;
+  box-shadow: 7px 7px black;
 }
 
 @layer utilities {
