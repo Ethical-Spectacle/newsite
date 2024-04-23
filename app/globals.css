@@ -28,20 +28,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Serif Display', serif;
-  font-weight: 800;
-  @apply text-slate-800;
-}
-
-h1 {
-  @apply text-4xl;
-}
-
-h2 {
-  @apply text-2xl;
+  @apply text-slate-800 font-semibold text-5xl;
 }
 
 label, p {
-  @apply text-lg;
+  @apply text-xl;
 }
 
 li {
@@ -84,17 +75,6 @@ input {
 
 .box-shadow-style-0 {
   box-shadow: 5px 5px 0px 0px transparent !important;
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-  
 }
 
 @layer utilities {

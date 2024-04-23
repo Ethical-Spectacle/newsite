@@ -59,7 +59,7 @@ function NavBar() {
     router && router.push('/join/login');
   }
 
-  const hoverClasses = 'text-slate-50 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
+  const hoverClasses = 'text-slate-800 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
 
   return (
     <nav className='w-full fixed justify-center z-20 bg-cream border-b border-slate-800'>
@@ -67,7 +67,7 @@ function NavBar() {
         <Link href="/">
           <Image src={esr} alt="Ethical Spectacle Research Logo" width={70} height={70} />
         </Link>
-        <ul className='space-x-4 hidden md:flex text-black space-x-7'>
+        <ul className='space-x-4 hidden md:flex space-x-7'>
           <li className={hoverClasses}>
             <Link href="/"> Events </Link>
           </li>
