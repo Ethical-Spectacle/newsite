@@ -86,7 +86,6 @@ function Badges({ userEmail }) {
     return date.toLocaleDateString("en-US", options);
   };
   
-
   const capitalizeFirstLetters = (str) => {
     return str
       .toLowerCase()
@@ -101,7 +100,7 @@ function Badges({ userEmail }) {
         badges.map((badge, index) => {
           const details = badgeDetails[badge.badge_name.toLowerCase()];
           return (
-            <div key={index} className="flex flex-col justify-center items-center bg-pink-200 p-1">
+            <div key={index} className="flex justify-center items-center border  border-gray-300 bg-white px-3 py-2 rounded-lg space-x-1 w-fit ">
               <span className="badge-emoji">{details?.emoji || "❓"}</span>
               <span className="badge-name">
                 {capitalizeFirstLetters(badge.badge_name)}

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import ProfileCard from './components/ProfileCard';
 import Events from './components/Events';
 import Button from '../components/Button';
+import Divider from './components/Divider';
 import Link from 'next/link';
 
 const AccountPage = () => {
@@ -44,11 +45,13 @@ const AccountPage = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center bg-slate-100">
+    <div className="min-h-screen flex items-start bg-slate-100 py-20">
+
       <div className="boxed-container flex flex-col justify-center">
         <Link href='/join/login' onClick={handleLogout} className='bg-cpink w-20 text-slate-50 rounded-lg p-2' >Log Out</Link>
         <ProfileCard userEmail={userEmail} />
         <Events />
+        <Divider />
       </div>
 
     </div>

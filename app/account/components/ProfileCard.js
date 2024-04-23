@@ -61,20 +61,20 @@ function ProfileCard({userEmail}) {
     }
 
   return (
-    <div className='md:border-b border-slate-800 px-3'>
-      <p className='pink-pill'>Member #{profile.id}</p>
+    <div className='border border-slate-800 p-5'>
+      <p className='pink-pill mb-4'>Member #{profile.id}</p>
       <h1>Hey {profile?.fname},</h1>
 
       <section className='w-full flex flex-col md:flex-row'>
-        <div className='flex-1 p-2 md:border-r border-slate-800'>
-          <p><strong>Bio:</strong>{profile.bio ? profile.bio : ' No bio yet'}</p>
+        <div className='flex-1 p-2'>
+          <p><span className='font-semibold'>Bio:</span>{profile.bio ? profile.bio : ' No bio yet'}</p>
             {links.map((link, index) => (
               <Link key={index} href={link.url}> 
                 <FontAwesomeIcon icon={link.icon} />
               </Link>
             ))}
         </div>
-        <div className='flex-1 p-2 border border-slate-800 md:border-0'>
+        <div className='flex-1 px-2 py-4'>
           <h2 className="text-lg font-semibold">Badges:</h2>
           <Badges userEmail={userEmail} />
         </div>
