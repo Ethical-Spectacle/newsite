@@ -5,6 +5,7 @@ import ProfileCard from './components/ProfileCard';
 import Events from './components/Events';
 import Button from '../components/Button';
 import Divider from './components/Divider';
+import Opportunities from './components/Opportunities';
 import Link from 'next/link';
 
 const AccountPage = () => {
@@ -52,6 +53,7 @@ const AccountPage = () => {
         <ProfileCard userEmail={userEmail} />
         <Events />
         <Divider />
+        <Opportunities />
       </div>
 
     </div>
