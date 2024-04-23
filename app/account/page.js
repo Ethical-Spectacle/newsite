@@ -12,23 +12,26 @@ import { redirect } from 'next/navigation';
 const AccountPage = () => {
   const { logged, setLogged } = useLogged();
   const [userEmail, setUserEmail] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Define isLoggedIn state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false); // Define isAdmin state
   const [isEmailVerified, setIsEmailVerified] = useState(false); // Define isEmailVerified state
 
   useEffect(() => {
-    if (logged) {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    if (loggedIn) {
       setUserEmail(localStorage.getItem("userEmail"));
-      setIsLoggedIn(true); // Set isLoggedIn state to true if the user is logged in
+      setIsLoggedIn(true);
       setIsEmailVerified(localStorage.getItem("isEmailVerified"));
       setIsAdmin(localStorage.getItem("isAdmin"));
     } else {
+      console.log("Not logged in");
+      setLogged(false);
       redirect('/join/login');
     }
   }, []);
 
   return (
-    <div className="min-h-screen flex items-start bg-slate-100 py-20">
+    <div className="min-h-screen flex items-start py-20">
           <div className="boxed-container flex flex-col justify-center">
           <ProfileCard userEmail={userEmail} />
           <Events />

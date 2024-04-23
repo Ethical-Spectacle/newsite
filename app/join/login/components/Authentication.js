@@ -19,6 +19,11 @@ const Authentication = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn");
+    console.log("Logged in:", loggedIn);
+  }, []);
+
   const handleAuthentication = (email, emailVerified) => {
     setUserEmail(email);
     setIsLoggedIn(true);
