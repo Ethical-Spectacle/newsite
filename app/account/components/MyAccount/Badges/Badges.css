@@ -1,0 +1,46 @@
+.badges-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 400px;
+    overflow-y: auto; /* Enables vertical scrolling within the container */
+    padding-right: 2px; 
+    margin-bottom: 10px; 
+  }
+  
+
+.badges-container h2 {
+    font-size: 24px;
+    margin: 0 0 10px 0; 
+    padding: 0;
+    text-align: left;
+}
+  
+.badge {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 7px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.badge-emoji {
+    font-size: 24px;
+}
+
+.badge-name, .badge-date {
+    font-size: 14px;
+}
+
+.badge-name {
+    margin-left: 20px;
+    margin-right: auto; 
+}
+
+.badge-content {
+    display: flex;
+    align-items: center;
+}

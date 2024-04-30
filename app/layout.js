@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Ethical Spectacle Research",
-  description: "A community of researchers, developers, and entrepreneurs coming together at events to .",
+  description: "A community of researchers, developers, and entrepreneurs coming together at events to further tech ethics.",
 };
 
 export default function RootLayout({ children }) {
@@ -16,11 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
           <LoggedContextProvider>
-            <NavBar />
-            {children}
-            <Footer />
+              <NavBar />
+              {children}
+              <Footer />
           </LoggedContextProvider>
-
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLogged } from '@/context/store';
 import { redirect } from 'next/navigation';
-import LoginForm from '../../components/Forms/LoginForm';
+import LoginForm from './LoginForm';
 import {API_BASE_URL} from '@/config/config';
 import Image from 'next/image';
 import blacklogo from '../../../assets/blacklogo.svg';

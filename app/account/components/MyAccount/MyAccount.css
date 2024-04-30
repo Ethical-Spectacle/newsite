@@ -1,0 +1,71 @@
+.my-account-container {
+    display: flex;
+    height: 90vh;
+}
+
+.my-account-container * > {
+    flex: 1;
+}
+
+.myAccount {
+    width: 80%;
+    color: black;
+    border: 1px solid #FE93B1;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.myAccount h2 {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.primary-button {
+    background-color: #242424;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.primary-button:hover {
+    background-color: #30383b;
+}
+
+@media (max-width: 768px) {
+    .my-account-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .user-details, .events {
+        width: 100%;
+        margin-top: 50px;
+    }
+}
+  
+.profile-info, .badges, .mini-events, .opportunities {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+}

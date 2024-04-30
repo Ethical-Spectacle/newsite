@@ -1,8 +1,8 @@
 'use client';
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { API_BASE_URL } from '../../config/config'
-import formatDate from '../utils/formatDate';
+import { API_BASE_URL } from '../../../config/config'
+import formatDate from '../../utils/formatDate';
 
 function Events() {
     const [events, setEvents] = useState([]);

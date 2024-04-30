@@ -49,7 +49,7 @@ export default function Rankings() {
   
   return (
     <div className="min-h-screen bg-gray-100 p-5">
-      <h2 className="text-3xl font-bold text-gray-800 pb-2 mb-4">Leaderboard</h2>
+      <h1 className="text-3xl font-bold text-gray-800 pb-2 mb-4">Leaderboard</h1>
       <div className="w-full">
         <div className="grid grid-cols-12 text-gray-600 font-bold border-b-2 border-gray-500 py-3">
           <span className="hidden sm:block col-span-1">Rank</span>

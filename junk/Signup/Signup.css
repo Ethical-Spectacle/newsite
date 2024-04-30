@@ -1,0 +1,43 @@
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.button-group {
+    text-align: center;
+}
+
+.button-group .sign-up-button {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    width: 200px;
+    padding: 10px 20px;
+    background-color: #ff93b1;
+    color: #30383b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button-group button:hover {
+    background-color: #30383b;
+}
