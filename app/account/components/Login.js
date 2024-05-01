@@ -35,10 +35,10 @@ const Login = ({ handleAuthentication }) => {
   };
 
   return (
-    <div className="login-section min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-md">
-        <h2 className="text-lg font-semibold text-gray-800 mb-6">Login</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="w-full max-w-md p-8 bg-white border-4 border-black">
+        <h2 className="mb-6 text-4xl font-bold text-black">Login</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="input-group">
             <input
               type="email"
@@ -46,7 +46,7 @@ const Login = ({ handleAuthentication }) => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full p-2 text-gray-800 bg-white rounded border border-gray-300 focus:outline-none focus:border-gray-400"
+              className="w-full p-4 text-xl text-black bg-white border-2 border-black focus:outline-none"
             />
           </div>
           <div className="input-group">
@@ -56,11 +56,11 @@ const Login = ({ handleAuthentication }) => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="w-full p-2 text-gray-800 bg-white rounded border border-gray-300 focus:outline-none focus:border-gray-400"
+              className="w-full p-4 text-xl text-black bg-white border-2 border-black focus:outline-none"
             />
           </div>
           <div className="button-group">
-            <button className="w-full p-3 bg-gray-800 text-white font-bold rounded hover:bg-gray-900" type="submit">Log In</button>
+            <button className="w-full p-4 bg-black text-white text-xl font-bold hover:bg-gray-700" type="submit">Log In</button>
           </div>
         </form>
       </div>

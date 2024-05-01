@@ -16,15 +16,35 @@
   }
 }
 
+/* swipable scrolling, no snapping */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: none; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+.scroll-item {
+  flex: 0 0 auto;  
+  width: 100%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(248 250 252);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 800;
+  font-family: 'Rethink Sans', serif;
+  font-weight: 400;
   @apply text-slate-800;
+}
+
+p {
+  font-family: 'Rethink Sans', serif;
+  font-weight: 300;
+  @apply text-slate-800;
+
 }
 
 h1 {
@@ -40,7 +60,7 @@ label, p {
 }
 
 li {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Rethink Sans', sans-serif;
   font-size: 1.25rem;
   transition: all 0.2s ease;
 }

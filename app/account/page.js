@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-// import "./Account.scss";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import MyAccount from "./components/MyAccount/MyAccount";

@@ -4,6 +4,9 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
 import { LoggedContextProvider } from "./context/store";
 
+
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,10 +17,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
+        <head>
+          <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+        </head>
+
       <body>
           <LoggedContextProvider>
               <NavBar />
-              {children}
+                {children}
               <Footer />
           </LoggedContextProvider>
       </body>
