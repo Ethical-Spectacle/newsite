@@ -1,6 +1,4 @@
 import React from 'react';
-import { MdArrowForward } from "react-icons/md";
-import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 
 const Hero = () => {
   return (
@@ -11,7 +9,7 @@ const Hero = () => {
         <div className="size-72 scroll-item">
           <h1 className="inline-block border border-black border-4 p-3 m-2 ml-10 mt-6 text-5xl whitespace-nowrap">Ethical Spectacle Research ;)</h1>
           <p className="text-black text-2xl p-5 pb-0 m-2 mt-5 leading-snug">Developers that write *clean* code.</p>
-          <h2 className="flex flex-row justify-end pr-5 text-xl"><PiHandSwipeLeftDuotone className="mt-1 text-5xl"/> Swipe</h2>
+          <h2 className="flex flex-row justify-end pr-5 text-xl">Swipe</h2>
         </div>
         <div className="size-72 scroll-item flex flex-col justify-end p-3">
           <p className="text-2xl font-semibold mb-2">Research.</p>
@@ -24,7 +22,7 @@ const Hero = () => {
         </div>
         <a href="/account" className="size-72 scroll-item p-3 bg-black flex">
           <h1 className="text-5xl font-semibold mb-2 mt-2 text-white flex-col justify-start">Become a Member.</h1>
-          <div className="flex flex-col justify-end text-white text-8xl"><MdArrowForward/></div>
+          <div className="flex flex-col justify-end text-white text-8xl"></div>
         </a>
       </div>
 

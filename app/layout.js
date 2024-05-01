@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
@@ -6,8 +5,11 @@ import { LoggedContextProvider } from "./context/store";
 
 
 
-
-const inter = Inter({ subsets: ["latin"] });
+import { Rethink_Sans } from "next/font/google";
+const rethink_sans = Rethink_Sans({  
+  weights: [400, 600, 700],
+  subsets: ["latin"]  
+});
 
 export const metadata = {
   title: "Ethical Spectacle Research",
@@ -17,13 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
-        <head>
-          <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
-        </head>
-
-      <body>
+      <body className={rethink_sans.className}>
           <LoggedContextProvider>
               <NavBar />
                 {children}

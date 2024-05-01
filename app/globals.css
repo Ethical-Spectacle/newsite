@@ -16,6 +16,27 @@
   }
 }
 
+body {
+  color: black;
+  @apply bg-cream;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+}
+
+.outside-container {
+  @apply w-full flex justify-center overflow-hidden;
+}
+
+.boxed-container {
+  @apply w-full max-w-1440 flex px-5 md:px-16 relative;
+}
+
 /* HOME PAGE STUFF */
 /* swipable scrolling, no snapping */
 .scroll-container {
@@ -41,23 +62,6 @@
 /* end homepage stuff */
 
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(248 250 252);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Rethink Sans', serif;
-  font-weight: 400;
-  @apply text-slate-800;
-}
-
-p {
-  font-family: 'Rethink Sans', serif;
-  font-weight: 300;
-  @apply text-slate-800;
-
-}
 
 h1 {
   @apply text-4xl;

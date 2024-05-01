@@ -56,11 +56,12 @@ function NavBar() {
   const hoverClasses = 'text-slate-50 hover:font-semibold hover:underline hover:decoration-rose-400 hover:underline-offset-4'
 
   return (
-    <nav className='w-full fixed justify-center bg-slate-800 drop-shadow-md z-20'>
-      <div className='max-w-1440 p-2 flex md:flex-row justify-between mx-auto'>
+    <nav className='outside-container'>
+      <div className='boxed-container '>
         <Link href="/">
           <Image src={whitelogo} alt="Ethical Spectacle Research" width={70} height={70} />
         </Link>
+
         <ul className='space-x-4 hidden md:flex text-black space-x-7'>
           <li className={hoverClasses}>
             <Link href="/"> Events </Link>
@@ -72,19 +73,21 @@ function NavBar() {
             <Link href="/"> Leaderboard </Link>
           </li>
         </ul>
-        <div className='flex space-x-4 justify-center items-center'>
+
+        <div>
           <Button title={logged ? 'Log out':'Log in'} clickFunction={logged ? handleLogout : handleLogin } />
           <div className='w-7 h-7 text-slate-50 md:hidden' onClick={toggleMobileMenu}>
             <FontAwesomeIcon icon={faBars} className='w-full h-full' />
           </div>
         </div>
-
       </div>
+
       {showMobileMenu && (
         <MobileMenu 
           toggleMobileMenu={toggleMobileMenu}
         />  
       )}
+
     </nav>
   )
 }

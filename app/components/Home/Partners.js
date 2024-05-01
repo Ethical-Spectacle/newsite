@@ -1,5 +1,4 @@
 import React from 'react';
-import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 
 const Partners = () => {
   return (
