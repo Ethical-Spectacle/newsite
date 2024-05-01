@@ -26,7 +26,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
+  color: black;
   font-weight: 300;
+}
+
+.nav-boxed {
+  @apply w-full max-w-1440 flex relative;
 }
 
 .outside-container {
