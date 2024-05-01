@@ -1,24 +1,41 @@
-import Button from "../Button";
-import Image from "next/image";
-import AZVC from "../../assets/AZVC_Transparent.png"
-import gcn from "../../assets/global_career_network.png"  
+import React from 'react';
+import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 
-function Partners() {
+const Partners = () => {
   return (
-    <section className="w-full flex justify-center">
-      <section className="w-full max-w-1440 flex min-h-[70vh] flex-col justify-center items-center px-5 py-20 md:p-10 md:space-x-12 space-y-20">
-        <div className="cardwrapper h-24 w-[300px] bg-slate-50 rounded-2xl relative overflow-hidden">
-          <div className="cardcontent flex items-center justify-center">
-            <h1 className="leading-none text-slate-50 text-3xl">Our Partners</h1>
+    <div className="bg-white">
+      <div className="scroll-container">
+
+        {/* Title slide */}
+        <div className="size-72 scroll-item bg-black">
+          <div className="flex flex-col h-full justify-end">
+            <h1 className="mt-5 pb-5 text-5xl font-semibold text-white text-right pr-5 pb-10">Partners.❤️</h1>
           </div>
         </div>
-        <div className="w-full flex flex-col space-y-10 md:flex-row justify-center items-center md:space-x-20">
-          <Image src={AZVC} alt="AZVC" width={200} height={200} className="object-contain h-auto max-w-1/2"/>
-          <Image src={gcn} alt="Global Career Network" width={300} height={300} className="object-contain h-auto max-w-1/2" />
-        </div>
-      </section>  
-  </section>
-  )
-}
 
-export default Partners
+        {/* Slide for AZVC */}
+        <div className="size-72 scroll-item border border-black border-3 ">
+          <div className="px-5 pt-5">
+            <img src="/assets/AZVC_Transparent.png" alt="AZVC Logo" className="h-32 mx-auto" />
+            <h2 className="text-center mt-5 text-xl font-semibold">AZVC</h2>
+            <p className="text-center mt-1">The largest venture capital fund in Arizona.</p>
+          </div>
+        </div>
+
+        {/* Slide for Global Career Network */}
+        <div className="size-72 scroll-item border border-black border-3">
+          <div className="p-5">
+            <img src="/assets/global_career_network.png" alt="Global Career Network Logo" className="h-32 mx-auto" />
+            <h2 className="text-center mt-5 text-xl font-semibold">Global Career Network</h2>
+            <p className="text-center mt-1">The second largest student organization at ASU.</p>
+            <h2 className="flex flex-row justify-end pr-5 text-xl">
+            </h2>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
+
+export default Partners;
