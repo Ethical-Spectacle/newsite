@@ -57,7 +57,7 @@ function NavBar() {
 
   return (
     <nav className='outside-container border-b border-black'>
-      <div className='nav-boxed h-[100px] items-center justify-between'>
+      <div className='boxed-container h-[100px] px-5 items-center justify-between'>
         <Link href="/" className='w-1/3' >
           <Image src={blacklogo} alt="Ethical Spectacle Research" width={70} height={70} />
         </Link>
@@ -74,7 +74,7 @@ function NavBar() {
           </li>
         </ul>
 
-        <div className='border-l border-black h-full w-2/3 md:w-1/4 flex items-center justify-center'>
+        <div className='border-l border-black h-full w-2/3 md:w-1/4 flex items-center justify-end'>
           {logged ? (
                   <Link href='/account' className='text-lg px-5 underline underline-offset-4' >
                     Account

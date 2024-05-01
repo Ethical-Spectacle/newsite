@@ -30,16 +30,12 @@ p {
   font-weight: 300;
 }
 
-.nav-boxed {
-  @apply w-full max-w-1440 flex relative;
-}
-
 .outside-container {
   @apply w-full flex justify-center overflow-hidden;
 }
 
 .boxed-container {
-  @apply w-full max-w-1440 flex px-5 md:px-16 relative;
+  @apply w-full max-w-1440 flex px-5 relative;
 }
 
 /* HOME PAGE STUFF */
