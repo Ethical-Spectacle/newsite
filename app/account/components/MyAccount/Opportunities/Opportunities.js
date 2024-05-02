@@ -1,7 +1,7 @@
 
 function Opportunities() {
   return (
-    <div className="bg-slate-900 text-white p-2 md:p-5 md:space-y-5">
+    <div className="bg-slate-900 text-white p-4 md:p-5 md:space-y-5">
       <div>
         <h2>Opportunities</h2>
         <p className='text-white text-xl'>Get involved and join our organization's leadership</p>
