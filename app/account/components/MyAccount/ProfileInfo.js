@@ -87,69 +87,72 @@ const ProfileInfo = ({ userEmail }) => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   return (
-    <div className="myAccount">
-      <h1>Hey {profile?.fname},</h1>
+    <div className="bg-white p-5 border border-black border-3 w-full">
+      <h1 className="text-3xl font-semibold mb-3">Hey {profile?.fname},</h1>
       {profile ? (
         <div>
           {isEditing ? (
-            <div>
+            <div className="space-y-3">
               <input
                 type="text"
                 defaultValue={profile.fname}
                 id="fname"
                 placeholder="First Name"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
               <input
                 type="text"
                 defaultValue={profile.lname}
                 id="lname"
                 placeholder="Last Name"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
               <input
                 type="text"
                 defaultValue={profile.bio}
                 id="bio"
                 placeholder="Bio"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
               <input
                 type="text"
                 defaultValue={profile.website}
                 id="website"
                 placeholder="Personal Website"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
               <input
                 type="text"
                 defaultValue={profile.github}
                 id="github"
                 placeholder="GitHub URL"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
               <input
                 type="text"
                 defaultValue={profile.linkedin}
                 id="linkedin"
                 placeholder="LinkedIn URL"
+                className="border border-gray-300 p-2 w-full"
               />
-              <br />
-
-              <button onClick={updateProfile}>Save</button>
+              <button
+                onClick={updateProfile}
+                className="px-4 py-2 mt-4 bg-black text-white font-semibold"
+              >
+                Save
+              </button>
             </div>
           ) : (
-            <div className="details-container">
+            <div className="details-container space-y-2">
               <p>Member #{profile.id}</p>
               <p>
                 <strong>Bio:</strong> {profile.bio}
               </p>
-              <div className="link-container">
+              <div className="link-container flex space-x-3 mt-3">
                 {profile.website && (
                   <a
-                    className="links"
+                    className="links p-2 bg-black text-white rounded-md"
                     href={profile.website}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -159,7 +162,7 @@ const ProfileInfo = ({ userEmail }) => {
                 )}
                 {profile.github && (
                   <a
-                    className="links"
+                    className="links p-2 bg-black text-white rounded-md"
                     href={profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -169,7 +172,7 @@ const ProfileInfo = ({ userEmail }) => {
                 )}
                 {profile.linkedin && (
                   <a
-                    className="links"
+                    className="links p-2 bg-black text-white rounded-md"
                     href={profile.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -178,7 +181,12 @@ const ProfileInfo = ({ userEmail }) => {
                   </a>
                 )}
               </div>
-              <button className="primary-button" onClick={toggleEditMode}>Edit Profile</button>
+              <button
+                className="primary-button px-4 py-2 bg-black text-white font-semibold mt-3"
+                onClick={toggleEditMode}
+              >
+                Edit Profile
+              </button>
             </div>
           )}
         </div>
@@ -187,6 +195,7 @@ const ProfileInfo = ({ userEmail }) => {
       )}
     </div>
   );
-};
+}
+
 
 export default ProfileInfo;

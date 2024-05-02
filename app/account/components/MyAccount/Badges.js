@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Badges.css";
+import Tippy from '@tippyjs/react'; 
+import 'tippy.js/dist/tippy.css'; // default tooltip styling
+
+
+
 const API_URL_PROD =
   "https://api.ethicalspectacle.com/";
   // "http://127.0.0.1:5000";
@@ -68,9 +72,7 @@ function Badges({ userEmail }) {
         },
         body: JSON.stringify({ email: userEmail }),
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      if (!response.ok) throw new Error("Network response was not ok");
       const badgesJson = await response.json();
       setBadges(badgesJson);
     } catch (error) {
@@ -87,33 +89,35 @@ function Badges({ userEmail }) {
     });
   };
 
-  const capitalizeFirstLetters = (str) => {
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
-
   return (
-    <div className="badges-container">
-      <h2>Badges:</h2>
-      {badges.length > 0 ? (
-        badges.map((badge, index) => {
-          const details = badgeDetails[badge.badge_name.toLowerCase()];
-          return (
-            <div key={index} className="badge">
-              <span className="badge-emoji">{details?.emoji || "❓"}</span>
-              <span className="badge-name">
-                {capitalizeFirstLetters(badge.badge_name)}
-              </span>
-              <span className="badge-date">{formatDate(badge.date)}</span>
-            </div>
-          );
-        })
-      ) : (
-        <p>⏳ We'll add your badges soon 😎</p>
-      )}
+    <div className="bg-white p-5 border border-black border-3 w-full">
+      <h2 className="text-3xl font-semibold mb-3">Badges</h2>
+      <div className="badges-list space-y-4">
+        {badges.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {badges.map((badge, index) => {
+              const details = badgeDetails[badge.badge_name.toLowerCase()];
+              return (
+                <Tippy content={details.description} trigger="click" key={index}>
+                  <div className="badge-card p-3 border border-gray-300 shadow-sm rounded-lg flex items-center">
+                    <span className="text-3xl">{details?.emoji || "❓"}</span>
+                    <div className="ml-4">
+                      <span className="block capitalize font-semibold text-lg">
+                        {badge.badge_name}
+                      </span>
+                      <span className="text-sm text-gray-600">
+                        {formatDate(badge.date)}
+                      </span>
+                    </div>
+                  </div>
+                </Tippy>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-5 text-lg font-semibold">⏳ We'll add your badges soon 😎</div>
+        )}
+      </div>
     </div>
   );
 }

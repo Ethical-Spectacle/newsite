@@ -1,8 +1,8 @@
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-import Badges from './Badges/Badges';
-import MiniEvents from './MiniEvents/MiniEvents';
-import Opportunities from './Opportunities/Opportunities';
-import Certificates from './Certificates/Certificates';
+import ProfileInfo from './ProfileInfo';
+import Badges from './Badges';
+import MiniEvents from './MiniEvents';
+import Opportunities from './Opportunities';
+import Certificates from './Certificates';
 import './MyAccount.css';
 
 function MyAccount({ userEmail }) {

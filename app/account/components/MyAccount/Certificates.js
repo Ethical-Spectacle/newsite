@@ -53,24 +53,44 @@ const CertificatesList = ({ userEmail }) => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">Error: {error}</div>;
 
   return (
-    <div className="certificates-list">
-      {certificates.map(cert => (
-        <div key={cert.id} className="certificate-card">
-          <h2>{cert.hackathon_name} - {cert.team_name}</h2>
-          <p>Dates: {cert.start_date} to {cert.end_date}</p>
-          {cert.claimed ? (
-            <a href={`/#/hackathon-certificate/${cert.id}`} className="view-link">View Certificate</a>
-          ) : (
-            <button onClick={() => claimCertificate(cert.id)} className="claim-btn">Claim</button>
-          )}
-        </div>
-      ))}
+    <div className="bg-white p-5 border border-black border-3 w-full">
+      <h1 className="text-3xl font-semibold mb-3">Certificates</h1>
+  
+      {loading && <div className="loading text-center py-5 text-xl font-semibold">Loading...</div>}
+      {error && <div className="error text-center py-5 text-red-500 font-semibold">Error: {error}</div>}
+  
+      <div className="certificates-list space-y-4">
+        {certificates.length > 0 ? (
+          certificates.map(cert => (
+            <div key={cert.id} className="certificate-card p-3 border border-gray-300 shadow-sm rounded-lg">
+              <h2 className="text-2xl font-semibold">{cert.hackathon_name} - {cert.team_name}</h2>
+              <p className="text-sm font-light">Dates: {formatDate(cert.start_date)} to {formatDate(cert.end_date)}</p>
+              {cert.claimed ? (
+                <a href={`/certificate?id=${cert.id}`} className="view-link inline-block mt-2 text-blue-500 hover:text-blue-700">View Certificate</a>
+              ) : (
+                <button onClick={() => claimCertificate(cert.id)} className="claim-btn mt-2 bg-black text-white px-4 py-2 rounded shadow hover:bg-gray-700">Claim</button>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-5 text-lg font-semibold">Compete in a hackathon or attend a workshop for a sharable certificate</div>
+        )}
+      </div>
     </div>
-  );
+  );  
 };
 
 export default CertificatesList;
