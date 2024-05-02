@@ -7,9 +7,11 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
-function MobileMenu({ toggleMobileMenu }) {
+function MobileMenu({ isOpen, toggleMobileMenu }) {
     const liClasses = 'text-2xl'
     const dividerClasses= 'flex h-[1px] w-full bg-rose-400 mt-3'
+
+    if (!isOpen) return null; // hide the menu when isOpen is false.
 
   return (
     <div className="absolute top-0 left-0 w-screen h-screen z-10">

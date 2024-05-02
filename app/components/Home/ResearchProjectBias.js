@@ -7,7 +7,7 @@ const BiasProjectCarousel = () => {
     <div className="bg-white">
       <div className="scroll-container">
         <div className="h-72 scroll-item border border-black border-3 px-5 pt-5">
-          <h1 className="mt-2">Project 1:</h1>
+          <h1 className="mt-2">Project 001</h1>
           <h2 className="mt-3">Bias Detection</h2>
           <p className="pl-5 mt-2">A text classification model trained to detect generalizations, unfairness, and stereotypes in text.</p>
           <h2 className="flex flex-row justify-end pr-5 text-xl"><PiHandSwipeLeftDuotone className="mt-3 text-4xl"/></h2>

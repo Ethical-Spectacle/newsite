@@ -1,5 +1,7 @@
 import React from 'react';
 import { PiHandSwipeLeftDuotone } from "react-icons/pi";
+import { IoMdArrowForward } from "react-icons/io";
+
 
 const Hero = () => {
   return (
@@ -12,16 +14,18 @@ const Hero = () => {
         </div>
         <div className="size-72 scroll-item flex flex-col justify-end p-3">
           <p className="text-2xl font-semibold mb-2">Research.</p>
-          <p className="mb-5">We publish papers and build open source tools that make it easier for developers to uphold ethics in the AI era.</p>
+          <p className="mb-5">We do AI/ML research in nuanced contexts, publishing research papers and open source tools for developers.</p>
         </div>
-        <div className="size-72 scroll-item flex flex-col justify-end p-3">
+        <div className="size-72 scroll-item flex flex-col justify-end pl-5 p-3">
           {/* can someone add something here, fill the space, top right aligned */}
           <p className="text-2xl font-semibold mb-2 mt-2">Community.</p>
-          <p className="mb-5">Our devs get first access to our research, career opportunities, and invite-only events.</p>
+          <p className="mb-2">We run events for the developers and entrepreneurs of Phoenix.</p>
+          <p className="mb-5">Climb our leaderboard by attending events, winning hackathons, taking leadership roles, etc.</p>
         </div>
         <a href="/account" className="size-72 scroll-item p-3 bg-black flex">
           <h1 className="text-5xl font-semibold mb-2 mt-2 text-white flex-col justify-start">Become a Member.</h1>
-          <div className="flex flex-col justify-end text-white text-8xl"></div>
+          <div className="flex flex-col justify-end text-white text-8xl"><IoMdArrowForward />
+</div>
         </a>
       </div>
 

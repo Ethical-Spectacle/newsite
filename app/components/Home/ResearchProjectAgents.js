@@ -7,7 +7,7 @@ const AgentsProjectCarousel = () => {
 
       <div className="scroll-container">
         <div className="size-72 scroll-item border border-black border-3 px-5 pt-5">
-          <h1 className="mt-2">Project 2:</h1>
+          <h1 className="mt-2">Project 002</h1>
           <h2 className="mt-3">Agent Network Effects</h2>
           <p className="pl-5 mt-2">We're studying the ability of LLM agents to police network effects.</p>
           <h2 className="flex flex-row justify-end pr-5 text-xl"><PiHandSwipeLeftDuotone className="mt-5 text-4xl"/></h2>
