@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const PicsCarousel = () => {
     // need to add some of research recaps and from pitch comp
@@ -34,11 +35,12 @@ const PicsCarousel = () => {
     <div className="flex overflow-x-scroll">
       {images.map((src, index) => (
         <div key={index} className="h-72 shrink-0 first:pl-0 last:pr-0">
-          <img 
+          <Image 
             className="w-full h-full object-cover" 
             src={src} 
             alt={`Slide ${index}`}
-            loading="lazy"
+            width={300}
+            height={300}
           />
         </div>
       ))}
