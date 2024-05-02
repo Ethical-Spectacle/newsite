@@ -15,7 +15,7 @@ function MyAccount({ userEmail }) {
           <Badges userEmail={userEmail}/>
         </div>
 
-        <div className="flex-1">
+        <div className="flex-1 space-y-5">
           <MiniEvents />
           <Opportunities />
         </div>

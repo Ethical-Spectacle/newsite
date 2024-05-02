@@ -39,7 +39,7 @@ function MiniEvents() {
   };
 
   return (
-    <div className="events-container">
+    <div className="border border-black space-y-5 p-2 md:px-5 min-h-[200px]">
       <h2>Upcoming Events</h2>
       <p>
         Come and get involved in our events, network, learn about the industry,

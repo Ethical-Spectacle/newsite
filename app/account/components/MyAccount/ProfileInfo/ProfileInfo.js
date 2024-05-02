@@ -89,7 +89,7 @@ const ProfileInfo = ({ userEmail }) => {
   }
 
   return (
-    <div className="border border-black space-y-5 p-2 md:px-5">
+    <div className="border border-black space-y-5 p-2 md:px-5 min-h-[200px]">
       <div>
         <p className="border border-black rounded-full w-fit px-2">Member #{profile.id}</p>
         <h1 className="text-4xl">Hey {profile?.fname},</h1>
