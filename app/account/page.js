@@ -94,18 +94,9 @@ const Account = () => {
         ) : isAdmin ? (
           <>
             <Admin />
-            <button className="logout-button" onClick={handleLogout}>
-              Log Out
-            </button>
           </>
         ) : (
           <>
-            <div className="logout-container">
-              <button className="logout-button" onClick={handleLogout}>
-                Log Out
-              </button>
-            </div>
-
             <MyAccount userEmail={userEmail} />
           </>
         )

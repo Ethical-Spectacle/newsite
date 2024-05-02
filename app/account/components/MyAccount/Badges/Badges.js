@@ -96,18 +96,18 @@ function Badges({ userEmail }) {
   };
 
   return (
-    <div className="badges-container">
-      <h2>Badges:</h2>
+    <div>
+      <h2 className="text-2xl">Badges:</h2>
       {badges.length > 0 ? (
         badges.map((badge, index) => {
           const details = badgeDetails[badge.badge_name.toLowerCase()];
           return (
-            <div key={index} className="badge">
-              <span className="badge-emoji">{details?.emoji || "❓"}</span>
-              <span className="badge-name">
+            <div key={index} className="bg-gray-200 rounded-lg w-fit px-4 py-2 drop-shadow-sm my-2 text-lg space-x-1">
+              <span className="text-2xl">{details?.emoji || "❓"}</span>
+              <span className="text-xl" >
                 {capitalizeFirstLetters(badge.badge_name)}
               </span>
-              <span className="badge-date">{formatDate(badge.date)}</span>
+              <span className="text-xl">{formatDate(badge.date)}</span>
             </div>
           );
         })

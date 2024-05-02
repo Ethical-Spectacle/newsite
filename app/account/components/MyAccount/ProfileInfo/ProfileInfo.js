@@ -89,8 +89,12 @@ const ProfileInfo = ({ userEmail }) => {
   }
 
   return (
-    <div className="myAccount">
-      <h1>Hey {profile?.fname},</h1>
+    <div className="border border-black space-y-5 p-2 md:px-5">
+      <div>
+        <p className="border border-black rounded-full w-fit px-2">Member #{profile.id}</p>
+        <h1 className="text-4xl">Hey {profile?.fname},</h1>
+      </div>
+
       {profile ? (
         <div>
           {isEditing ? (
@@ -141,10 +145,9 @@ const ProfileInfo = ({ userEmail }) => {
               <button onClick={updateProfile}>Save</button>
             </div>
           ) : (
-            <div className="details-container">
-              <p>Member #{profile.id}</p>
+            <div className="text-xl">
               <p>
-                <strong>Bio:</strong> {profile.bio}
+                <strong className="text-xl">Bio:</strong> {profile.bio ?? "No bio provided"}
               </p>
               <div className="link-container">
                 {profile.website && (

@@ -57,11 +57,12 @@ const CertificatesList = ({ userEmail }) => {
   if (error) return <div className="error">Error: {error}</div>;
 
   return (
-    <div className="certificates-list">
+    <div className="bg-zinc-200 p-2 md:px-5">
+      <h1 className="text-2xl underline mb-2">Certificates</h1>
       {certificates.map(cert => (
-        <div key={cert.id} className="certificate-card">
-          <h2>{cert.hackathon_name} - {cert.team_name}</h2>
-          <p>Dates: {cert.start_date} to {cert.end_date}</p>
+        <div key={cert.id} className="certificate-card text-xl">
+          <h2 className="text-2xl">{cert.hackathon_name} - {cert.team_name}</h2>
+          <p className='text-xl'>Dates: {cert.start_date} to {cert.end_date}</p>
           {cert.claimed ? (
             <a href={`/#/hackathon-certificate/${cert.id}`} className="view-link">View Certificate</a>
           ) : (
