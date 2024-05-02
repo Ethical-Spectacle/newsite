@@ -42,6 +42,28 @@ p {
   @apply w-full max-w-1440 flex relative;
 }
 
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.opportunity-card {
+  @apply bg-slate-700 text-white rounded-lg shadow-lg border border-cpink space-y-2 flex flex-col justify-between p-2;
+}
+
+.opportunity-card h3 {
+  @apply text-cpinklight text-xl;
+}
+
+.opportunity-card p {
+  @apply text-white text-lg;
+}
+
+.opportunity-card a {
+  @apply bg-cpink p-2 rounded-lg text-white text-center block;
+}
+
 /* HOME PAGE STUFF */
 /* swipable scrolling, no snapping */
 .scroll-container {

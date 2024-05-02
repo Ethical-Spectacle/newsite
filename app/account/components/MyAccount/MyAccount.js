@@ -7,15 +7,20 @@ import './MyAccount.css';
 
 function MyAccount({ userEmail }) {
   return (
-    <div className="my-account-container">
-      <div className="user-details">
-        <ProfileInfo userEmail={userEmail} />
-        <Certificates userEmail={userEmail} />
-        <Badges userEmail={userEmail}/>
-      </div>
-      <div className='events'>
-        <MiniEvents />
-        <Opportunities />
+    <div className="outside-container">
+      <div className='boxed-container flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-28'>
+
+        <div className="flex-1 space-y-5">
+          <ProfileInfo userEmail={userEmail} />
+          <Certificates userEmail={userEmail} />
+          <Badges userEmail={userEmail}/>
+        </div>
+
+        <div className="flex-1 space-y-5">
+          <MiniEvents />
+          <Opportunities />
+        </div>
+
       </div>
     </div>
   );
