@@ -9,7 +9,7 @@ const Partners = () => {
         {/* Title slide */}
         <div className="size-72 scroll-item bg-black">
           <div className="flex flex-col h-full justify-end">
-            <h1 className="mt-5 pb-5 text-5xl font-semibold text-white text-right pr-5 pb-10">Partners.❤️</h1>
+            <h1 className="mt-5 pb-5 text-5xl font-semibold text-white text-right pr-5 pb-5 mb-5">Partners.❤️</h1>
           </div>
         </div>
 
@@ -32,7 +32,7 @@ const Partners = () => {
             </h2>
           </div>
         </div>
-        
+
       </div>
     </div>
   );
