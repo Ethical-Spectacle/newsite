@@ -30,12 +30,12 @@ p {
   font-weight: 300;
 }
 
-.outside-container {
+/* .outside-container {
   @apply w-full flex justify-center overflow-hidden;
 }
 
 .boxed-container {
-  @apply w-full max-w-1440 flex px-5 relative;
+  @apply w-full max-w-1440 flex relative;
 }
 
 .nav-boxed {
@@ -62,7 +62,7 @@ p {
 
 .opportunity-card a {
   @apply bg-cpink p-2 rounded-lg text-white text-center block;
-}
+} */
 
 /* HOME PAGE STUFF */
 /* swipable scrolling, no snapping */
@@ -112,9 +112,9 @@ li {
   fill: rgb(30 41 59);;
 }
 
-.boxed-container {
+/* .boxed-container {
   @apply w-full max-w-[1440px] mx-auto p-5 md:p-10;
-}
+} */
 
 input {
   @apply h-12 px-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-400 focus:ring-indigo-500 sm:text-sm;
