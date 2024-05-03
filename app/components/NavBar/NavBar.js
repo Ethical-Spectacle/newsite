@@ -1,21 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaMeetup, FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
+import { useAuth } from '../../context/AuthContext'; 
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn, logout } = useAuth(); 
+
+  const handleLogoutNav = () => {
+    logout();
+    window.location.href = '/';
+  };
 
   return (
     <nav className="bg-black">
       <div className="w-full">
         <div className="flex justify-between items-center py-6">
-
           {/* Logo */}
           <Link href="/" className="ml-5">
-              <img src="/assets/light_logo_no_bg.png" alt="Logo" className="h-10"/>
+            <img src="/assets/light_logo_no_bg.png" alt="Logo" className="h-10"/>
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
@@ -28,7 +35,11 @@ const Navbar = () => {
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center md:hidden">
-            <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Join :P</Link>
+            {isLoggedIn ? (
+              <button onClick={handleLogoutNav} className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Sign Out</button>
+            ) : (
+              <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Log In</Link>
+            )}
             <button onClick={() => setIsOpen(!isOpen)} className="mr-5">
               {isOpen ? <AiOutlineClose className="h-8 w-8 text-black" /> : <AiOutlineMenu className="h-8 w-8 text-white" />}
             </button>
@@ -59,7 +70,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
       )}
     </nav>
   );

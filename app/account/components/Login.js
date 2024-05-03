@@ -1,8 +1,10 @@
+'use client';
 import React, { useState } from "react";
+import { useAuth } from '../../context/AuthContext'; 
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
-
-const Login = ({ handleAuthentication }) => {
+const Login = () => {
+  const API_URL_PROD = "https://api.ethicalspectacle.com/";
+  const { login } = useAuth(); // Get the login function from AuthContext
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,7 +27,8 @@ const Login = ({ handleAuthentication }) => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        handleAuthentication(formData.email, data.email_verified);
+        // Use the login function from the AuthContext and check for email_verified status
+        login(formData.email, data.email_verified ?? false);
       } else {
         console.error("Authentication failed:", response.statusText);
       }

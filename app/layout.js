@@ -1,7 +1,8 @@
 import "./globals.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer";
-import { LoggedContextProvider } from "./context/store";
+import { AuthProvider } from './context/AuthContext';
+
 
 
 
@@ -20,11 +21,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={rethink_sans.className}>
-          <LoggedContextProvider>
+          <AuthProvider >
               <NavBar />
                 {children}
               <Footer />
-          </LoggedContextProvider>
+          </AuthProvider >
       </body>
     </html>
   );
