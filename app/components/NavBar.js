@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaMeetup, FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
-import { useAuth } from '../../context/AuthContext'; 
+import { useAuth } from '../context/AuthContext'; 
 
 
 const Navbar = () => {
