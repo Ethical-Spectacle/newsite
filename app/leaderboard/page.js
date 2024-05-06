@@ -48,40 +48,39 @@ export default function Rankings() {
   if (error) return <div className="text-center text-red-500">Error: {error}</div>;
   
   return (
-    <div className="min-h-screen bg-gray-100 p-5">
-      <h1 className="text-3xl font-bold text-gray-800 pb-2 mb-4">Leaderboard</h1>
+    <div className="min-h-screen">
+      <div className="p-5 py-10">
+        <h1 className="text-4xl font-bold text-black">Leaderboard 🧠</h1>
+        <p className="mt-3 text-gray-500 text-md">Our most engaged and accomplished developers and entrepreneurs.</p>
+      </div>
+      
       <div className="w-full">
-        <div className="grid grid-cols-12 text-gray-600 font-bold border-b-2 border-gray-500 py-3">
-          <span className="hidden sm:block col-span-1">Rank</span>
-          <span className="col-span-3">Name</span>
-          <span className="hidden sm:block col-span-2">Score</span>
-          <span className="col-span-3">Links</span>
-          <span className="col-span-3">Badges</span>
-        </div>
         {rankings.map((ranking, index) => (
-          <div className="border-b border-gray-300 last:border-b-0 py-3" key={index}>
-            <div className="grid sm:grid-cols-12 items-center text-left">
-              <div className="hidden sm:block col-span-1 text-lg text-gray-800">#{index + 1}</div>
-              <div className="col-span-12 sm:col-span-3 text-lg font-semibold text-gray-800">{ranking.name}</div>
-              <div className="hidden sm:block col-span-2 text-sm text-gray-600">{ranking.points}</div>
-              <div className="col-span-12 sm:col-span-6 mt-2 sm:mt-0 flex justify-start sm:justify-between items-center space-x-2">
-                <div className="flex justify-start items-center space-x-2">
-                  {ranking.website && <a href={ranking.website} target="_blank" rel="noopener noreferrer"><FaGlobe className="text-gray-500 hover:text-gray-700"/></a>}
-                  {ranking.github && <a href={ranking.github} target="_blank" rel="noopener noreferrer"><FaGithub className="text-gray-500 hover:text-gray-700"/></a>}
-                  {ranking.linkedin && <a href={ranking.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin className="text-gray-500 hover:text-gray-700"/></a>}
-                </div>
-                <div className="align-right space-x-1 text-lg text-gray-800">
-                  {ranking.badges.split(', ').map((badge, badgeIndex) => {
-                    const badgeInfo = badgeDetails[badge];
-                    return badgeInfo ? (
-                      <Tippy key={badgeIndex} content={badgeInfo.description}>
-                        <span className="">{badgeInfo.emoji}</span>
-                      </Tippy>
-                    ) : (
-                      <span key={badgeIndex} className="text-xs text-gray-600">{badge}</span>
-                    );
-                  })}
-                </div>
+          <div key={index} className="bg-white py-6 px-8 border border-black border-3 border-b-0">
+            <div className="flex justify-between items-center">
+              <span>
+                <span className="text-gray-500 text-lg">{`#${index + 1}`}</span>
+                <span className="text-xl ml-5">{ranking.name}</span>
+              </span>
+              <span className="text-sm text-gray-500">{ranking.points}pts</span>
+            </div>
+            <div className="flex justify-between items-center mt-2">
+              <div className="flex space-x-2">
+                {ranking.badges.split(', ').map((badge, badgeIndex) => {
+                  const badgeInfo = badgeDetails[badge];
+                  return badgeInfo ? (
+                    <Tippy key={badgeIndex} content={badgeInfo.description}>
+                      <span className="text-2xl">{badgeInfo.emoji}</span>
+                    </Tippy>
+                  ) : (
+                    <span key={badgeIndex} className="text-xs text-gray-600">{badge}</span>
+                  );
+                })}
+              </div>
+              <div className="flex space-x-2">
+                {ranking.website && <a href={ranking.website} className="text-xl text-gray-500 hover:text-pink-400"><FaGlobe /></a>}
+                {ranking.github && <a href={ranking.github} className="text-xl text-gray-500 hover:text-gray-700"><FaGithub /></a>}
+                {ranking.linkedin && <a href={ranking.linkedin} className="text-xl text-gray-500 hover:text-gray-700"><FaLinkedin /></a>}
               </div>
             </div>
           </div>
