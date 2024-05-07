@@ -17,7 +17,7 @@ const Navbar = () => {
   const isActive = (path) => {
     return window.location.pathname === path ? "text-white border-b-2 border-pink-300" : "text-white";
   };
-  
+
   return (
     <nav className="bg-black">
       <div className="w-full">
@@ -32,7 +32,6 @@ const Navbar = () => {
             <a href="/" className={`${isActive('/')} text-xl`}>Home</a>
             <a href="/leaderboard" className={`${isActive('/leaderboard')} text-xl`}>Leaderboard</a>
             <a href="/events" className={`${isActive('/events')} text-xl`}>Events</a>
-            <a href="/research" className={`${isActive('/research')} text-xl`}>Research</a>
             <a href="/about" className={`${isActive('/about')} text-xl`}>About Us</a>
             <a href="/account" className={`${isActive('/account')} text-xl`}>Profile</a>
           </div>
@@ -58,10 +57,9 @@ const Navbar = () => {
             <h1 className="text-3xl text-left p-4">Menu</h1>
 
             {/* Navigation Links */}
-            <a href="/" onClick={() => setIsOpen(false)} className="p-4 text-xl border border-gray-300">Home 🥽</a>
+            <a href="/" onClick={() => setIsOpen(false)} className="p-4 text-xl border border-gray-300">Home 🔬</a>
             <a href="/leaderboard" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Leaderboard 🏆</a>
             <a href="/events" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Events ☕</a>
-            <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a>
             <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a>
             <a href="/account" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Profile 👾</a>
 
