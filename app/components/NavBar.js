@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useAuth } from '../context/AuthContext'; 
+import { FaMeetup, FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +16,7 @@ const Navbar = () => {
     window.location.href = '/';
   };
 
+  // need to figure out different solution
   const isActive = (path) => {
     return window.location.pathname === path ? "text-white border-b-2 border-pink-300" : "text-white";
   };
@@ -53,26 +56,29 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
-          <div className="absolute right-0 top-0 h-full w-3/4 bg-white" onClick={(e) => e.stopPropagation()}>
-            <h1 className="text-3xl text-left p-4">Menu</h1>
+          <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <h1 className="text-3xl font-semibold p-4">Menu</h1>
 
             {/* Navigation Links */}
-            <a href="/" onClick={() => setIsOpen(false)} className="p-4 text-xl border border-gray-300">Home 🔬</a>
+            <a href="/" onClick={() => setIsOpen(false)} className="p-4 text-xl border border-gray-300">Home 🏠</a>
             <a href="/leaderboard" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Leaderboard 🏆</a>
             <a href="/events" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Events ☕</a>
+            <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a>
             <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a>
             <a href="/account" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Profile 👾</a>
 
-            {/* Social Links */}
-            <div className='flex justify-evenly items-center mt-8 pb-4'>
-              <a href="https://www.linkedin.com/company/ethical-spectacle-research" className="text-black text-3xl">LinkedIn</a>
-              <a href="https://www.meetup.com/ethical-spectacle-research/events/" className="text-black text-3xl">Meetup</a>
-              <a href="https://discord.gg/MMkUr6P8zv" alt="Discord" className="text-black text-3xl">Discord</a>
-              <a href="https://github.com/Ethical-Spectacle" className="text-black text-3xl">GitHub</a>
-              <a href="https://huggingface.co/ethical-spectacle" target="_blank" rel="noopener noreferrer" className="text-black">Hugging Face</a>
-            </div>
+            {/* Social */}
+            <div className='flex justify-evenly items-center mt-4 pb-4'>
+              <a href="https://github.com/Ethical-Spectacle" className="text-black text-3xl"><FaGithub /></a>
+              <a href="https://www.meetup.com/ethical-spectacle-research/events/" className="text-black text-3xl"><FaMeetup /></a>
+              <a href="https://www.linkedin.com/company/ethical-spectacle-research" className="text-black text-3xl"><FaLinkedinIn /></a>
+              <a href="https://www.instagram.com/ethical_spectacle/" className="text-black text-3xl"><FaInstagram /></a>
+              <a href="https://huggingface.co/ethical-spectacle" target="_blank" rel="noopener noreferrer" className="text-black">
+                <img src='/assets/huggingface.svg' alt="Hugging Face" className="h-7" />
+              </a>
           </div>
         </div>
+      </div>
       )}
     </nav>
   );
