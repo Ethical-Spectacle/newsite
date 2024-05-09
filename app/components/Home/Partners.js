@@ -3,7 +3,7 @@ import React from 'react';
 const Partners = () => {
   return (
     <div className="bg-white">
-      <div className="scroll-container">
+      <div className="scroll-container hide-scrollbar">
 
         {/* Title slide */}
         <div className="size-72 scroll-item bg-black">
@@ -13,7 +13,7 @@ const Partners = () => {
         </div>
 
         {/* Slide for AZVC */}
-        <div className="size-72 scroll-item border border-black border-3 ">
+        <div className="size-72 scroll-item border border-black border-3">
           <div className="px-5 pt-5">
             <img src="/assets/AZVC_Transparent.png" alt="AZVC Logo" className="h-32 mx-auto" />
             <h2 className="text-center mt-5 text-xl font-semibold">AZVC</h2>

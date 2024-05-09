@@ -16,7 +16,7 @@ const Navbar = () => {
     window.location.href = '/';
   };
 
-  // // need to figure out different solution
+  // need to figure out different solution
   // const isActive = (path) => {
   //   return window.location.pathname === path ? "text-white border-b-2 border-pink-300" : "text-white";
   // };
@@ -46,7 +46,7 @@ const Navbar = () => {
             ) : (
               <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Join :P</Link>
             )}
-            <button onClick={() => setIsOpen(!isOpen)} className="mr-5">
+            <button onClick={() => setIsOpen(!isOpen)} className="mr-5 z-50">
               {isOpen ? <AiOutlineClose className="h-8 w-8 text-black" /> : <AiOutlineMenu className="h-8 w-8 text-white" />}
             </button>
           </div>
@@ -57,13 +57,13 @@ const Navbar = () => {
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
           <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col" onClick={(e) => e.stopPropagation()}>
-            <h1 className="text-3xl font-semibold p-4">Menu</h1>
+            <h1 className="text-4xl font-semibold p-4 h-18 mt-3 mb-1">Menu</h1>
 
             {/* Navigation Links */}
             <a href="/" onClick={() => setIsOpen(false)} className="p-4 text-xl border border-gray-300">Home 🏠</a>
             <a href="/leaderboard" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Leaderboard 🏆</a>
             <a href="/events" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Events ☕</a>
-            <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a>
+            {/* <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a> */}
             <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a>
             <a href="/account" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Profile 👾</a>
 

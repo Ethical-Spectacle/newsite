@@ -32,7 +32,7 @@ const PicsCarousel = () => {
 
 
   return (
-    <div className="flex overflow-x-scroll">
+    <div className="flex overflow-x-scroll hide-scrollbar">
       {images.map((src, index) => (
         <div key={index} className="h-72 shrink-0 first:pl-0 last:pr-0">
           <Image 

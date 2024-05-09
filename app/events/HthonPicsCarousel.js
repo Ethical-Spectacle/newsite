@@ -34,10 +34,10 @@ const HthonPicsCarousel = () => {
 
 
             {/* carousels  */}
-            <div className="flex overflow-x-scroll snap-x snap-mandatory mb-4">
+            <div className="flex overflow-x-scroll mb-4 hide-scrollbar">
                 {/* hackathon images */}
                 {hthon_images.map((src, index) => (
-                    <div key={index} className="shrink-0 snap-center first:pl-0 last:pr-0">
+                    <div key={index} className="shrink-0 first:pl-0 last:pr-0">
                         <Image 
                             src={src} 
                             alt={`Slide ${index}`}
@@ -48,10 +48,10 @@ const HthonPicsCarousel = () => {
                     </div>
                 ))}
             </div>
-            <div className="flex overflow-x-scroll snap-x snap-mandatory">
+            <div className="flex overflow-x-scroll hide-scrollbar">
                 {/* hackathon images */}
                 {pitch_images.map((src, index) => (
-                    <div key={index} className="shrink-0 snap-center first:pl-0 last:pr-0">
+                    <div key={index} className="shrink-0 first:pl-0 last:pr-0">
                         <Image 
                             src={src} 
                             alt={`Slide ${index}`}

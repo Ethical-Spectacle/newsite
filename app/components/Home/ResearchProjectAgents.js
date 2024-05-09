@@ -5,7 +5,7 @@ const AgentsProjectCarousel = () => {
   return (
     <div className="bg-white">
 
-      <div className="scroll-container">
+      <div className="scroll-container hide-scrollbar">
         <div className="size-72 scroll-item border border-black border-3 px-5 pt-5">
           <h1 className="mt-2">Project 002</h1>
           <h2 className="mt-3">Agent Network Effects</h2>

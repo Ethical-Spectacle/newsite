@@ -23,10 +23,10 @@ const OtherEventsPicsCarousel = () => {
             <h2 className="px-5 md:px-20 text-2xl font-bold text-gray-800 mb-5 mt-5">Other Events</h2>
 
             {/* carousel  */}
-            <div className="flex overflow-x-scroll snap-x snap-mandatory mb-4">
+            <div className="flex overflow-x-scroll mb-4 hide-scrollbar">
                 {/* folder images */}
                 {hthon_images.map((src, index) => (
-                    <div key={index} className="shrink-0 snap-center first:pl-0 last:pr-0">
+                    <div key={index} className="shrink-0 first:pl-0 last:pr-0">
                         <Image 
                             src={src} 
                             alt={`Slide ${index}`}
