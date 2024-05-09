@@ -16,7 +16,9 @@ function MyAccount({ userEmail }) {
         </div>
 
         <div className="md:flex-1">
-          <MiniEvents />
+          <div className="border border-black border-3">
+            <MiniEvents />
+          </div>
           <Opportunities />
         </div>
 

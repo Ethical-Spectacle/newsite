@@ -20,7 +20,7 @@ const OtherEventsPicsCarousel = () => {
 
     return (
         <div className="py-3">
-            <h2 className="px-5 text-2xl font-bold text-gray-800 mb-5 mt-5">Other Events</h2>
+            <h2 className="px-5 md:px-20 text-2xl font-bold text-gray-800 mb-5 mt-5">Other Events</h2>
 
             {/* carousel  */}
             <div className="flex overflow-x-scroll snap-x snap-mandatory mb-4">

@@ -11,11 +11,13 @@ export default function Events() {
             <p className="mt-3 text-gray-500 text-md">A home for developers in Phoenix: Hackathons, workshops, hangouts, and lots of geeking-out.</p>
         </div>
     
-        <MiniEvents/>
+        <div className="md:px-20 border border-black border-3 border-t-0">
+            <MiniEvents/>
+        </div>
 
 
-        <div className="md:px-20 border border-black border-t-3">
-            <h2 className="p-5 text-3xl font-bold text-gray-800 pt-7 pb-4">Past Events ⌛</h2>
+        <div className="border border-black border-t-3">
+            <h2 className="p-5 md:px-20 text-3xl font-bold text-gray-800 pt-7 pb-4">Past Events ⌛</h2>
 
             {/* hackathon */}
             <HthonPicsCarousel />

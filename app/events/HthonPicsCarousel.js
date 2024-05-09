@@ -28,10 +28,9 @@ const HthonPicsCarousel = () => {
 
     return (
         <div className="py-3">
-            <h2 className="px-5 text-2xl font-bold text-gray-800">"It's The Sustainability For Me"</h2>
-            <p className="px-5 text-gray-500 text-md">Hackathon and Pitch Competition</p>
-            <p className="px-5 text-gray-500 text-md">AZVC x Ethical Spectacle Research</p>
-            <p className="px-5 text-gray-500 text-md mb-6">April 5-7, 2023</p>
+            <h2 className="px-5 md:px-20 text-2xl font-bold text-gray-800">"It's The Sustainability For Me"</h2>
+            <p className="px-5 md:px-20 md:ml-5 md:mt-2 text-gray-500 text-md">Hackathon and Pitch Competition</p>
+            <p className="px-5 md:px-20 md:ml-5 text-gray-500 text-md mb-6">April 5-7, 2023</p>
 
 
             {/* carousels  */}
