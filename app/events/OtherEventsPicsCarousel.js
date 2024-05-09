@@ -19,11 +19,11 @@ const OtherEventsPicsCarousel = () => {
     ];
 
     return (
-        <div className="py-3">
-            <h2 className="px-5 md:px-20 text-2xl font-bold text-gray-800 mb-5 mt-5">Other Events</h2>
+        <div className="pt-3">
+            <h2 className="px-5 md:px-20 text-2xl font-bold text-gray-800 mb-5 mt-5">Other Sightings</h2>
 
             {/* carousel  */}
-            <div className="flex overflow-x-scroll mb-4 hide-scrollbar">
+            <div className="flex overflow-x-scroll hide-scrollbar">
                 {/* folder images */}
                 {hthon_images.map((src, index) => (
                     <div key={index} className="shrink-0 first:pl-0 last:pr-0">
@@ -32,7 +32,7 @@ const OtherEventsPicsCarousel = () => {
                             alt={`Slide ${index}`}
                             width={300}
                             height={300}
-                            className="object-cover h-64 w-full"
+                            className="object-cover h-64 md:h-80 w-full"
                         />
                     </div>
                 ))}

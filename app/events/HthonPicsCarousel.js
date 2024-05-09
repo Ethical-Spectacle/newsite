@@ -34,7 +34,7 @@ const HthonPicsCarousel = () => {
 
 
             {/* carousels  */}
-            <div className="flex overflow-x-scroll mb-4 hide-scrollbar">
+            <div className="flex overflow-x-scroll hide-scrollbar">
                 {/* hackathon images */}
                 {hthon_images.map((src, index) => (
                     <div key={index} className="shrink-0 first:pl-0 last:pr-0">
@@ -43,13 +43,13 @@ const HthonPicsCarousel = () => {
                             alt={`Slide ${index}`}
                             width={300}
                             height={300}
-                            className="object-cover h-64 w-full"
+                            className="object-cover h-64 md:h-80 w-full"
                         />
                     </div>
                 ))}
             </div>
             <div className="flex overflow-x-scroll hide-scrollbar">
-                {/* hackathon images */}
+                {/* pitch comp images */}
                 {pitch_images.map((src, index) => (
                     <div key={index} className="shrink-0 first:pl-0 last:pr-0">
                         <Image 
@@ -57,7 +57,7 @@ const HthonPicsCarousel = () => {
                             alt={`Slide ${index}`}
                             width={300}
                             height={300}
-                            className="object-cover h-64 w-full"
+                            className="object-cover h-64 md:h-80 w-full"
                         />
                     </div>
                 ))}
