@@ -16,10 +16,10 @@ const Navbar = () => {
     window.location.href = '/';
   };
 
-  // need to figure out different solution
-  const isActive = (path) => {
-    return window.location.pathname === path ? "text-white border-b-2 border-pink-300" : "text-white";
-  };
+  // // need to figure out different solution
+  // const isActive = (path) => {
+  //   return window.location.pathname === path ? "text-white border-b-2 border-pink-300" : "text-white";
+  // };
 
   return (
     <nav className="bg-black">
@@ -31,13 +31,13 @@ const Navbar = () => {
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
-          <div className="hidden md:flex items-center space-x-5 mr-10">
+          {/* <div className="hidden md:flex items-center space-x-5 mr-10">
             <a href="/" className={`${isActive('/')} text-xl`}>Home</a>
             <a href="/leaderboard" className={`${isActive('/leaderboard')} text-xl`}>Leaderboard</a>
             <a href="/events" className={`${isActive('/events')} text-xl`}>Events</a>
             <a href="/about" className={`${isActive('/about')} text-xl`}>About Us</a>
             <a href="/account" className={`${isActive('/account')} text-xl`}>Profile</a>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Toggle */}
           <div className="flex items-center md:hidden">

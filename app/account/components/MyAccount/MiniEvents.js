@@ -37,8 +37,8 @@ function MiniEvents() {
     return `${month}/${day}/${year}, ${hour}:${minute} ${ampm}`;
   };
   return (
-    <div className="bg-white p-5 border border-black border-3">
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+    <div className="bg-white p-5 py-10 border border-black border-3 border-t-0">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Upcoming Events 📅</h2>
       {events.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {events.map((event, index) => (
@@ -47,7 +47,7 @@ function MiniEvents() {
               <div className="flex justify-between items-apart"> 
                 <div className="block font-semibold text-xl text-left">{event.name}</div>
                 {event.url && (
-                  <a href={event.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg py-2 px-3 font-semibold mt-1 border border-black border-5">Sign Up 🥳</a>
+                  <a href={event.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg py-2 px-3 font-semibold mt-1 border border-black border-5">Sign Up :)</a>
                 )}
               </div>
 

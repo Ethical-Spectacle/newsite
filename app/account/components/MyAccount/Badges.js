@@ -90,7 +90,7 @@ function Badges({ userEmail }) {
   };
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full">
+    <div className="bg-white p-5 border border-black border-3 w-full border-b-6">
       <h2 className="text-3xl font-semibold mb-3">Badges</h2>
       <div className="badges-list space-y-4">
         {badges.length > 0 ? (
