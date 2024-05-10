@@ -9,11 +9,7 @@ const Partners = () => {
         {/* Title slide */}
         <div className="size-72 scroll-item bg-black">
           <div className="flex flex-col h-full justify-end">
-<<<<<<< HEAD
             <h1 className="flex flex-rown mt-5 pb-5 text-5xl font-semibold text-white justify-end pr-5 pb-10">Partners.❤️ <PiHandSwipeLeftDuotone className="ml-3"/></h1>
-=======
-            <h1 className="mt-5 pb-5 text-5xl font-semibold text-white text-right pr-5 pb-5 mb-5">Partners.❤️</h1>
->>>>>>> main
           </div>
         </div>
 
