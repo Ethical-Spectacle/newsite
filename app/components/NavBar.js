@@ -56,7 +56,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
-          <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col z-50" onClick={(e) => e.stopPropagation()}>
             <h1 className="text-4xl font-semibold p-4 h-18 mt-3 mb-1">Menu</h1>
 
             {/* Navigation Links */}

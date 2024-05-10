@@ -59,8 +59,8 @@ const CertificatePage = () => {
 
   return (
     <div className="flex items-center justify-center m-5 my-10 md:m-20">
-      <div className="w-full max-w-2xl p-8 bg-white border-4 border-black relative shadow-lg rounded-lg">
-        <div className="absolute inset-0 m-2 border-black border rounded-lg"></div>
+      <div className="w-full max-w-2xl p-8 bg-white border-4 border-black shadow-lg rounded-lg">
+        <div className="absolute inset-0 m-2 rounded-lg"></div>
         <h1 className="mb-4 text-4xl font-bold text-center text-black">Certificate of Completion</h1>
         <h2 className="mb-2 text-3xl font-semibold text-center text-black">{certificate.hackathon_name}</h2>
         <div className="md:flex justify-between block mt-5">
