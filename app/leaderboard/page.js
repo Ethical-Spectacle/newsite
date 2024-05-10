@@ -10,7 +10,7 @@ export default function Rankings() {
   const [error, setError] = useState(null);
   const API_URL_PROD = "https://api.ethicalspectacle.com/";
   const badgeDetails = {
-    director: { emoji: "💼", description: "Director: One of our core team members!!!" },
+    director: { emoji: "🤖", description: "Director: One of our core team members!!!" },
     "event host": { emoji: "🎤", description: "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page." },
     researcher: { emoji: "🔬", description: "Researcher: Joined one of our research projects. Apply on your profile page." },
     developer: { emoji: "💻", description: "Developer" },
@@ -20,7 +20,8 @@ export default function Rankings() {
     judge: { emoji: "⚖️", description: "Judge: Expert in their field, this leader evaluated the team demos at a hackathon." },
     speaker: { emoji: "🗣️", description: "Speaker: Shared knowledge at one of our events." },
     sponsor: { emoji: "🌟", description: "Sponsor: Helped support our events." },
-    attendee: { emoji: "👥", description: "Attendee: Actively participating in our events." },
+    ecohacker: { emoji: "🌱", description: "Ecohacker: Participated in our inaugural hackathon!! It's the sustainability for me. April 5-7, 2024." },
+    attendee: { emoji: "👥", description: "Attendee: Attended one of our events." },
     winner: { emoji: "🏆", description: "Winner: Won a hackathon!!!" }
   };
 

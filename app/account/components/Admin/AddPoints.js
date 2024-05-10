@@ -54,18 +54,19 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
             className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
           >
             <option value="">None (just pts, no badge)</option>
-            <option value="director">Director</option>
-            <option value="event host">Event Host</option>
-            <option value="researcher">Researcher</option>
-            <option value="developer">Developer</option>
-            <option value="entrepreneur">Entrepreneur</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="mentor">Mentor</option>
-            <option value="judge">Judge</option>
-            <option value="speaker">Speaker</option>
-            <option value="sponsor">Sponsor</option>
-            <option value="attendee">Attendee</option>
-            <option value="winner">Winner</option>
+            <option value="director">🤖Director - 3</option>
+            <option value="event host">🎤Event Host - 2</option>
+            <option value="researcher">🔬Researcher - 3</option>
+            <option value="developer">💻Developer - 1</option>
+            <option value="entrepreneur">🚀Entrepreneur - 1</option>
+            <option value="volunteer">🤝Volunteer - 1</option>
+            <option value="mentor">🧠Mentor - 2</option>
+            <option value="judge">⚖️Judge - 3</option>
+            <option value="speaker">🗣️Speaker - 1</option>
+            <option value="sponsor">🌟Sponsor - 1</option>
+            <option value="attendee">👥Attendee - 1</option>
+            <option value="winner">🏆Winner - 3</option>
+            <option value="ecohacker">🌱Ecohacker (sustainability hthon) - 3</option>
           </select>
           <input
             type="number"

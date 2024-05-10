@@ -14,7 +14,7 @@ function Badges({ userEmail }) {
   // badgeDetails object containing the emoji and description for each badge
   const badgeDetails = {
     director: {
-      emoji: "💼",
+      emoji: "🤖",
       description: "Director: One of our core team members!!!",
     },
     "event host": {
@@ -57,6 +57,8 @@ function Badges({ userEmail }) {
       description: "Attendee: Actively participating in our events.",
     },
     winner: { emoji: "🏆", description: "Winner: Won a hackathon!!!" },
+    ecohacker: { emoji: "🌱", description: "Ecohacker: Participated in our inaugural hackathon!! It's the sustainability for me. April 5-7, 2024." },
+
   };
 
   useEffect(() => {
