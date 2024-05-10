@@ -54,7 +54,7 @@ const Navbar = () => {
             ) : (
               <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Join :P</Link>
             )}
-            <button onClick={() => setIsOpen(!isOpen)} className="mr-5 z-50">
+            <button onClick={() => setIsOpen(!isOpen)} className="mr-5" style={{ zIndex: 550 }}>
               {isOpen ? <AiOutlineClose className="h-8 w-8 text-black" /> : <AiOutlineMenu className="h-8 w-8 text-white" />}
             </button>
           </div>
@@ -63,7 +63,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
+        <div className="fixed inset-0 bg-black bg-opacity-50" style={{ zIndex: 500 }} onClick={() => setIsOpen(false)}>
           <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col z-50" onClick={(e) => e.stopPropagation()}>
             <h1 className="text-4xl font-semibold p-4 h-18 mt-3 mb-1">Menu</h1>
 
