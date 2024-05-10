@@ -1,8 +1,10 @@
 'use client';
 import React, { useState } from "react";
+import { useAuth } from '../../context/AuthContext';  // Import useAuth
 
 const Signup = ({ toggleForm }) => {
   const API_URL_PROD = "https://api.ethicalspectacle.com/";
+  const { login } = useAuth();  // Destructure login function from useAuth
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -34,8 +36,8 @@ const Signup = ({ toggleForm }) => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        // Assuming handleAuthentication should update context
-        // handleAuthentication(formData.email);
+        // Log in the user after account creation
+        login(formData.email, data.email_verified ?? false);
       } else {
         console.error("Account creation failed:", response.statusText);
       }
@@ -54,18 +56,14 @@ const Signup = ({ toggleForm }) => {
           <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
           <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
           <textarea name="bio" value={formData.bio} onChange={handleChange} placeholder="Bio (optional)" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none h-24 rounded"></textarea>
-          
-          {/* badge buttons */}
           <div className="flex flex-row">
             <input type="checkbox" name="developer" checked={formData.developer} onChange={handleChange} className="size-7" />
             <label className="text-black font-semibold ml-3 mt-1">Developer 💻</label>
           </div>
-
           <div className="flex flex-row">
             <input type="checkbox" name="entrepreneur" checked={formData.entrepreneur} onChange={handleChange} className="size-7" />
             <label className="text-black font-semibold ml-3 mt-1">Entrepreneur 🚀</label>
           </div>
-
           <button className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded" type="submit">Sign Up</button>
         </form>
         <button className="mt-4 text-black bg-transparent hover:bg-gray-100" onClick={toggleForm}>Switch to Login</button>
