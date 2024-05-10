@@ -19,7 +19,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={rethink_sans.className}>
           <AuthProvider >
-              <NavBar />
+              <div className="z-40">
+                <NavBar />
+              </div>
                 {children}
               <Footer />
           </AuthProvider >
