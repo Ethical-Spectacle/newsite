@@ -36,46 +36,50 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
   };
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <h2>Add Points:</h2>
-      <p>Use this to add badges and points to people. If the badges aren't listed in our frontend Leaderboard.js and Badges.js components they won't show up as badges, just points</p>
-      <div>
-        <input
-          type="email"
-          placeholder="User Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <select
-          value={badgeName}
-          onChange={(e) => setBadgeName(e.target.value)}
-        >
-          <option value="">Select a Badge</option>
-          <option value="director">Director</option>
-          <option value="event host">Event Host</option>
-          <option value="researcher">Researcher</option>
-          <option value="developer">Developer</option>
-          <option value="entrepreneur">Entrepreneur</option>
-          <option value="volunteer">Volunteer</option>
-          <option value="mentor">Mentor</option>
-          <option value="judge">Judge</option>
-          <option value="speaker">Speaker</option>
-          <option value="sponsor">Sponsor</option>
-          <option value="attendee">Attendee</option>
-          <option value="winner">Winner</option>
-        </select>
-        <input
-          type="number"
-          placeholder="Points to add"
-          value={pointsToAdd}
-          onChange={(e) => setPointsToAdd(e.target.value)}
-          required
-        />
+    <div className="flex m-5 md:m-20 items-center justify-center bg-white">
+      <div className="w-full max-w-md p-8 bg-white border-4 border-black">
+        <h2 className="mb-6 text-4xl font-bold text-black">Add Points</h2>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input
+            type="email"
+            placeholder="User Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <select
+            value={badgeName}
+            onChange={(e) => setBadgeName(e.target.value)}
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          >
+            <option value="">None (just pts, no badge)</option>
+            <option value="director">Director</option>
+            <option value="event host">Event Host</option>
+            <option value="researcher">Researcher</option>
+            <option value="developer">Developer</option>
+            <option value="entrepreneur">Entrepreneur</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="mentor">Mentor</option>
+            <option value="judge">Judge</option>
+            <option value="speaker">Speaker</option>
+            <option value="sponsor">Sponsor</option>
+            <option value="attendee">Attendee</option>
+            <option value="winner">Winner</option>
+          </select>
+          <input
+            type="number"
+            placeholder="Points to add"
+            value={pointsToAdd}
+            onChange={(e) => setPointsToAdd(e.target.value)}
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <button type="submit" className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded">Add Points</button>
+          {message && <p className="text-black">{message}</p>}
+        </form>
       </div>
-      <button type="submit">Add Points</button>
-      {message && <p>{message}</p>}
-    </form>
+    </div>
   );
 };
 

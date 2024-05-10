@@ -6,12 +6,20 @@ const CertificatePage = () => {
   const [certificate, setCertificate] = useState(null);
   const [error, setError] = useState('');
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const certificateId = query.get('id');
 
     if (certificateId) {
-      // fetch(`http://127.0.0.1:5000/hackathon_certificate/${certificateId}`) 
       fetch(`https://api.ethicalspectacle.com/hackathon_certificate/${certificateId}`)
         .then(response => {
           if (!response.ok) {
@@ -30,27 +38,47 @@ const CertificatePage = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="flex items-center justify-center m-5 md:m-20">
+        <div className="p-8 border-4 border-black bg-white">
+          <p className="text-xl text-black">{error}</p>
+        </div>
+      </div>
+    );
   }
 
   if (!certificate) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center m-5 md:m-20">
+        <div className="p-8 border-4 border-black bg-white">
+          <p className="text-xl text-black">Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>Certificate of Completion</h1>
-      <h2>{certificate.hackathon_name}</h2>
-      <p>Awarded to: <strong>{certificate.fname} {certificate.lname}</strong></p>
-      <p>Team: {certificate.team_name}</p>
-      <p>Award: {certificate.award}</p>
-      <p>Dates: {certificate.start_date} to {certificate.end_date}</p>
-      {certificate.claimed === 0 && <p style={{ color: 'red' }}>This certificate is unclaimed. Go to your account page to claim it.</p>}
-      <div>
-        {certificate.repo_link && <p>Repo: <a href={certificate.repo_link}>{certificate.repo_link}</a></p>}
-        {certificate.website && <p>Personal Website: <a href={certificate.website}>{certificate.website}</a></p>}
-        {certificate.github && <p>GitHub: <a href={certificate.github}>{certificate.github}</a></p>}
-        {certificate.linkedin && <p>LinkedIn: <a href={certificate.linkedin}>{certificate.linkedin}</a></p>}
+    <div className="flex items-center justify-center m-5 my-10 md:m-20">
+      <div className="w-full max-w-2xl p-8 bg-white border-4 border-black relative shadow-lg rounded-lg">
+        <div className="absolute inset-0 m-2 border-black border rounded-lg"></div>
+        <h1 className="mb-4 text-4xl font-bold text-center text-black">Certificate of Completion</h1>
+        <h2 className="mb-2 text-3xl font-semibold text-center text-black">{certificate.hackathon_name}</h2>
+        <div className="md:flex justify-between block mt-5">
+          <p className="text-lg text-black">Awarded to: {certificate.fname} {certificate.lname}</p>
+          <p className="text-lg text-black">Team: {certificate.team_name}</p>
+        </div>
+        {certificate.award && <p className="text-lg text-black text-center mt-3">Award: {certificate.award}</p>}
+        <p className="text-lg text-black text-center mt-3">{formatDate(certificate.start_date)} - {formatDate(certificate.end_date)}</p>
+        {certificate.claimed === 0 && <p className="text-lg text-red-600 text-center">This certificate is unclaimed. Go to your account page to claim it.</p>}
+        
+        {certificate.repo_link && <p className="text-lg text-black mt-5 text-center"><a href={certificate.repo_link} className="text-blue-500">Project Repo</a></p>}
+
+       <div className="flex flex-wrap justify-around mt-5">
+          
+          {certificate.website && <p className="text-lg text-black"><a href={certificate.website} className="text-blue-500">Website</a></p>}
+          {certificate.github && <p className="text-lg text-black"><a href={certificate.github} className="text-blue-500">GitHub</a></p>}
+          {certificate.linkedin && <p className="text-lg text-black"><a href={certificate.linkedin} className="text-blue-500">LinkedIn</a></p>}
+        </div>
       </div>
     </div>
   );

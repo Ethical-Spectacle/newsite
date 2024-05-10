@@ -34,7 +34,6 @@ const MintHthonCertificate = ({ apiUrl }) => {
       if (response.ok) {
         setMessage("Certificate successfully added!");
         setEmail("");
-        setCertificateName("");
         setHackathonName("");
         setTeamName("");
         setAward("");
@@ -51,58 +50,71 @@ const MintHthonCertificate = ({ apiUrl }) => {
   };
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <h2>Mint Hackathon Certificate:</h2>
-      <p>Use this to mint a new hackathon certificate for a participant. You can mint it with their email address even if they havent signed up, and they'll get a button to claim it when they create their account. Let's add mass minting with CSVs later.</p>
-      <div>
-        <input
-          type="email"
-          placeholder="User Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Hackathon Name"
-          value={hackathonName}
-          onChange={(e) => setHackathonName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Team Name"
-          value={teamName}
-          onChange={(e) => setTeamName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Award (Optional) *shows up verbatim on the certificate*"
-          value={award}
-          onChange={(e) => setAward(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Start Date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="End Date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Repository Link"
-          value={repoLink}
-          onChange={(e) => setRepoLink(e.target.value)}
-        />
+    <div className="flex m-5 md:m-20 items-center justify-center bg-white">
+      <div className="w-full max-w-md p-8 bg-white border-4 border-black">
+        <h2 className="mb-6 text-4xl font-bold text-black">Mint Hackathon Certificate</h2>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="User Email"
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="hackathonName"
+            value={hackathonName}
+            onChange={(e) => setHackathonName(e.target.value)}
+            placeholder="Hackathon Name"
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="teamName"
+            value={teamName}
+            onChange={(e) => setTeamName(e.target.value)}
+            placeholder="Team Name"
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="award"
+            value={award}
+            onChange={(e) => setAward(e.target.value)}
+            placeholder="Award (Optional)"
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="date"
+            name="startDate"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="date"
+            name="endDate"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="repoLink"
+            value={repoLink}
+            onChange={(e) => setRepoLink(e.target.value)}
+            placeholder="Repository Link"
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <button type="submit" className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded">Mint Certificate</button>
+          {message && <p className="text-black">{message}</p>}
+        </form>
       </div>
-      <button type="submit">Mint Certificate</button>
-      {message && <p>{message}</p>}
-    </form>
+    </div>
   );
 };
 
