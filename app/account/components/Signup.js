@@ -1,8 +1,8 @@
+'use client';
 import React, { useState } from "react";
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
-
-const Signup = ({ handleAuthentication }) => {
+const Signup = ({ toggleForm }) => {
+  const API_URL_PROD = "https://api.ethicalspectacle.com/";
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -14,11 +14,11 @@ const Signup = ({ handleAuthentication }) => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleCheckboxChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.checked });
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -31,92 +31,45 @@ const Signup = ({ handleAuthentication }) => {
         },
         body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      console.log(data);
-      // If account creation is successful, call handleAuthentication to update state
-      handleAuthentication(formData.email);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        // Assuming handleAuthentication should update context
+        // handleAuthentication(formData.email);
+      } else {
+        console.error("Account creation failed:", response.statusText);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-lg max-w-sm mx-auto border border-gray-900">
-      <h2 className="text-lg font-bold text-gray-900 border-b-2 border-gray-900 mb-4">Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <input
-            type="text"
-            name="fname"
-            value={formData.fname}
-            onChange={handleChange}
-            placeholder="First Name"
-            className="p-2 w-full border-2 border-gray-900 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="text"
-            name="lname"
-            value={formData.lname}
-            onChange={handleChange}
-            placeholder="Last Name"
-            className="p-2 w-full border-2 border-gray-900 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="p-2 w-full border-2 border-gray-900 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="p-2 w-full border-2 border-gray-900 rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <textarea
-            name="bio"
-            value={formData.bio}
-            onChange={handleChange}
-            placeholder="Bio"
-            className="p-2 w-full border-2 border-gray-900 rounded h-24"
-          ></textarea>
-        </div>
-        <div className="flex items-center mb-4">
-          <input
-            type="checkbox"
-            name="entrepreneur"
-            checked={formData.entrepreneur}
-            onChange={handleCheckboxChange}
-            className="mr-2"
-          />
-          <label className="text-gray-900 font-semibold">Entrepreneur</label>
-        </div>
-        <div className="flex items-center mb-4">
-          <input
-            type="checkbox"
-            name="developer"
-            checked={formData.developer}
-            onChange={handleCheckboxChange}
-            className="mr-2"
-          />
-          <label className="text-gray-900 font-semibold">Developer</label>
-        </div>
-        <div className="flex justify-center">
-          <button className="bg-gray-900 text-white font-bold py-2 px-4 rounded hover:bg-gray-700 transition-colors duration-200" type="submit">Sign Up</button>
-        </div>
-      </form>
+    <div className="flex m-5 md:m-20 items-center justify-center bg-white">
+      <div className="w-full max-w-md p-8 bg-white border-4 border-black">
+        <h2 className="mb-6 text-4xl font-bold text-black">Sign Up❤️</h2>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="First Name" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
+          <input type="text" name="lname" value={formData.lname} onChange={handleChange} placeholder="Last Name" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
+          <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
+          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none" />
+          <textarea name="bio" value={formData.bio} onChange={handleChange} placeholder="Bio (optional)" className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none h-24 rounded"></textarea>
+          
+          {/* badge buttons */}
+          <div className="flex flex-row">
+            <input type="checkbox" name="developer" checked={formData.developer} onChange={handleChange} className="size-7" />
+            <label className="text-black font-semibold ml-3 mt-1">Developer 💻</label>
+          </div>
+
+          <div className="flex flex-row">
+            <input type="checkbox" name="entrepreneur" checked={formData.entrepreneur} onChange={handleChange} className="size-7" />
+            <label className="text-black font-semibold ml-3 mt-1">Entrepreneur 🚀</label>
+          </div>
+
+          <button className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded" type="submit">Sign Up</button>
+        </form>
+        <button className="mt-4 text-black bg-transparent hover:bg-gray-100" onClick={toggleForm}>Switch to Login</button>
+      </div>
     </div>
   );
 };

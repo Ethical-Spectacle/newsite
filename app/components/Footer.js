@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="flex flex-col w-full">
-      <div className="bg-slate-800 grid md:grid-cols-5 p-10 max-md:p-5 gap-5 grid-cols-2 ">
+      <div className="bg-black grid md:grid-cols-5 p-10 max-md:p-5 gap-5 grid-cols-2 ">
         <div className="p-5 max-md:col-span-2 max-md:justify-self-center">
           <Image
             src={whitelogo}
@@ -19,33 +19,33 @@ export default function Footer() {
           />
         </div>
         <div className="">
-          <h3 className="text-slate-50 text-xl my-2">Learn More</h3>
+          <h3 className="text-white text-xl my-2">Learn More</h3>
           <Link href="/">
-            <p className="text-sm">Projects</p>
+            <p className="text-sm text-gray-400">Projects</p>
           </Link>
           <Link href="/">
-            <p className="text-sm">Workshops</p>
+            <p className="text-sm text-gray-400">Workshops</p>
           </Link>
           <Link href="/">
-            <p className="text-sm">Upcoming Events</p>
+            <p className="text-sm text-gray-400">Upcoming Events</p>
           </Link>
           <Link href="/">
-            <p className="text-sm">Opportunities</p>
+            <p className="text-sm text-gray-400">Opportunities</p>
           </Link>
         </div>
         <div>
-          <h3 className="text-slate-50 text-xl my-2">Legals</h3>
+          <h3 className="text-white text-xl my-2">Legals</h3>
           <Link href="/">
-            <p className="text-sm">Privacy Policy</p>
+            <p className="text-sm text-gray-400">Privacy Policy</p>
           </Link>
           <Link href="/">
-            <p className="text-sm">Terms & Conditions</p>
+            <p className="text-sm text-gray-400">Terms & Conditions</p>
           </Link>
         </div>
         <div className="max-md:col-span-2">
-          <h3 className="text-slate-50 text-xl my-2">Contact Us</h3>
+          <h3 className="text-white text-xl my-2">Contact Us</h3>
           <Link href="/">
-            <p className="text-sm">
+            <p className="text-sm text-gray-400">
               President:
               <br /> Maximus Powers
             </p>
@@ -59,7 +59,7 @@ export default function Footer() {
           </Link>
         </div>
         <div className="p-5 max-md:col-span-2 max-md:justify-self-center max-md:p-2">
-          <h3 className="text-slate-50 text-xl my-2 max-md:hidden">Socials</h3>
+          <h3 className="text-white text-xl my-2 max-md:hidden">Socials</h3>
           <div className="flex gap-5">
             <Link href="/">
               <Image
@@ -67,7 +67,7 @@ export default function Footer() {
                 width={30}
                 height={30}
                 alt="Linkedin Logo"
-                className="text-slate-50"
+                className="text-gray-400"
               ></Image>
             </Link>
             <Link href="/">
@@ -76,7 +76,7 @@ export default function Footer() {
                 width={30}
                 height={30}
                 alt="Instagram Logo"
-                className="text-slate-50"
+                className="text-gray-400"
               ></Image>
             </Link>
             <Link href="/">
@@ -85,7 +85,7 @@ export default function Footer() {
                 width={30}
                 height={30}
                 alt="Hugging Face Logo"
-                className="text-slate-50"
+                className="text-gray-400"
               ></Image>
             </Link>
             <Link href="/">
@@ -94,18 +94,20 @@ export default function Footer() {
                 width={30}
                 height={30}
                 alt="Linkedin Logo"
-                className="text-slate-50"
+                className="text-gray-400"
               ></Image>
             </Link>
           </div>
         </div>
       </div>
-      <hr className="bg-white w-screen"></hr>
-      <div className="flex justify-center items-center bg-slate-800 text-slate-50 py-5">
-        <p className="max-md:text-sm">
-          © 2024 Ethical Spectacle. All rights reserved.
-        </p>
-      </div>
+      <div className="block text-center items-center bg-black text-gray-400 py-5">
+          <p className="max-md:text-sm text-gray-400">
+            © 2024 Ethical Spectacle Research.
+          </p>
+          <p className="max-md:text-sm text-gray-400">
+            All rights reserved.
+          </p>
+        </div>
     </footer>
   );
 }

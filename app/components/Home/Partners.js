@@ -1,4 +1,5 @@
 import React from 'react';
+import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 
 const Partners = () => {
   return (
@@ -8,12 +9,12 @@ const Partners = () => {
         {/* Title slide */}
         <div className="size-72 scroll-item bg-black">
           <div className="flex flex-col h-full justify-end">
-            <h1 className="mt-5 pb-5 text-5xl font-semibold text-white text-right pr-5 pb-10">Partners.❤️</h1>
+            <h1 className="flex flex-rown mt-5 pb-5 text-5xl font-semibold text-white justify-end pr-5 pb-10">Partners.❤️ <PiHandSwipeLeftDuotone className="ml-3"/></h1>
           </div>
         </div>
 
         {/* Slide for AZVC */}
-        <div className="size-72 scroll-item border border-black border-3">
+        <div className="size-72 scroll-item border-t border-black border-3">
           <div className="px-5 pt-5">
             <img src="/assets/AZVC_Transparent.png" alt="AZVC Logo" className="h-32 mx-auto" />
             <h2 className="text-center mt-5 text-xl font-semibold">AZVC</h2>
@@ -22,7 +23,7 @@ const Partners = () => {
         </div>
 
         {/* Slide for Global Career Network */}
-        <div className="size-72 scroll-item border border-black border-3">
+        <div className="size-72 scroll-item border-t border-black border-3">
           <div className="p-5">
             <img src="/assets/global_career_network.png" alt="Global Career Network Logo" className="h-32 mx-auto" />
             <h2 className="text-center mt-5 text-xl font-semibold">Global Career Network</h2>

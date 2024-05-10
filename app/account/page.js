@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react'; // Import useState and useEffect here
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -15,7 +15,7 @@ const Account = () => {
     if (userEmail && isLoggedIn && !isEmailVerified) {
       checkEmailVerification(userEmail);
     }
-  }, [userEmail, isLoggedIn, isEmailVerified]); // Dependencies array to handle side effects based on state changes
+  }, [userEmail, isLoggedIn, isEmailVerified]);
 
   const toggleForm = () => setShowLogin(prev => !prev);
 
@@ -31,15 +31,9 @@ const Account = () => {
         )
       ) : (
         showLogin ? (
-          <>
-            <Login handleAuthentication={login} />
-            <button className="toggle-button" onClick={toggleForm}>Switch to Signup</button>
-          </>
+          <Login handleAuthentication={login} toggleForm={toggleForm} />
         ) : (
-          <>
-            <Signup handleAuthentication={login} />
-            <button className="toggle-button" onClick={toggleForm}>Switch to Login</button>
-          </>
+          <Signup handleAuthentication={login} toggleForm={toggleForm} />
         )
       )}
     </div>
