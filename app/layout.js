@@ -2,11 +2,8 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { AuthProvider } from './context/AuthContext';
-
-
-
-
 import { Rethink_Sans } from "next/font/google";
+
 const rethink_sans = Rethink_Sans({  
   weights: [400, 600, 700],
   subsets: ["latin"]  

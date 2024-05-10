@@ -2,6 +2,8 @@
   "name": "esr-website",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ethicalspectacle.com/",
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",

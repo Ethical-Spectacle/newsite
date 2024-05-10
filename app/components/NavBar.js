@@ -31,6 +31,14 @@ const Navbar = () => {
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
+          <div className="hidden md:flex items-center space-x-5 mr-10 text-white">
+            <a href="/" className="text-xl">Home</a>
+            <a href="/leaderboard" className="text-xl">Leaderboard</a>
+            <a href="/events" className="text-xl">Events</a>
+            {/* <a href="/about" className="text-xl">About Us</a> */}
+            <a href="/account" className="text-xl">Profile</a>
+          </div>
+          {/* primary nav with active underline, cant get it to build but it works in dev */}
           {/* <div className="hidden md:flex items-center space-x-5 mr-10">
             <a href="/" className={`${isActive('/')} text-xl`}>Home</a>
             <a href="/leaderboard" className={`${isActive('/leaderboard')} text-xl`}>Leaderboard</a>
@@ -64,7 +72,7 @@ const Navbar = () => {
             <a href="/leaderboard" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Leaderboard 🏆</a>
             <a href="/events" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Events ☕</a>
             {/* <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a> */}
-            <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a>
+            {/* <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a> */}
             <a href="/account" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Profile 👾</a>
 
             {/* Social */}
