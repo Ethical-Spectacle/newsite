@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://ethicalspectacle.com/",
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +14,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@tippyjs/react": "^4.2.6",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "next": "14.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
