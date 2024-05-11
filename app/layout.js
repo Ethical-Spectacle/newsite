@@ -14,9 +14,6 @@ const rethink_sans = Rethink_Sans({
 export const metadata = {
   title: "Ethical Spectacle Research",
   description: "A community of researchers, developers, and entrepreneurs coming together at events to further tech ethics.",
-  links: [
-    { rel: 'icon', href: '/favicon.png' }
-  ]
 };
 
 export default function RootLayout({ children }) {
