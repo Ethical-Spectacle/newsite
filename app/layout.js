@@ -14,14 +14,14 @@ const rethink_sans = Rethink_Sans({
 export const metadata = {
   title: "Ethical Spectacle Research",
   description: "A community of researchers, developers, and entrepreneurs coming together at events to further tech ethics.",
+  links: [
+    { rel: 'icon', href: '/favicon.png' }
+  ]
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <title>Ethical Spectacle Research</title>
-      <link rel="icon" href="./favicon.png" />
-      <meta name="description" content="A community of researchers, developers, and entrepreneurs coming together at events to further tech ethics." />
       <body className={rethink_sans.className}>
           <AuthProvider >
               <div className="z-40">
