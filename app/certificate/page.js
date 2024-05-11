@@ -7,13 +7,14 @@ const CertificatePage = () => {
   const [error, setError] = useState('');
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
+    const date = new Date(dateString + 'Z');  // Assume dateString is in UTC
     return date.toLocaleDateString("en-US", {
+      timeZone: 'America/Denver',  // MST is generally represented by Denver's time zone
       month: "long",
       day: "numeric",
       year: "numeric",
     });
-  };
+  };  
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
