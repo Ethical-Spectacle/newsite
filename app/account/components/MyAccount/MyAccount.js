@@ -11,8 +11,8 @@ function MyAccount({ userEmail }) {
 
         <div className="md:flex-1">
           <ProfileInfo userEmail={userEmail} />
-          <Certificates userEmail={userEmail} />
           <Badges userEmail={userEmail}/>
+          <Certificates userEmail={userEmail} />
         </div>
 
         <div className="md:flex-1">
