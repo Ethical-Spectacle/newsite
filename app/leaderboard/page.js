@@ -65,7 +65,7 @@ export default function Rankings() {
     <div className="min-h-screen">
       <div className="px-5 py-10 md:px-20">
         <h1 className="text-4xl font-bold text-black">Leaderboard 🧠</h1>
-        <p className="mt-3 text-gray-500 text-md">Our most engaged and accomplished developers and entrepreneurs.</p>
+        <p className="mt-3 text-gray-500 text-md">Our top developers get invites to exclusive events, free shwag, and recruited through our network.</p>
       </div>
       
       <div className="w-full">
