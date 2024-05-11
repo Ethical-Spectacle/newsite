@@ -58,6 +58,10 @@ function Badges({ userEmail }) {
     },
     winner: { emoji: "🏆", description: "Winner: Won a hackathon!!!" },
     ecohacker: { emoji: "🌱", description: "Ecohacker: Participated in our inaugural hackathon!! It's the sustainability for me. April 5-7, 2024." },
+    eco_first_place: { emoji: "🥇", description: "FIRST PLACE!! Won 1st place at our sustainability hackathon." },
+    eco_second_place: { emoji: "🥈", description: "Second Place!! Won 2nd place at our sustainability hackathon." },
+    eco_third_place: { emoji: "🥉", description: "Third Place! Won 3rd place at our sustainability hackathon." },
+    eco_creative: { emoji: "🎨", description: "Most Creative: Won the most-creative award at our sustainability hackathon." },
 
   };
 

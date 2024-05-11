@@ -10,17 +10,30 @@ export default function Rankings() {
   const [error, setError] = useState(null);
   const API_URL_PROD = "https://api.ethicalspectacle.com/";
   const badgeDetails = {
+    // basic 
+    developer: { emoji: "💻", description: "Developer" },
+    entrepreneur: { emoji: "🚀", description: "Entrepreneur" },
+
+    // internal team
     director: { emoji: "🤖", description: "Director: One of our core team members!!!" },
     "event host": { emoji: "🎤", description: "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page." },
     researcher: { emoji: "🔬", description: "Researcher: Joined one of our research projects. Apply on your profile page." },
-    developer: { emoji: "💻", description: "Developer" },
-    entrepreneur: { emoji: "🚀", description: "Entrepreneur" },
+
+    // community team
     volunteer: { emoji: "🤝", description: "Volunteer: Badge given for each volunteer opportunity seized." },
     mentor: { emoji: "🧠", description: "Mentor: Guided the next generation of geniuses at our first hackathon" },
-    judge: { emoji: "⚖️", description: "Judge: Expert in their field, this leader evaluated the team demos at a hackathon." },
     speaker: { emoji: "🗣️", description: "Speaker: Shared knowledge at one of our events." },
+    judge: { emoji: "⚖️", description: "Judge: Expert in their field, this leader evaluated the team demos at a hackathon." },
     sponsor: { emoji: "🌟", description: "Sponsor: Helped support our events." },
+
+    // sustainability hackathon ones
     ecohacker: { emoji: "🌱", description: "Ecohacker: Participated in our inaugural hackathon!! It's the sustainability for me. April 5-7, 2024." },
+    eco_first_place: { emoji: "🥇", description: "FIRST PLACE!! Won 1st place at our sustainability hackathon." },
+    eco_second_place: { emoji: "🥈", description: "Second Place!! Won 2nd place at our sustainability hackathon." },
+    eco_third_place: { emoji: "🥉", description: "Third Place! Won 3rd place at our sustainability hackathon." },
+    eco_creative: { emoji: "🎨", description: "Most Creative: Won the most-creative award at our sustainability hackathon." },
+
+    // random event ones
     attendee: { emoji: "👥", description: "Attendee: Attended one of our events." },
     winner: { emoji: "🏆", description: "Winner: Won a hackathon!!!" }
   };
