@@ -19,6 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <title>Ethical Spectacle Research</title>
+      <link rel="icon" href="./favicon.png" />
+      <meta name="description" content="A community of researchers, developers, and entrepreneurs coming together at events to further tech ethics." />
       <body className={rethink_sans.className}>
           <AuthProvider >
               <div className="z-40">
@@ -33,3 +36,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
