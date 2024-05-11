@@ -61,9 +61,15 @@ const CertificatePage = () => {
     <div className="flex items-center justify-center m-5 my-10 md:m-20">
       <div className="w-full max-w-2xl p-8 bg-white border-4 border-black shadow-lg rounded-lg">
         <div className="absolute inset-0 m-2 rounded-lg"></div>
+        {/* logos */}
+        <div className="flex flex-row justify-center my-8 mx-5">
+          <img src="/assets/dark_logo_no_bg.png" alt="Ethical Spectacle Research Logo" className="h-16 md:h-25" />
+          <span className="mx-3 text-xl font-bold my-3">X</span>
+          <img src="/assets/AZVC_Transparent.png" alt="AZVC Logo" className="h-16 md:h-25"/>
+        </div>
         <h1 className="mb-4 text-4xl font-bold text-center text-black">Certificate of Completion</h1>
         <h2 className="mb-2 text-3xl font-semibold text-center text-black">{certificate.hackathon_name}</h2>
-        <div className="md:flex justify-between block mt-5">
+        <div className="md:flex justify-between text-center mt-5">
           <p className="text-lg text-black">Awarded to: {certificate.fname} {certificate.lname}</p>
           <p className="text-lg text-black">Team: {certificate.team_name}</p>
         </div>

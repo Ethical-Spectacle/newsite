@@ -18,21 +18,7 @@ export default function Footer() {
             height={70}
           />
         </div>
-        <div className="">
-          <h3 className="text-white text-xl my-2">Learn More</h3>
-          <Link href="/">
-            <p className="text-sm text-gray-400">Projects</p>
-          </Link>
-          <Link href="/">
-            <p className="text-sm text-gray-400">Workshops</p>
-          </Link>
-          <Link href="/">
-            <p className="text-sm text-gray-400">Upcoming Events</p>
-          </Link>
-          <Link href="/">
-            <p className="text-sm text-gray-400">Opportunities</p>
-          </Link>
-        </div>
+        
         <div>
           <h3 className="text-white text-xl my-2">Legals</h3>
           <Link href="/">
@@ -42,22 +28,11 @@ export default function Footer() {
             <p className="text-sm text-gray-400">Terms & Conditions</p>
           </Link>
         </div>
-        <div className="max-md:col-span-2">
-          <h3 className="text-white text-xl my-2">Contact Us</h3>
-          <Link href="/">
-            <p className="text-sm text-gray-400">
-              President:
-              <br /> Maximus Powers
-            </p>
-          </Link>
 
-          <Link href="/">
-            <p className="text-sm">
-              Email:
-              <br /> maximus@ethicalspectacle.com
-            </p>
-          </Link>
-        </div>
+        <p className="text-sm text-white max-md:col-span-2">
+          maximus@ethicalspectacle.com              
+        </p>
+
         <div className="p-5 max-md:col-span-2 max-md:justify-self-center max-md:p-2">
           <h3 className="text-white text-xl my-2 max-md:hidden">Socials</h3>
           <div className="flex gap-5">
