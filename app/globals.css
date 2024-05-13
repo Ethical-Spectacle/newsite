@@ -75,7 +75,6 @@ p {
 
 .scroll-item {
   flex: 0 0 auto;  
-  width: 100%;
 }
 
 /* Hides scrollbar but allows scrolling */

@@ -17,7 +17,6 @@ const CertificatePage = () => {
   };
   
   
-
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const certificateId = query.get('id');
