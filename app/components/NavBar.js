@@ -36,7 +36,11 @@ const Navbar = () => {
             <a href="/leaderboard" className="text-xl">Leaderboard</a>
             <a href="/events" className="text-xl">Events</a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
-            <a href="/account" className="text-xl">Profile</a>
+            {isLoggedIn ? (
+              <button onClick={handleLogoutNav} className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Sign Out</button>
+            ) : (
+              <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Join :P</Link>
+            )}
           </div>
           {/* primary nav with active underline, cant get it to build but it works in dev */}
           {/* <div className="hidden md:flex items-center space-x-5 mr-10">
