@@ -31,7 +31,7 @@ const Navbar = () => {
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
-          <div className="hidden md:flex items-center space-x-5 mr-10 text-white">
+          <div className="hidden md:flex items-center space-x-10 mr-10 text-white">
             <a href="/" className="text-xl">Home</a>
             <a href="/leaderboard" className="text-xl">Leaderboard</a>
             <a href="/events" className="text-xl">Events</a>

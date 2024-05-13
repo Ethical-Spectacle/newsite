@@ -63,14 +63,14 @@ export default function Rankings() {
   
   return (
     <div className="min-h-screen">
-      <div className="px-5 py-10 md:px-20">
+      <div className="px-5 py-10 md:px-48">
         <h1 className="text-4xl font-bold text-black">Leaderboard 🧠</h1>
         <p className="mt-3 text-gray-500 text-md">Our top developers get invites to exclusive events, free shwag, and recruited through our network.</p>
       </div>
       
       <div className="w-full">
         {rankings.map((ranking, index) => (
-          <div key={index} className="bg-white py-6 px-8 md:px-20 border border-black border-3 border-b-0">
+          <div key={index} className="bg-white py-6 px-8 md:px-48 border border-black border-3 border-b-0">
             <div className="flex justify-between items-center">
               <span>
                 <span className="text-gray-500 text-lg">{`#${index + 1}`}</span>
