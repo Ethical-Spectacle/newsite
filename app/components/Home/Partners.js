@@ -4,7 +4,7 @@ import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 const Partners = () => {
   return (
     <div className="bg-white">
-      <div className="scroll-container hide-scrollbar flex justify-center">
+      <div className="scroll-container hide-scrollbar flex md:justify-center justify-start">
 
         {/* Title slide */}
         <div className="w-96 scroll-item bg-black">

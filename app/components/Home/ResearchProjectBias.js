@@ -5,7 +5,7 @@ import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 const BiasProjectCarousel = () => {
   return (
     <div className="bg-white">
-      <div className="scroll-container hide-scrollbar flex justify-center">
+      <div className="scroll-container hide-scrollbar flex md:justify-center justify-start">
         <div className="w-full md:w-96 md:h-80 scroll-item border border-black border-l-2 px-5 pt-5">
           <h1 className="mt-2 md:mt-5">Project 001</h1>
           <h2 className="mt-3">Bias Detection</h2>
