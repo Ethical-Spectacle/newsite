@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";  // import the stylesheet for react-toggle
 
-const API_URL_PROD = 'https://api.ethicalspectacle.com/';
+// const API_URL_PROD = 'https://api.ethicalspectacle.com/';
+const API_URL_PROD = 'http://127.0.0.1:5000/';
 
 const ProfileInfo = ({ userEmail }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [isLeaderboardVisible, setIsLeaderboardVisible] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -26,6 +30,7 @@ const ProfileInfo = ({ userEmail }) => {
 
         const data = await response.json();
         setProfile(data);
+        setIsLeaderboardVisible(data.leaderboard === 1);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -73,6 +78,27 @@ const ProfileInfo = ({ userEmail }) => {
     } catch (error) {
       setError(error.message);
       setLoading(false);
+    }
+  };
+
+  const toggleLeaderboardVisibility = async () => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/toggle_leaderboard_visibility`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to toggle leaderboard visibility');
+      }
+
+      const data = await response.json();
+      setIsLeaderboardVisible(data.leaderboard === 1);
+    } catch (error) {
+      setError(error.message);
     }
   };
 
@@ -163,7 +189,7 @@ const ProfileInfo = ({ userEmail }) => {
                 )}
                 {profile.github && (
                   <a
-                    className="links p-2 bg-black text-white rounded-md"
+                    className="links p-2 bg-black text-white rounded-md border border-black border-2"
                     href={profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -173,7 +199,7 @@ const ProfileInfo = ({ userEmail }) => {
                 )}
                 {profile.linkedin && (
                   <a
-                    className="links p-2 bg-black text-white rounded-md"
+                    className="links p-2 bg-black text-white rounded-md border border-black border-2"
                     href={profile.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -182,11 +208,21 @@ const ProfileInfo = ({ userEmail }) => {
                   </a>
                 )}
                 <button
-                  className="primary-button px-3 py-1 bg-pink-300 text-black font-semibold rounded-md"
+                  className="primary-button px-3 py-1 bg-white text-black font-semibold rounded-md border border-black border-2"
                   onClick={toggleEditMode}
                 >
                   Edit Profile
                 </button>
+              </div>
+              <div className="mt-3">
+                <label className="flex items-center space-x-3">
+                  <span>Show on Leaderboard:</span>
+                  <Toggle
+                    defaultChecked={isLeaderboardVisible}
+                    icons={true}
+                    onChange={toggleLeaderboardVisibility}
+                  />
+                </label>
               </div>
             </div>
           )}
