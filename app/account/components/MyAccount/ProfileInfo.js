@@ -3,8 +3,8 @@ import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";  // import the stylesheet for react-toggle
 
-// const API_URL_PROD = 'https://api.ethicalspectacle.com/';
-const API_URL_PROD = 'http://127.0.0.1:5000/';
+const API_URL_PROD = 'https://api.ethicalspectacle.com/';
+// const API_URL_PROD = 'http://127.0.0.1:5000/';
 
 const ProfileInfo = ({ userEmail }) => {
   const [profile, setProfile] = useState(null);
