@@ -35,6 +35,7 @@ const Navbar = () => {
             <a href="/" className="text-xl">Home</a>
             <a href="/leaderboard" className="text-xl">Leaderboard</a>
             <a href="/events" className="text-xl">Events</a>
+            <a href="/account" className="text-xl">Profile</a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
             {isLoggedIn ? (
               <button onClick={handleLogoutNav} className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Sign Out</button>
