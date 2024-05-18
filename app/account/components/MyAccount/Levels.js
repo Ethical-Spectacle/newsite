@@ -177,6 +177,7 @@ function Levels({ userEmail }) {
             Perks
           </h3>
         </div>
+        
         {isPerksExpanded && (
           <ul className="list-disc pl-5">
             {allCurrentPerks.map((perk, index) => (

@@ -1,8 +1,9 @@
 import React from "react";
 import AddPoints from "./AddPoints";
 import MintHthonCertificate from "./MintHthonCertificate";
+import Tasks from "./Tasks"; 
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
+const API_URL_PROD = "http://127.0.0.1:5000/";
 
 const Admin = () => {
   return (
@@ -11,6 +12,7 @@ const Admin = () => {
       <div className="admin-components">
         <AddPoints apiUrl={API_URL_PROD}/>
         <MintHthonCertificate apiUrl={API_URL_PROD}/>
+        <Tasks apiUrl={API_URL_PROD}/>
       </div>
     </div>
   );
