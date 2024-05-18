@@ -74,24 +74,12 @@ const CreativeCollectives = ({ userEmail }) => {
   }
 
   const collectives = [
-    { name: "Graphic Designers", field: "graphic_design", emoji: "🎨", description: "Graphic designers who designing graphically." },
-    { name: "Frontend Devs", field: "frontend", emoji: "📱", description: "Our aesthetically gifted bunch." },
-    { name: "Backend Devs", field: "backend", emoji: "🖥️", description: "We specialize in messy code." },
-    { name: "AI/ML Engineers", field: "ai_ml_engineer", emoji: "🤖", description: "Rockstars. That abt sums it up." },
-    { name: "Project Management", field: "management", emoji: "🕶", description: "Professionals who can turn a project into a business." },
+    { name: "Graphic Designers", field: "graphic_design", emoji: "🎨", description: "Graphic designers who designing graphically.", discord_link:"https://discord.gg/xrUcAhEAUG" },
+    { name: "Frontend Devs", field: "frontend", emoji: "📱", description: "Our aesthetically gifted bunch.", discord_link:"https://discord.gg/GS89SJrxYc" },
+    { name: "Backend Devs", field: "backend", emoji: "🖥️", description: "We specialize in messy code.", discord_link:"https://discord.gg/rH4WceftY2" },
+    { name: "AI/ML Engineers", field: "ai_ml_engineer", emoji: "🤖", description: "Rockstars. That abt sums it up.", discord_link:"https://discord.gg/hSja628V5e" },
+    { name: "Project Management", field: "management", emoji: "🕶", description: "Professionals who can turn a project into a business.", discord_link:"https://discord.gg/4ge5acRTe8" },
   ];
-
-  const CustomCheckedIcon = () => (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50%' }}>
-      <span className="text-xs">Join</span>
-    </div>
-  );
-
-  const CustomUncheckedIcon = () => (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50%' }}>
-      <span>Join</span>
-    </div>
-  );
 
   return (
     <div className="bg-white p-5 border border-black border-3 w-full">
