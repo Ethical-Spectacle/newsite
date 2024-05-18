@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css"; 
 
-// const API_URL_PROD = 'http://127.0.0.1:5000/';
 const API_URL_PROD = 'https://api.ethicalspectacle.com/';
 
 const CreativeCollectives = ({ userEmail }) => {
@@ -75,12 +74,24 @@ const CreativeCollectives = ({ userEmail }) => {
   }
 
   const collectives = [
-    { name: "Graphic Design", field: "graphic_design", emoji: "🎨", description: "A collective for graphic designers." },
-    { name: "Frontend", field: "frontend", emoji: "💻", description: "A collective for frontend developers." },
-    { name: "Backend", field: "backend", emoji: "🖥️", description: "A collective for backend developers." },
-    { name: "AI/ML Engineer", field: "ai_ml_engineer", emoji: "🤖", description: "A collective for AI/ML engineers." },
-    { name: "Project Management", field: "management", emoji: "📋", description: "A collective for management professionals." },
+    { name: "Graphic Designers", field: "graphic_design", emoji: "🎨", description: "Graphic designers who designing graphically." },
+    { name: "Frontend Devs", field: "frontend", emoji: "📱", description: "Our aesthetically gifted bunch." },
+    { name: "Backend Devs", field: "backend", emoji: "🖥️", description: "We specialize in messy code." },
+    { name: "AI/ML Engineers", field: "ai_ml_engineer", emoji: "🤖", description: "Rockstars. That abt sums it up." },
+    { name: "Project Management", field: "management", emoji: "🕶", description: "Professionals who can turn a project into a business." },
   ];
+
+  const CustomCheckedIcon = () => (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50%' }}>
+      <span className="text-xs">Join</span>
+    </div>
+  );
+
+  const CustomUncheckedIcon = () => (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50%' }}>
+      <span>Join</span>
+    </div>
+  );
 
   return (
     <div className="bg-white p-5 border border-black border-3 w-full">
@@ -93,22 +104,25 @@ const CreativeCollectives = ({ userEmail }) => {
                 <span className="text-2xl mr-2">{collective.emoji}</span>
                 <span className="text-xl font-semibold">{collective.name}</span>
               </div>
-              <Toggle
-                defaultChecked={membership[collective.field] === 1}
-                icons={false}
-                onChange={() => handleToggle(collective.field)}
-              />
+              <div className="flex items-center">
+                <p className={`text-sm ${membership[collective.field] === 1 ? 'hidden text-white' : ''} mr-1`}>Join</p>
+                <Toggle
+                    defaultChecked={membership[collective.field] === 1}
+                    icons={false}
+                    onChange={() => handleToggle(collective.field)}
+                />
+              </div>
             </div>
-            <p className="text-sm mt-2">{collective.description}</p>
+            <p className={`text-sm mt-2 ${membership[collective.field] === 1 ? 'hidden' : ''}`}>{collective.description}</p>
             {membership[collective.field] === 1 && (
-              <div className="mt-2 text-right">
+              <div className="mt-2 text-right underline">
                 <a
                   href={collective.discord_link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline text-white"
                 >
-                  Squad Discord
+                    Our Discord Channel
                 </a>
               </div>
             )}
