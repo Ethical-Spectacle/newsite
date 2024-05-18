@@ -3,6 +3,7 @@ import Badges from './Badges';
 import MiniEvents from './MiniEvents';
 import Opportunities from './Opportunities';
 import Certificates from './Certificates';
+import Levels from './Levels';
 
 function MyAccount({ userEmail }) {
   return (
@@ -11,6 +12,7 @@ function MyAccount({ userEmail }) {
 
         <div className="md:flex-1">
           <ProfileInfo userEmail={userEmail} />
+          <Levels userEmail={userEmail} />
           <Badges userEmail={userEmail}/>
           <Certificates userEmail={userEmail} />
         </div>

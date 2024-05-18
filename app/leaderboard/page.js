@@ -87,7 +87,7 @@ export default function Rankings() {
                       <span className="text-2xl">{badgeInfo.emoji}</span>
                     </Tippy>
                   ) : (
-                    <span key={badgeIndex} className="text-xs text-gray-600">{badge}</span>
+                    <span key={badgeIndex} className="text-xs text-gray-600"></span> // if it's not in the badgeDetails object, just don't show it
                   );
                 })}
               </div>
