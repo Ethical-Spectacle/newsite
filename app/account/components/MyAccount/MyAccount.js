@@ -17,10 +17,11 @@ function MyAccount({ userEmail }) {
           <div className="border border-black border-3">
             <MiniEvents />
           </div>
+          <CreativeCollectives userEmail={userEmail}/>
+
         </div>
 
         <div className="md:flex-1">
-          <CreativeCollectives userEmail={userEmail}/>
           <Badges userEmail={userEmail}/>
           <Certificates userEmail={userEmail} />
           <Opportunities />

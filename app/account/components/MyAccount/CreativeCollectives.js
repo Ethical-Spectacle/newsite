@@ -74,7 +74,7 @@ const CreativeCollectives = ({ userEmail }) => {
   }
 
   const collectives = [
-    { name: "Graphic Designers", field: "graphic_design", emoji: "🎨", description: "Graphic designers who designing graphically.", discord_link:"https://discord.gg/xrUcAhEAUG" },
+    { name: "Graphic Designers", field: "graphic_design", emoji: "🎨", description: "Graphic designers who design things graphically.", discord_link:"https://discord.gg/xrUcAhEAUG" },
     { name: "Frontend Devs", field: "frontend", emoji: "📱", description: "Our aesthetically gifted bunch.", discord_link:"https://discord.gg/GS89SJrxYc" },
     { name: "Backend Devs", field: "backend", emoji: "🖥️", description: "We specialize in messy code.", discord_link:"https://discord.gg/rH4WceftY2" },
     { name: "AI/ML Engineers", field: "ai_ml_engineer", emoji: "🤖", description: "Rockstars. That abt sums it up.", discord_link:"https://discord.gg/hSja628V5e" },
