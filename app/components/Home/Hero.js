@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 import { IoMdArrowForward } from "react-icons/io";
-
 
 const Hero = () => {
   return (
@@ -15,13 +14,21 @@ const Hero = () => {
         </div>
         <div className="h-72 w-full md:w-1/2 scroll-item flex flex-col justify-end p-3 py-2">
           <p className="text-2xl font-semibold mb-2">Research.</p>
-          <p className="mb-5">We do AI/ML research in nuanced contexts, publishing research papers and open source tools for developers.</p>
+          <p className="mb-5">
+            We do AI/ML research in nuanced contexts, publishing research papers
+            and open source tools for developers.
+          </p>
         </div>
         <div className="h-72 w-full md:w-1/2 scroll-item flex flex-col justify-end pl-5 p-3 py-2 md:px-20">
           {/* can someone add something here, fill the space, top right aligned */}
           <p className="text-2xl font-semibold mb-2 mt-2">Community.</p>
-          <p className="mb-2">We run events for the developers and entrepreneurs of Phoenix.</p>
-          <p className="mb-5">Climb our leaderboard by attending events, winning hackathons, taking leadership roles, etc.</p>
+          <p className="mb-2">
+            We run events for the developers and entrepreneurs of Phoenix.
+          </p>
+          <p className="mb-5">
+            Climb our leaderboard by attending events, winning hackathons,
+            taking leadership roles, etc.
+          </p>
         </div>
         <a href="/account" className="h-72 w-full md:w-1/2 scroll-item p-3 py-2 bg-black flex">
           <h1 className="text-5xl font-semibold mb-2 mt-2 text-white flex-col justify-end md:ml-5">Become a Member.</h1>
@@ -31,9 +38,12 @@ const Hero = () => {
 
       {/* Developer Leaderboard Banner */}
       <div className="flex flex-row justify-start overflow-hidden h-15 items-center bg-black py-3">
-        <a href="/leaderboard" ><h1 className="whitespace-nowrap text-white text-lg py-3 px-2 ml-5 text-right">🤖 check our leaderboard —&gt;</h1></a>
+        <a href="/leaderboard">
+          <h1 className="whitespace-nowrap text-white text-lg py-3 px-2 ml-5 text-right">
+            🤖 check our leaderboard —&gt;
+          </h1>
+        </a>
       </div>
-
     </div>
   );
 };

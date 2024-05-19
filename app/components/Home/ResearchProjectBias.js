@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { MdArrowForward } from "react-icons/md";
 import { PiHandSwipeLeftDuotone } from "react-icons/pi";
 
@@ -14,16 +14,24 @@ const BiasProjectCarousel = () => {
         </div>
         <div className="w-full md:w-96 md:h-80 scroll-item border border-black  p-5">
           <p className="text-2xl font-semibold mb-2">Research.</p>
-          <p className="mb-5">Model: Open source bias/fairness text classification model.</p>
-          <p className="mb-5">Paper: Model architecture documentation and preformance benchmarks relative to existing models.</p>
+          <p className="mb-5">
+            Model: Open source bias/fairness text classification model.
+          </p>
+          <p className="mb-5">
+            Paper: Model architecture documentation and preformance benchmarks
+            relative to existing models.
+          </p>
         </div>
         <div className="w-full md:w-96 md:h-80 scroll-item border border-black border-r-2 p-5">
           {/* can someone add something here, fill the space, top right aligned */}
           <p className="text-2xl font-semibold mb-2">Hackathon.</p>
-          <p className="mb-5">Scheduled for Sept. 2024, hackers will have 48 hours to implement the bias detection model in a user-ready demo, to be pitched to a panel of industry leader judges.</p>
+          <p className="mb-5">
+            Scheduled for Sept. 2024, hackers will have 48 hours to implement
+            the bias detection model in a user-ready demo, to be pitched to a
+            panel of industry leader judges.
+          </p>
         </div>
       </div>
-
     </div>
   );
 };

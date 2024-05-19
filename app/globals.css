@@ -21,7 +21,12 @@ body {
   @apply bg-white;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
 }
 
@@ -69,8 +74,8 @@ p {
 .scroll-container {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: none; 
-  -webkit-overflow-scrolling: touch; 
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-item {
@@ -79,8 +84,8 @@ p {
 
 /* Hides scrollbar but allows scrolling */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
   /* Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -89,16 +94,18 @@ p {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .animate-marquee {
   animation: marquee 10s linear infinite;
 }
 /* end homepage stuff */
-
-
 
 h1 {
   @apply text-4xl;
@@ -108,18 +115,19 @@ h2 {
   @apply text-2xl;
 }
 
-label, p {
+label,
+p {
   @apply text-lg;
 }
 
 li {
-  font-family: 'Rethink Sans', sans-serif;
+  font-family: "Rethink Sans", sans-serif;
   font-size: 1.25rem;
   transition: all 0.2s ease;
 }
 
 .black-svg path {
-  fill: rgb(30 41 59);;
+  fill: rgb(30 41 59);
 }
 
 /* .boxed-container {
@@ -131,8 +139,8 @@ input {
 }
 
 .cardwrapper::before {
-  content: '';
-  background: conic-gradient(from 0deg at 50% 50%, #FE93B1 0%, #FE93B100 18%);
+  content: "";
+  background: conic-gradient(from 0deg at 50% 50%, #fe93b1 0%, #fe93b100 18%);
 
   @apply absolute h-[500%] w-[150%] left-[-20%] top-[-190%] animate-border-spin;
 }
@@ -143,7 +151,6 @@ input {
 
 .pink-pill {
   @apply bg-pink-200 text-sm text-center text-slate-800 px-4 py-1 rounded-full w-fit border border-slate-800;
-
 }
 
 .box-shadow-style {
@@ -162,7 +169,6 @@ input {
   h2 {
     font-size: 2rem;
   }
-  
 }
 
 @layer utilities {
