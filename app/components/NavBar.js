@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-black sticky top-0 z-50 ${
+      className={`bg-black fixed w-screen top-0 z-2 ${
         position === 0 && `drop-shadow-xl`
       }`}
     >
@@ -41,7 +41,7 @@ const Navbar = () => {
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
-          <div className="hidden md:flex items-center space-x-10 text-white gap-10 mr-10">
+          <div className="hidden md:flex items-center space-x-10 text-white gap-2 mr-10">
             <a href="/" className="text-xl hover:text-pink-300">
               Home
             </a>
@@ -51,12 +51,24 @@ const Navbar = () => {
             <a href="/events" className="text-xl hover:text-pink-300">
               Events
             </a>
-            <a href="/account" className="text-xl">Profile</a>
+            <a href="/account" className="text-xl">
+              Profile
+            </a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
             {isLoggedIn ? (
-              <button onClick={handleLogoutNav} className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Sign Out</button>
+              <button
+                onClick={handleLogoutNav}
+                className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300"
+              >
+                Sign Out
+              </button>
             ) : (
-              <Link href="/account" className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Join :P</Link>
+              <Link
+                href="/account"
+                className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300"
+              >
+                Join :P
+              </Link>
             )}
           </div>
           {/* primary nav with active underline, cant get it to build but it works in dev */}
@@ -86,7 +98,11 @@ const Navbar = () => {
               </Link>
             )}
             <button onClick={() => setIsOpen(!isOpen)} className="mr-5 z-50">
-              {isOpen ? <AiOutlineClose className="h-8 w-8 text-black" /> : <AiOutlineMenu className="h-8 w-8 text-white" />}
+              {isOpen ? (
+                <AiOutlineClose className="h-8 w-8 text-black" />
+              ) : (
+                <AiOutlineMenu className="h-8 w-8 text-white" />
+              )}
             </button>
           </div>
         </div>
@@ -94,8 +110,14 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
-          <div className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col z-50" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            className="absolute right-0 top-0 h-full w-3/4 bg-white flex flex-col z-50"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h1 className="text-4xl font-semibold p-4 h-18 mt-3 mb-1">Menu</h1>
 
             {/* Navigation Links */}
