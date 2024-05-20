@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-black fixed w-screen top-0 z-2 ${
+      className={`bg-black sticky w-screen top-0 z-2 border-b-2 ${
         position === 0 && `drop-shadow-xl`
       }`}
     >

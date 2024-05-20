@@ -22,9 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={rethink_sans.className}>
         <AuthProvider>
-          <div className="z-40">
-            <NavBar />
-          </div>
+          <NavBar />
           {children}
           <Footer />
         </AuthProvider>
