@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
+const API_URL_PROD = "https://api.ethicalspectacle.com/";
 
 function MiniEvents() {
   const [events, setEvents] = useState([]);
@@ -38,37 +37,48 @@ function MiniEvents() {
   };
   return (
     <div className="bg-white p-5 py-10">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">Upcoming Events 📅</h2>
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">
+        Upcoming Events 📅
+      </h2>
       {events.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {events.map((event, index) => (
-            <div key={index} className="border border-gray-300 rounded-lg p-4 flex flex-col">
-
-              <div className="flex justify-between items-apart"> 
-                <div className="block font-semibold text-xl text-left">{event.name}</div>
+            <div
+              key={index}
+              className="border border-gray-300 rounded-lg p-4 flex flex-col"
+            >
+              <div className="flex justify-between items-apart">
+                <div className="block font-semibold text-xl text-left">
+                  {event.name}
+                </div>
                 {event.url && (
-                  <a href={event.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg py-2 px-3 font-semibold mt-1 border border-black border-5">Sign Up :)</a>
+                  <a
+                    href={event.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg py-2 px-3 font-semibold mt-1 border border-black border-5"
+                  >
+                    Sign Up :)
+                  </a>
                 )}
               </div>
 
-              <div className="text-sm text-gray-500 mt-2">{formatDate(event.date)}</div>
+              <div className="text-sm text-gray-500 mt-2">
+                {formatDate(event.date)}
+              </div>
               <div className="text-sm text-gray-500">{event.address}</div>
 
-              <div className="text-gray-600 mt-2">
-                {event.description}
-              </div>
-
-
-
+              <div className="text-gray-600 mt-2">{event.description}</div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="text-gray-500">We'll post some events soon, miss you too😢</div>
+        <div className="text-gray-500">
+          We'll post some events soon, miss you too😢
+        </div>
       )}
     </div>
   );
-  
 }
 
 export default MiniEvents;

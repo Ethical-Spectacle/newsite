@@ -25,8 +25,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-black sticky w-screen top-0 z-2 border-b-2 ${
-        position === 0 && `drop-shadow-xl`
+      className={`bg-black sticky w-screen top-0 z-20 border-b-2 ${
+        position === 0 && ``
       }`}
     >
       <div className="w-full">
@@ -51,8 +51,11 @@ const Navbar = () => {
             <a href="/events" className="text-xl hover:text-pink-300">
               Events
             </a>
-            <a href="/account" className="text-xl">
+            <a href="/account" className="text-xl hover:text-pink-300">
               Profile
+            </a>
+            <a href="/sponsors" className="text-xl hover:text-pink-300">
+              Sponsors
             </a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
             {isLoggedIn ? (
