@@ -9,8 +9,8 @@ export default function Rankings() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // const API_URL_PROD = "https://api.ethicalspectacle.com/";
-  const API_URL_PROD = "http://127.0.0.1:5000";
+  const API_URL_PROD = "https://api.ethicalspectacle.com/";
+  // const API_URL_PROD = "http://127.0.0.1:5000";
 
 
   const badgeDetails = {
@@ -75,6 +75,14 @@ export default function Rankings() {
             </div>
             <div className="flex justify-between items-center mt-2">
               <div className="flex space-x-2">
+                {ranking.profile_pic_base64 && (
+                  <img
+                    src={`data:image/jpeg;base64,${ranking.profile_pic_base64}`}
+                    alt="Profile"
+                    className="w-8 h-8 object-cover"
+                  />
+                )}
+                
                 {ranking.badges.split(', ').map((badge, badgeIndex) => {
                   const badgeInfo = badgeDetails[badge];
                   return badgeInfo ? (
@@ -85,13 +93,6 @@ export default function Rankings() {
                     <></>
                   );
                 })}
-                {ranking.profile_pic_base64 && (
-                  <img
-                    src={`data:image/jpeg;base64,${ranking.profile_pic_base64}`}
-                    alt="Profile"
-                    className="w-8 h-8 object-cover"
-                  />
-                )}
               </div>
               <div className="flex space-x-2">
                 {ranking.website && <a href={ranking.website} className="text-xl text-gray-500 hover:text-pink-400"><FaGlobe /></a>}
