@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tippy from '@tippyjs/react'; 
 import 'tippy.js/dist/tippy.css'; // default tooltip styling
 
-
-
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
-  // "http://127.0.0.1:5000";
+const API_URL_PROD = "https://api.ethicalspectacle.com/";
 
 function Badges({ userEmail }) {
   const [badges, setBadges] = useState([]);
@@ -62,7 +58,6 @@ function Badges({ userEmail }) {
     eco_second_place: { emoji: "🥈", description: "Second Place!! Won 2nd place at our sustainability hackathon." },
     eco_third_place: { emoji: "🥉", description: "Third Place! Won 3rd place at our sustainability hackathon." },
     eco_creative: { emoji: "🎨", description: "Most Creative: Won the most-creative award at our sustainability hackathon." },
-
   };
 
   useEffect(() => {
@@ -103,6 +98,9 @@ function Badges({ userEmail }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {badges.map((badge, index) => {
               const details = badgeDetails[badge.badge_name.toLowerCase()];
+              if (details === undefined) {
+                return null;
+              }
               return (
                 <Tippy content={details.description} trigger="click" key={index}>
                   <div className="badge-card p-3 border border-gray-300 shadow-sm rounded-lg flex items-center">
