@@ -190,7 +190,7 @@ const ProfileInfo = ({ userEmail }) => {
               />
               <div className="flex flex-row space-y-2">
 
-                <label className="px-3 py-2 mt-2 mr-2 rounded bg-black text-white font-semibold text-center cursor-pointer text-base w-full">
+                <label className="px-3 py-2 mt-2 rounded bg-black text-white font-semibold text-center cursor-pointer text-base w-full">
                   <input type="file" onChange={handleFileChange} className="hidden" />
                   Upload Profile Pic
                 </label>
@@ -198,7 +198,7 @@ const ProfileInfo = ({ userEmail }) => {
                 {profile.profile_pic_base64 && (
                   <button
                     onClick={deleteProfilePic}
-                    className="px-3 py-2 rounded bg-red-500 text-white font-semibold w-full"
+                    className="px-3 py-2 ml-2 rounded bg-red-500 text-white font-semibold w-full"
                   >
                     Delete Profile Pic
                   </button>
