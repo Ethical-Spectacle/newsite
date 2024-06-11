@@ -214,7 +214,7 @@ const ProfileInfo = ({ userEmail }) => {
             </div>
           ) : (
             <div className="details-container flex flex-col items-start space-y-4">
-              <div className="flex space-x-4 items-start">
+              <div className="flex items-start">
                 <div className="w-32 h-32 overflow-hidden bg-gray-300 flex items-center justify-center">
                   {profile.profile_pic_base64 ? (
                     <img
@@ -226,7 +226,7 @@ const ProfileInfo = ({ userEmail }) => {
                     <p className="text-center">No profile picture</p>
                   )}
                 </div>
-                <div>
+                <div className="ml-3">
                   <h1 className="text-3xl font-semibold mb-3">Hey {profile?.fname},</h1>
                   <p>Member #{profile.id}</p>
                   <p>
