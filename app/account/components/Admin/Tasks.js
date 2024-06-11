@@ -1,12 +1,15 @@
 import { useState } from 'react';
 
 const API_URL_PROD = "https://api.ethicalspectacle.com/";
+// const API_URL_PROD = "http://127.0.0.1:5000";
 
 const Tasks = () => {
   const [minScore, setMinScore] = useState('');
   const [maxScore, setMaxScore] = useState('');
   const [potentialPoints, setPotentialPoints] = useState('');
   const [endpointUrl, setEndpointUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
 
   const handleAddTask = async () => {
@@ -14,7 +17,9 @@ const Tasks = () => {
       min_score: parseInt(minScore, 10),
       max_score: parseInt(maxScore, 10),
       potential_pts: parseInt(potentialPoints, 10),
-      endpoint_url: endpointUrl
+      endpoint_url: endpointUrl,
+      title: title,
+      description: description
     };
 
     try {
@@ -79,6 +84,24 @@ const Tasks = () => {
             value={endpointUrl}
             onChange={(e) => setEndpointUrl(e.target.value)}
             placeholder="Check Endpoint URL"
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title"
+            required
+            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
+          />
+          <input
+            type="text"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
             required
             className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
           />

@@ -1,7 +1,7 @@
 import ProfileInfo from './ProfileInfo';
 import Badges from './Badges';
 import MiniEvents from './MiniEvents';
-import Opportunities from './Opportunities';
+import Tasks from './Tasks';
 import Certificates from './Certificates';
 import Levels from './Levels';
 import CreativeCollectives from './CreativeCollectives';
@@ -14,17 +14,16 @@ function MyAccount({ userEmail }) {
         <div className="md:flex-1">
           <ProfileInfo userEmail={userEmail} />
           <Levels userEmail={userEmail} />
-          <div className="border border-black border-3">
-            <MiniEvents />
-          </div>
+          <Tasks userEmail={userEmail} />
           <CreativeCollectives userEmail={userEmail}/>
-
         </div>
 
         <div className="md:flex-1">
+          <div className="border border-black border-3">
+            <MiniEvents />
+          </div>
           <Badges userEmail={userEmail}/>
           <Certificates userEmail={userEmail} />
-          <Opportunities />
         </div>
 
       </div>

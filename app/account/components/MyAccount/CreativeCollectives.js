@@ -84,7 +84,7 @@ const CreativeCollectives = ({ userEmail }) => {
   return (
     <div className="bg-white p-5 border border-black border-3 w-full">
       <h1 className="text-3xl font-semibold mb-3">Creative Collectives</h1>
-      <div className="space-y-3">
+      <div className="space-y-2">
         {collectives.map((collective) => (
           <div key={collective.field} className={`p-3 border ${membership[collective.field] === 1 ? 'bg-black text-white' : 'border-gray-300 shadow-sm'} rounded-lg`}>
             <div className="flex justify-between items-center">

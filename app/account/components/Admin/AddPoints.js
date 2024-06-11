@@ -64,7 +64,7 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
             <option value="judge">⚖️Judge - 3</option>
             <option value="speaker">🗣️Speaker - 1</option>
             <option value="sponsor">🌟Sponsor - 1</option>
-            <option value="attendee">👥Attendee - 1</option>
+            <option value="event attendee">👥Attendee - 1</option>
             <option value="winner">🏆Winner - 3</option>
             <option value="ecohacker">🌱Ecohacker (sustainability hthon) - 3</option>
             <option value="eco_first_place">🥇First Place (sustainability hthon) - 3</option>
