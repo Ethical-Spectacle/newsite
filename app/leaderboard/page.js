@@ -75,14 +75,14 @@ export default function Rankings() {
             </div>
             <div className="flex justify-between items-center mt-2">
               <div className="flex space-x-2">
-                {ranking.profile_pic_base64 && (
+                {ranking.profile_pic_low_quality_base64 && (
                   <img
-                    src={`data:image/jpeg;base64,${ranking.profile_pic_base64}`}
+                    src={`data:image/jpeg;base64,${ranking.profile_pic_low_quality_base64}`}
                     alt="Profile"
                     className="w-8 h-8 object-cover"
                   />
                 )}
-                
+
                 {ranking.badges.split(', ').map((badge, badgeIndex) => {
                   const badgeInfo = badgeDetails[badge];
                   return badgeInfo ? (
