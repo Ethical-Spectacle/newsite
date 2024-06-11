@@ -3,8 +3,7 @@ import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";  // import the stylesheet for react-toggle
 
-const API_URL_PROD = 'https://api.ethicalspectacle.com/';
-// const API_URL_PROD = 'http://127.0.0.1:5000/';
+const API_URL_PROD = 'http://127.0.0.1:5000/';
 
 const ProfileInfo = ({ userEmail }) => {
   const [profile, setProfile] = useState(null);
@@ -12,59 +11,61 @@ const ProfileInfo = ({ userEmail }) => {
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isLeaderboardVisible, setIsLeaderboardVisible] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/get_profile`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch profile');
+      }
+
+      const data = await response.json();
+      setProfile(data);
+      setIsLeaderboardVisible(data.leaderboard === 1);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch(`${API_URL_PROD}/get_profile`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: userEmail }),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch profile');
-        }
-
-        const data = await response.json();
-        setProfile(data);
-        setIsLeaderboardVisible(data.leaderboard === 1);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
     if (userEmail) {
       fetchProfile();
     }
   }, [userEmail]);
 
-  const toggleEditMode = () => {
-    setIsEditing(!isEditing);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    updateProfile(event.target.files[0]);
   };
 
-  const updateProfile = async () => {
-    const updatedProfile = {
-      email: userEmail,
-      fname: document.getElementById('fname').value,
-      lname: document.getElementById('lname').value,
-      bio: document.getElementById('bio').value,
-      website: document.getElementById('website').value,
-      github: document.getElementById('github').value,
-      linkedin: document.getElementById('linkedin').value,
-    };
+  const updateProfile = async (file = null) => {
+    const updatedProfile = new FormData();
+    updatedProfile.append('email', userEmail);
+    updatedProfile.append('fname', document.getElementById('fname').value);
+    updatedProfile.append('lname', document.getElementById('lname').value);
+    updatedProfile.append('bio', document.getElementById('bio').value);
+    updatedProfile.append('website', document.getElementById('website').value);
+    updatedProfile.append('github', document.getElementById('github').value);
+    updatedProfile.append('linkedin', document.getElementById('linkedin').value);
+
+    if (file) {
+      updatedProfile.append('profile_pic', file);
+    }
 
     try {
       const response = await fetch(`${API_URL_PROD}/update_profile`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProfile),
+        body: updatedProfile,
       });
 
       if (!response.ok) {
@@ -79,6 +80,30 @@ const ProfileInfo = ({ userEmail }) => {
       setError(error.message);
       setLoading(false);
     }
+  };
+
+  const deleteProfilePic = async () => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/delete_profile_pic`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete profile picture');
+      }
+
+      fetchProfile();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const toggleEditMode = () => {
+    setIsEditing(!isEditing);
   };
 
   const toggleLeaderboardVisibility = async () => {
@@ -116,7 +141,6 @@ const ProfileInfo = ({ userEmail }) => {
 
   return (
     <div className="bg-white p-5 border border-black border-3 w-full">
-      <h1 className="text-3xl font-semibold mb-3">Hey {profile?.fname},</h1>
       {profile ? (
         <div>
           {isEditing ? (
@@ -163,59 +187,93 @@ const ProfileInfo = ({ userEmail }) => {
                 placeholder="LinkedIn URL"
                 className="border border-gray-300 p-2 w-full"
               />
+              <div className="flex flex-row space-y-2">
+
+                <label className="px-3 py-2 mt-2 mr-2 rounded bg-black text-white font-semibold text-center cursor-pointer text-base w-full">
+                  <input type="file" onChange={handleFileChange} className="hidden" />
+                  Upload Profile Pic
+                </label>
+
+                {profile.profile_pic_base64 && (
+                  <button
+                    onClick={deleteProfilePic}
+                    className="px-3 py-2 rounded bg-red-500 text-white font-semibold w-full"
+                  >
+                    Delete Profile Pic
+                  </button>
+                )}
+
+              </div>
               <button
                 onClick={updateProfile}
-                className="px-3 py-1 mt-4 rounded bg-black text-white font-semibold"
+                className="px-3 py-2 mt-4 rounded bg-black text-white font-semibold text-xl w-full"
               >
                 Save
               </button>
             </div>
           ) : (
-            <div className="details-container">
-              <p>Member #{profile.id}</p>
-              <p>
-                <strong>Bio:</strong> {profile.bio}
-              </p>
-              <div className="link-container flex space-x-3 items-center mt-3">
-                {profile.website && (
-                  <a
-                    className="links p-2 bg-black text-white rounded-md"
-                    href={profile.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGlobe />
-                  </a>
-                )}
-                {profile.github && (
-                  <a
-                    className="links p-2 bg-black text-white rounded-md border border-black border-2"
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub />
-                  </a>
-                )}
-                {profile.linkedin && (
-                  <a
-                    className="links p-2 bg-black text-white rounded-md border border-black border-2"
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedin />
-                  </a>
-                )}
-                <button
-                  className="primary-button px-3 py-1 bg-white text-black font-semibold rounded-md border border-black border-2"
-                  onClick={toggleEditMode}
-                >
-                  Edit Profile
-                </button>
+            <div className="details-container flex flex-col items-start space-y-4">
+              <div className="flex space-x-4 items-start">
+                <div className="w-32 h-32 overflow-hidden bg-gray-300 flex items-center justify-center">
+                  {profile.profile_pic_base64 ? (
+                    <img
+                      src={`data:image/jpeg;base64,${profile.profile_pic_base64}`}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <p className="text-center">No profile picture</p>
+                  )}
+                </div>
+                <div>
+                  <h1 className="text-3xl font-semibold mb-3">Hey {profile?.fname},</h1>
+                  <p>Member #{profile.id}</p>
+                  <p>
+                    <strong>Bio:</strong> {profile.bio}
+                  </p>
+                </div>
               </div>
-              <div className="mt-3">
-                <label className="flex items-center space-x-3">
+              <div className="mt-3 w-full">
+                <div className="link-container flex space-x-3 items-center mb-3">
+                  {profile.website && (
+                    <a
+                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                      href={profile.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGlobe />
+                    </a>
+                  )}
+                  {profile.github && (
+                    <a
+                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                      href={profile.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub />
+                    </a>
+                  )}
+                  {profile.linkedin && (
+                    <a
+                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                      href={profile.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedin />
+                    </a>
+                  )}
+                  <button
+                    className="primary-button px-3 py-1 bg-white text-black font-semibold rounded-md border border-black border-2"
+                    onClick={toggleEditMode}
+                  >
+                    Edit Profile
+                  </button>
+                </div>
+
+                <label className="flex items-center space-x-3 w-full">
                   <span>Show on Leaderboard:</span>
                   <Toggle
                     defaultChecked={isLeaderboardVisible}
