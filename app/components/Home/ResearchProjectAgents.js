@@ -6,7 +6,7 @@ const AgentsProjectCarousel = () => {
     <div className="bg-white">
       <div className="scroll-container hide-scrollbar flex md:justify-center justify-start">
         <div className="w-96 scroll-item border border-black border-l-2 px-5 pt-5">
-          <h1 className="mt-2 font-bold">Project 002</h1>
+          <h1 className="mt-2 md:mt-5 font-bold">Project 002</h1>
           <h2 className="mt-3">Agent Network Effects</h2>
           <p className="pl-5 mt-2">We're studying the ability of LLM agents to police network effects.</p>
           <h2 className="flex flex-row justify-end pr-5 text-xl md:hidden"><PiHandSwipeLeftDuotone className="mt-5 text-4xl"/></h2>
