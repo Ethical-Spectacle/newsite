@@ -3,7 +3,7 @@ import AddPoints from "./AddPoints";
 import MintHthonCertificate from "./MintHthonCertificate";
 import Tasks from "./Tasks"; 
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
+const { API_URL_PROD } = require('../../../config/config');
 
 const Admin = () => {
   return (

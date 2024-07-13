@@ -3,9 +3,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // default tooltip styling
 import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
-  // "http://127.0.0.1:5000";
+const { API_URL_PROD } = require('../../../config/config');
 
 const levelDetails = {
   Trainee: {

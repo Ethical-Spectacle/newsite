@@ -55,7 +55,7 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
           >
             <option value="">None (just pts, no badge)</option>
             <option value="director">🤖Director - 3</option>
-            <option value="event host">🎤Event Host - 2</option>
+            <option value="event_host">🎤Event Host - 2</option>
             <option value="researcher">🔬Researcher - 3</option>
             <option value="developer">💻Developer - 1</option>
             <option value="entrepreneur">🚀Entrepreneur - 1</option>

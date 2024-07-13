@@ -3,8 +3,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
-// const API_URL_PROD = "http://127.0.0.1:5000";
+const { API_URL_PROD } = require('../../../config/config');
 
 function Tasks({ userEmail }) {
   const [tasks, setTasks] = useState([]);

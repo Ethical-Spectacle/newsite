@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
+const { API_URL_PROD } = require('../../../config/config');
 
 const CertificatesList = ({ userEmail }) => {
   const [certificates, setCertificates] = useState([]);

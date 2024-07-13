@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useAuth } from '../../context/AuthContext';  // Import useAuth
 
 const Signup = ({ toggleForm }) => {
-  const API_URL_PROD = "https://api.ethicalspectacle.com/";
+  const { API_URL_PROD } = require('../../config/config');
   const { login } = useAuth();  // Destructure login function from useAuth
   const [formData, setFormData] = useState({
     fname: "",

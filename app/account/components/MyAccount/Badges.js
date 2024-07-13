@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tippy from '@tippyjs/react'; 
 import 'tippy.js/dist/tippy.css'; // default tooltip styling
 
-const API_URL_PROD = "https://api.ethicalspectacle.com/";
+const { API_URL_PROD } = require('../../../config/config');
 
 function Badges({ userEmail }) {
   const [badges, setBadges] = useState([]);
@@ -13,7 +13,7 @@ function Badges({ userEmail }) {
       emoji: "🤖",
       description: "Director: One of our core team members!!!",
     },
-    "event host": {
+    event_host: {
       emoji: "🎤",
       description:
         "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page.",

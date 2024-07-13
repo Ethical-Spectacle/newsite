@@ -9,15 +9,13 @@ export default function Rankings() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL_PROD = "https://api.ethicalspectacle.com/";
-  // const API_URL_PROD = "http://127.0.0.1:5000";
-
+  const { API_URL_PROD } = require('../config/config');
 
   const badgeDetails = {
     developer: { emoji: "💻", description: "Developer" },
     entrepreneur: { emoji: "🚀", description: "Entrepreneur" },
     director: { emoji: "🤖", description: "Director: One of our core team members!!!" },
-    "event host": { emoji: "🎤", description: "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page." },
+    event_host: { emoji: "🎤", description: "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page." },
     researcher: { emoji: "🔬", description: "Researcher: Joined one of our research projects. Apply on your profile page." },
     volunteer: { emoji: "🤝", description: "Volunteer: Badge given for each volunteer opportunity seized." },
     mentor: { emoji: "🧠", description: "Mentor: Guided the next generation of geniuses at our first hackathon" },

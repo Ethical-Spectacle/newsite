@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-const API_URL_PROD =
-  "https://api.ethicalspectacle.com/";
+const { API_URL_PROD } = require('../../../config/config');
+
 
 function MiniEvents() {
   const [events, setEvents] = useState([]);

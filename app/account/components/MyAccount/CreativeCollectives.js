@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css"; 
 
-const API_URL_PROD = 'https://api.ethicalspectacle.com/';
+const { API_URL_PROD } = require('../../../config/config');
 
 const CreativeCollectives = ({ userEmail }) => {
   const [membership, setMembership] = useState({});
@@ -44,7 +44,7 @@ const CreativeCollectives = ({ userEmail }) => {
       [field]: membership[field] ? 0 : 1,
     };
     setMembership(updatedMembership);
-
+  
     try {
       const response = await fetch(`${API_URL_PROD}/update_membership`, {
         method: 'POST',
@@ -53,18 +53,18 @@ const CreativeCollectives = ({ userEmail }) => {
         },
         body: JSON.stringify({ email: userEmail, ...updatedMembership }),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to update membership');
       }
-
+  
       const data = await response.json();
       setMembership(data);
     } catch (error) {
       setError(error.message);
     }
   };
-
+  
   if (loading) {
     return <div>Loading...</div>;
   }

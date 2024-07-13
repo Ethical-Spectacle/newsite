@@ -2,9 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 
+
 const CertificatePage = () => {
   const [certificate, setCertificate] = useState(null);
   const [error, setError] = useState('');
+  const { API_URL_PROD } = require('../config/config');
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString + 'T00:00:00Z');
@@ -16,13 +19,12 @@ const CertificatePage = () => {
     });
   };
   
-  
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const certificateId = query.get('id');
 
     if (certificateId) {
-      fetch(`https://api.ethicalspectacle.com/hackathon_certificate/${certificateId}`)
+      fetch(`${API_URL_PROD}/hackathon_certificate/${certificateId}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
