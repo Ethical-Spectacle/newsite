@@ -4,32 +4,12 @@ import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+const { API_URL_PROD } = require('../config/config');
+
 export default function Rankings() {
   const [rankings, setRankings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const { API_URL_PROD } = require('../config/config');
-
-  const badgeDetails = {
-    developer: { emoji: "💻", description: "Developer" },
-    entrepreneur: { emoji: "🚀", description: "Entrepreneur" },
-    director: { emoji: "🤖", description: "Director: One of our core team members!!!" },
-    event_host: { emoji: "🎤", description: "Event Host: This member invested in all of you by hosting an event. Want to host? Suggest an event on your profile page." },
-    researcher: { emoji: "🔬", description: "Researcher: Joined one of our research projects. Apply on your profile page." },
-    volunteer: { emoji: "🤝", description: "Volunteer: Badge given for each volunteer opportunity seized." },
-    mentor: { emoji: "🧠", description: "Mentor: Guided the next generation of geniuses at our first hackathon" },
-    speaker: { emoji: "🗣️", description: "Speaker: Shared knowledge at one of our events." },
-    judge: { emoji: "⚖️", description: "Judge: Expert in their field, this leader evaluated the team demos at a hackathon." },
-    sponsor: { emoji: "🌟", description: "Sponsor: Helped support our events." },
-    ecohacker: { emoji: "🌱", description: "Ecohacker: Participated in our inaugural hackathon!! It's the sustainability for me. April 5-7, 2024." },
-    eco_first_place: { emoji: "🥇", description: "FIRST PLACE!! Won 1st place at our sustainability hackathon." },
-    eco_second_place: { emoji: "🥈", description: "Second Place!! Won 2nd place at our sustainability hackathon." },
-    eco_third_place: { emoji: "🥉", description: "Third Place! Won 3rd place at our sustainability hackathon." },
-    eco_creative: { emoji: "🎨", description: "Most Creative: Won the most-creative award at our sustainability hackathon." },
-    attendee: { emoji: "👥", description: "Attendee: Attended one of our events." },
-    winner: { emoji: "🏆", description: "Winner: Won a hackathon!!!" }
-  };
 
   useEffect(() => {
     const fetchRankings = async () => {
@@ -39,8 +19,8 @@ export default function Rankings() {
           throw new Error('Failed to fetch rankings');
         }
         const data = await response.json();
-        console.log('Fetched Rankings:', JSON.parse(data));  // Add logging here
-        setRankings(JSON.parse(data));
+        console.log('Fetched Rankings:', data);
+        setRankings(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -80,17 +60,16 @@ export default function Rankings() {
                     className="w-8 h-8 object-cover"
                   />
                 )}
-
-                {ranking.badges.split(', ').map((badge, badgeIndex) => {
-                  const badgeInfo = badgeDetails[badge];
-                  return badgeInfo ? (
-                    <Tippy key={badgeIndex} content={badgeInfo.description}>
-                      <span className="text-2xl">{badgeInfo.emoji}</span>
+                {ranking.badges.split(', ').map((badge, badgeIndex) => (
+                  ranking.emojis.split(', ')[badgeIndex] && ranking.descriptions.split(', ')[badgeIndex] ? (
+                    <Tippy
+                      key={badgeIndex}
+                      content={ranking.descriptions.split(', ')[badgeIndex]}
+                    >
+                      <span className="text-2xl">{ranking.emojis.split(', ')[badgeIndex]}</span>
                     </Tippy>
-                  ) : (
-                    <></>
-                  );
-                })}
+                  ) : null
+                ))}
               </div>
               <div className="flex space-x-2">
                 {ranking.website && <a href={ranking.website} className="text-xl text-gray-500 hover:text-pink-400"><FaGlobe /></a>}

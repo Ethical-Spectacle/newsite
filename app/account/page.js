@@ -10,6 +10,15 @@ import EmailVerification from './components/EmailVerification';
 const Account = () => {
   const { isLoggedIn, isAdmin, isEmailVerified, login, logout, checkEmailVerification, userEmail } = useAuth();
   const [showLogin, setShowLogin] = useState(true);
+  const [badgeId, setBadgeId] = useState(null);
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const badge_id = query.get('badge_id');
+    if (badge_id) {
+      setBadgeId(badge_id);
+    }
+  }, []);
 
   useEffect(() => {
     if (userEmail && isLoggedIn && !isEmailVerified) {
@@ -31,9 +40,9 @@ const Account = () => {
         )
       ) : (
         showLogin ? (
-          <Login handleAuthentication={login} toggleForm={toggleForm} />
+          <Login handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} />
         ) : (
-          <Signup handleAuthentication={login} toggleForm={toggleForm} />
+          <Signup handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} />
         )
       )}
     </div>

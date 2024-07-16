@@ -58,15 +58,15 @@ function Levels({ userEmail }) {
       });
       if (!response.ok) throw new Error("Network response was not ok");
       const badges = await response.json();
-      
+
       const totalPoints = badges.reduce((sum, badge) => sum + badge.points_added, 0);
       setUserPoints(totalPoints);
-      
+
       const level = Object.keys(levelDetails).find(level => {
         const [min, max] = levelDetails[level].range;
         return totalPoints >= min && totalPoints <= max;
       });
-      
+
       setUserLevel(level);
     } catch (error) {
       console.error("Error fetching user level:", error);
@@ -109,7 +109,7 @@ function Levels({ userEmail }) {
     <div className="bg-white p-5 border border-black border-3 w-full border-b-6">
       {/* Header */}
       <h2 className="text-3xl font-semibold mb-3">Levels</h2>
-      
+
       {/* Level Progress */}
       <div className="mb-4">
         <div className="text-xl mb-2">
@@ -118,14 +118,14 @@ function Levels({ userEmail }) {
             {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)}
           </span>
         </div>
-        
+
         {/* Progress Bar */}
         <div className="flex items-center mb-2 relative">
           {/* Current Level Icon */}
           <div className="flex flex-col items-center">
             <span className="text-3xl">{currentLevelDetails.icon}</span>
           </div>
-          
+
           {/* Progress Bar Container */}
           <div className="relative w-full bg-gray-200 h-6 rounded-full overflow-hidden flex-grow mx-2">
             <div
@@ -147,7 +147,7 @@ function Levels({ userEmail }) {
               <span className="text-lg font-semibold">{userPoints}</span>
             </div>
           </div>
-          
+
           {/* Next Level Icon */}
           {nextLevelDetails && (
             <div className="flex flex-col items-center">
@@ -164,7 +164,7 @@ function Levels({ userEmail }) {
           )}
         </div>
       </div>
-      
+
       {/* Current Level Perks */}
       <div className="mb-4">
         <div className="flex justify-between items-center">
@@ -175,7 +175,7 @@ function Levels({ userEmail }) {
             Perks
           </h3>
         </div>
-        
+
         {isPerksExpanded && (
           <ul className="list-disc pl-5">
             {allCurrentPerks.map((perk, index) => (

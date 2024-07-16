@@ -38,7 +38,7 @@ function MyAccount({ userEmail }) {
     <div className="bg-gray-100 min-h-screen">
       <div className="tabs flex justify-centerr">
         <button onClick={() => setActiveTab('profile')} className="px-4 py-2">Profile</button>
-        {badges.some(badge => badge.badge_name.toLowerCase() === 'event_host') && (
+        {badges.some(badge => badge.badge_name.toLowerCase() === 'event host') && (
           <button onClick={() => setActiveTab('eventHost')} className="px-4 py-2">Event Host Dashboard</button>
         )}
       </div>

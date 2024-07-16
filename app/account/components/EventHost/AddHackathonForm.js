@@ -51,25 +51,20 @@ const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
   };
 
   return (
-    <div className="w-full px-2 py-1 my-5 md:mb-8 shadow-md rounded-lg">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-white text-black px-4 py-2 rounded mb-4 w-full text-left flex items-center"
-      >
-        {isOpen ? <FaChevronDown size={20} /> : <FaChevronRight size={20} />}
-        
-        <div className="ml-2 text-3xl font-semibold">{isOpen ? 'Close' : '🛠️ Start a hackathon'}</div>
-      </button>
+    <div className="w-full p-4 my-5 md:mb-8 shadow-md rounded-lg">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-semibold mb-2">Add New Hackathon</h3>
+        <button onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FaChevronDown size={20} /> : <FaChevronRight size={20} />}
+        </button>
+      </div>
       {isOpen && (
-        <div className="p-4">
-
-          <h2 className="text-2xl font-bold mb-4">Create a new draft of a hackathon post:</h2>
-
+        <div className="p-4 pt-0">
           <form onSubmit={handleSubmit}>
 
             <div className="grid grid-cols-6 gap-4 md:mb-3">
                 <div className="col-span-4 md:col-span-5">
-                    <label className="block text-gray-700 font-bold">Name</label>
+                    <label className="block text-gray-700">Name</label>
                     <input
                         type="text"
                         name="name"
@@ -80,7 +75,7 @@ const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
                     />
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <label className="block text-gray-700 font-bold">Emoji</label>
+                    <label className="block text-gray-700">Emoji</label>
                     <input
                     type="text"
                     name="emoji"
@@ -94,7 +89,7 @@ const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
 
             <div className="grid grid-cols-4 gap-4 md:mb-5">
               <div className="col-span-2">
-                <label className="block text-gray-700 font-bold mb-1 mt-2">Start Date</label>
+                <label className="block text-gray-700 mb-1 mt-2">Start Date</label>
                 <input
                   type="datetime-local"
                   name="start_date"
@@ -105,7 +100,7 @@ const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
                 />
               </div>
               <div className="col-span-2">
-                <label className="block text-gray-700 font-bold mb-1 mt-2">End Date</label>
+                <label className="block text-gray-700 mb-1 mt-2">End Date</label>
                 <input
                   type="datetime-local"
                   name="end_date"
@@ -118,7 +113,7 @@ const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
             </div>
 
             <div className="md:mb-5">
-              <label className="block text-gray-700 font-bold mb-2">Location</label>
+              <label className="block text-gray-700 mb-2">Location</label>
               <input
                 type="text"
                 name="location"

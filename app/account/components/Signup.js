@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useAuth } from '../../context/AuthContext';  // Import useAuth
 
-const Signup = ({ toggleForm }) => {
+const Signup = ({ toggleForm, badge_id }) => {
   const { API_URL_PROD } = require('../../config/config');
   const { login } = useAuth();  // Destructure login function from useAuth
   const [formData, setFormData] = useState({
@@ -26,12 +26,16 @@ const Signup = ({ toggleForm }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const requestBody = { ...formData };
+      if (badge_id) {
+        requestBody.badge_id = badge_id;
+      }
       const response = await fetch(`${API_URL_PROD}/create_account`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(requestBody),
       });
       if (response.ok) {
         const data = await response.json();

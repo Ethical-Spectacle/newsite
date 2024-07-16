@@ -274,7 +274,7 @@ const EditHackathonForm = ({ userEmail }) => {
 
   return (
     <div className="w-full mb-4">
-      <h2 className="text-3xl font-bold my-5">Your Hackathons</h2>
+      <h2 className="text-2xl font-bold my-5">🛠️ Your Hackathons</h2>
       <div>
         {hackathons.map((hackathon) => (
           <div key={hackathon.id} className="p-3 md:p-6 mb-4 bg-white shadow-md rounded-lg">
@@ -286,7 +286,7 @@ const EditHackathonForm = ({ userEmail }) => {
                 >
                   {expandedHackathons[hackathon.id] ? <FaChevronDown size={20} /> : <FaChevronRight size={20} />}
                 </button>
-                <h3 className="text-3xl font-semibold">{hackathon.name}</h3>
+                <h3 className="text-2xl md:text-xl font-semibold">{hackathon.name}</h3>
               </div>
               <p className="col-span-3 mt-2">
                 {new Date(hackathon.start_date_time).toLocaleDateString()} - {new Date(hackathon.end_date_time).toLocaleDateString()}
@@ -297,7 +297,7 @@ const EditHackathonForm = ({ userEmail }) => {
                   icons={false}
                   onChange={() => handleTogglePublished(hackathon.id)}
                 />
-                <p className="text-sm ml-2">{hackathon.published ? '🎉 Hackathon Live' : 'Publish'}</p>
+                <p className="text-sm ml-2">{hackathon.published ? '🎉 Live' : 'Publish'}</p>
               </div>
             </div>
             {expandedHackathons[hackathon.id] && (

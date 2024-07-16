@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useAuth } from '../../context/AuthContext';
 
-const Login = ({ toggleForm }) => {
+const Login = ({ toggleForm, badge_id }) => {
   const { API_URL_PROD } = require('../../config/config');
   const { login } = useAuth();
   const [formData, setFormData] = useState({
@@ -17,12 +17,16 @@ const Login = ({ toggleForm }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const requestBody = { ...formData };
+      if (badge_id) {
+        requestBody.badge_id = badge_id;
+      }
       const response = await fetch(`${API_URL_PROD}/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(requestBody),
       });
       if (response.ok) {
         const data = await response.json();
