@@ -41,35 +41,29 @@ const Login = ({ toggleForm, badge_id }) => {
   };
 
   return (
-    <div className="flex m-5 md:m-20 items-center justify-center bg-white">
-      <div className="w-full max-w-md p-8 bg-white border-4 border-black">
-        <h2 className="mb-6 text-4xl font-bold text-black">Login 🥽</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="input-group">
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="w-full p-4 text-xl text-black bg-white border-2 border-black focus:outline-none"
-            />
-          </div>
-          <div className="input-group">
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-              className="w-full p-4 text-xl text-black bg-white border-2 border-black focus:outline-none"
-            />
-          </div>
-          <div className="button-group">
-            <button className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded" type="submit">Log In</button>
-          </div>
+    <div className="flex m-5 md:m-20 pt-5 pb-10 items-center justify-center bg-white">
+      <div className="w-full max-w-md p-8 bg-white border-4 border-black rounded-lg">
+        <h2 className="mb-6 text-2xl font-bold text-black">Login 🥽</h2>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            className="w-full p-4 text-lg text-black bg-white border-1 border-black focus:outline-none"
+          />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+            className="w-full p-4 text-lg text-black bg-white border-1 border-black focus:outline-none"
+          />
+          <button className="bg-blue-500 text-white py-2 w-full rounded hover:bg-blue-600" type="submit">Log In</button>
         </form>
-        <button className="mt-4 text-black bg-transparent hover:bg-gray-100" onClick={toggleForm}>Switch to Signup</button>
+        <button className="mt-3 text-black bg-transparent hover:bg-gray-100 w-full" onClick={toggleForm}>Switch to Signup</button>
       </div>
     </div>
   );

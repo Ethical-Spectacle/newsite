@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="p-5 max-md:col-span-2 max-md:justify-self-center max-md:p-2">
           <h3 className="text-white text-xl my-2 max-md:hidden">Socials</h3>
           <div className="flex gap-5">
-            <Link href="/">
+            <Link href="https://www.linkedin.com/company/ethicalspectacle/about/?viewAsMember=true">
               <Image
                 src={linkedinplain}
                 width={30}
@@ -45,16 +45,7 @@ export default function Footer() {
                 className="text-gray-400"
               ></Image>
             </Link>
-            <Link href="/">
-              <Image
-                src={instagramlogo}
-                width={30}
-                height={30}
-                alt="Instagram Logo"
-                className="text-gray-400"
-              ></Image>
-            </Link>
-            <Link href="/">
+            <Link href="https://huggingface.co/ethical-spectacle">
               <Image
                 src={huggingfacelogo}
                 width={30}
@@ -63,12 +54,12 @@ export default function Footer() {
                 className="text-gray-400"
               ></Image>
             </Link>
-            <Link href="/">
+            <Link href="https://www.meetup.com/ethical-spectacle-research/events/">
               <Image
                 src={meetuplogo}
                 width={30}
                 height={30}
-                alt="Linkedin Logo"
+                alt="Meetup Logo"
                 className="text-gray-400"
               ></Image>
             </Link>

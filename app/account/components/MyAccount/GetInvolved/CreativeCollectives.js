@@ -82,7 +82,7 @@ const CreativeCollectives = ({ userEmail }) => {
   ];
 
   return (
-    <div className="bg-white pt-3 pb-5 w-full">
+    <div className="bg-white pt-3 pb-5 px-5 w-full">
       <h1 className="text-3xl font-semibold mb-3">Creative Collective</h1>
       <div className="space-y-2">
         {collectives.map((collective) => (
