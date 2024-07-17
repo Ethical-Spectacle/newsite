@@ -51,7 +51,7 @@ const Navbar = () => {
             <a href="/events" className="text-xl hover:text-pink-300">
               Events
             </a>
-            <a href="/account" className="text-xl">Profile</a>
+            <a href="/account" className="text-xl">Dashboard</a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
             {isLoggedIn ? (
               <button onClick={handleLogoutNav} className="bg-white py-1 px-3 mr-5 rounded text-black hover:bg-pink-300">Sign Out</button>
@@ -127,7 +127,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="p-4 text-xl border-b border-gray-300"
             >
-              Profile 👾
+              Dashboard 👾
             </a>
 
             {/* Social */}
