@@ -1,5 +1,5 @@
 'use client';
-import MiniEvents from '../account/components/MyAccount/MiniEvents';
+import MiniEvents from '../account/components/MyAccount/GetInvolved/MiniEvents';
 import HthonPicsCarousel from './HthonPicsCarousel';
 import OtherEventsPicsCarousel from './OtherEventsPicsCarousel';
 

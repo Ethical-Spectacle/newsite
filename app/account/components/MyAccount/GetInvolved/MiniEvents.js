@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-const { API_URL_PROD } = require('../../../config/config');
-
+const { API_URL_PROD } = require('../../../../config/config');
 
 function MiniEvents() {
   const [events, setEvents] = useState([]);
@@ -37,7 +36,7 @@ function MiniEvents() {
     return `${month}/${day}/${year}, ${hour}:${minute} ${ampm}`;
   };
   return (
-    <div className="bg-white p-5 py-10">
+    <div className="bg-white py-3">
       <h2 className="text-3xl font-bold text-gray-800 mb-6">Upcoming Events 📅</h2>
       {events.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

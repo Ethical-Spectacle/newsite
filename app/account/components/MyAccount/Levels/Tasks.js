@@ -3,7 +3,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 function Tasks({ userEmail }) {
   const [tasks, setTasks] = useState([]);
@@ -62,7 +62,7 @@ function Tasks({ userEmail }) {
   };
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full border-b-6">
+    <div className="bg-white pt-10 pb-5 px-1 md:px-10w-full">
       <h2 className="text-3xl font-semibold mb-3 my-2">Tasks</h2>
       <div className="tasks-list space-y-3 mb-3">
         {loading ? (
@@ -97,7 +97,7 @@ function Tasks({ userEmail }) {
                   </div>
                   <div className="flex-none">
                     <button
-                      onClick={() => handleCheckTask(task.endpoint_url, task.id, task.potential_pts)}
+                      onClick={() => handleCheckTask(task.endpoint_url, task.id)}
                       className="w-full h-full px-3 py-3 bg-black text-white rounded-md text-xs"
                     >
                       +{task.potential_pts} pts

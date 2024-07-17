@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const CertificatesList = ({ userEmail }) => {
   const [certificates, setCertificates] = useState([]);
@@ -65,7 +65,7 @@ const CertificatesList = ({ userEmail }) => {
   if (error) return <div className="error">Error: {error}</div>;
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full">
+    <div className="bg-white px-5 pt-5 pb-10 w-full">
       <h1 className="text-3xl font-semibold mb-3">Certificates</h1>
   
       {loading && <div className="loading text-center py-5 text-xl font-semibold">Loading...</div>}
@@ -85,7 +85,7 @@ const CertificatesList = ({ userEmail }) => {
             </div>
           ))
         ) : (
-          <div className="text-center py-5 text-lg font-semibold">Compete in a hackathon or attend a workshop for a sharable certificate</div>
+          <div className="text-center py-5 text-lg font-semibold">Compete in a hackathon to get your first certificate📃</div>
         )}
       </div>
     </div>

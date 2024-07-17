@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import ProfileInfo from './ProfileInfo';
-import Badges from './Badges';
-import MiniEvents from './MiniEvents';
-import Tasks from './Tasks';
-import Certificates from './Certificates';
-import Levels from './Levels';
-import CreativeCollectives from './CreativeCollectives';
-import EventHostDashboard from '../EventHost/Dashboard';
+import HomeTab from './Home/Tab';
+import EventHostTab from './EventHost/Tab';
+import LevelsTab from './Levels/Tab';
+import GetInvolvedTab from './GetInvolved/Tab';
 
 const { API_URL_PROD } = require('../../../config/config');
 
 function MyAccount({ userEmail }) {
   const [badges, setBadges] = useState([]);
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('home');
 
   useEffect(() => {
     const fetchBadges = async () => {
@@ -36,31 +32,32 @@ function MyAccount({ userEmail }) {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="tabs flex justify-centerr">
-        <button onClick={() => setActiveTab('profile')} className="px-4 py-2">Profile</button>
+      <div className="tabs flex md:justify-center">
+        <div className="hidden md:block bg-blue-500 flex-grow"></div>
+        <button onClick={() => setActiveTab('home')} className="px-3 md:px-10 py-2 bg-blue-500">Home</button>
+        <button onClick={() => setActiveTab('levels')} className="px-3 md:px-10 py-2 bg-green-500">Levels</button>
+        <button onClick={() => setActiveTab('getInvolved')} className="px-3 md:px-10 py-2 bg-red-500">Participate</button>
         {badges.some(badge => badge.badge_name.toLowerCase() === 'event host') && (
-          <button onClick={() => setActiveTab('eventHost')} className="px-4 py-2">Event Host Dashboard</button>
+          <button onClick={() => setActiveTab('eventHost')} className="px-3 md:px-10 py-2 bg-yellow-500">Event Host</button>
         )}
+        <div className="bg-yellow-500 flex-grow"></div>
       </div>
-      {activeTab === 'profile' && (
-        <div className="flex flex-col md:flex-row">
-          <div className="md:flex-1">
-            <ProfileInfo userEmail={userEmail} />
-            <Levels userEmail={userEmail} />
-            <Tasks userEmail={userEmail} />
-            <CreativeCollectives userEmail={userEmail} />
-          </div>
-          <div className="md:flex-1">
-            <div className="border border-black border-3">
-              <MiniEvents />
-            </div>
-            <Badges userEmail={userEmail} />
-            <Certificates userEmail={userEmail} />
-          </div>
-        </div>
+      {/* make a seperate flex row for additional tabs */}
+
+      {activeTab === 'home' && (
+        <HomeTab userEmail={userEmail} />
       )}
+
+      {activeTab === 'levels' && (
+        <LevelsTab userEmail={userEmail} />
+      )}
+
+      {activeTab === 'getInvolved' && (
+        <GetInvolvedTab userEmail={userEmail} />
+      )}
+
       {activeTab === 'eventHost' && (
-        <EventHostDashboard userEmail={userEmail} />
+        <EventHostTab userEmail={userEmail} />
       )}
     </div>
   );

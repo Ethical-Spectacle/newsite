@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const AddPoints = ({ onSubmit, apiUrl }) => {
   const [email, setEmail] = useState("");
   const [badgeName, setBadgeName] = useState("");
-  const [pointsToAdd, setPointsToAdd] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -18,7 +17,6 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
         body: JSON.stringify({
           email: email,
           badge_name: badgeName,
-          points_to_add: pointsToAdd,
         }),
       });
 
@@ -26,7 +24,6 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
         setMessage("Points successfully added!");
         setEmail("");
         setBadgeName("");
-        setPointsToAdd("");
       } else {
         setMessage("Failed to add points.");
       }
@@ -38,7 +35,7 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
   return (
     <div className="flex m-5 md:m-20 items-center justify-center bg-white">
       <div className="w-full max-w-md p-8 bg-white border-4 border-black">
-        <h2 className="mb-6 text-4xl font-bold text-black">Add Points</h2>
+        <h2 className="mb-6 text-4xl font-bold text-black">Add badge</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"
@@ -72,14 +69,6 @@ const AddPoints = ({ onSubmit, apiUrl }) => {
             <option value="eco_third_place">🥉Third Place (sustainability hthon) - 1</option>
             <option value="eco_creative">🎨Most Creative (sustainability hthon) - 1</option>
           </select>
-          <input
-            type="number"
-            placeholder="Points to add"
-            value={pointsToAdd}
-            onChange={(e) => setPointsToAdd(e.target.value)}
-            required
-            className="w-full p-4 text-lg text-black bg-white border-2 border-black focus:outline-none"
-          />
           <button type="submit" className="w-full p-3 bg-black text-white text-xl font-bold hover:bg-gray-700 rounded">Add Points</button>
           {message && <p className="text-black">{message}</p>}
         </form>

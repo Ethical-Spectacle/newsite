@@ -3,7 +3,7 @@ import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";  
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 
 const ProfileInfo = ({ userEmail }) => {
@@ -141,7 +141,7 @@ const ProfileInfo = ({ userEmail }) => {
   }
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full">
+    <div className="bg-white px-5 pt-8 md:pt-10 w-full mb-5">
       {profile ? (
         <div>
           {isEditing ? (
@@ -223,55 +223,58 @@ const ProfileInfo = ({ userEmail }) => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <p className="text-center">No profile picture</p>
+                    <p className="text-center">No profile picture📸</p>
                   )}
                 </div>
-                <div className="ml-3">
-                  <h1 className="text-3xl font-semibold mb-3">Hey {profile?.fname},</h1>
-                  <p>Member #{profile.id}</p>
-                  <p>
-                    <strong>Bio:</strong> {profile.bio}
-                  </p>
+                
+                <div className="ml-3 w-48">
+                  <h1 className="text-2xl md:text-3xl mb-1 flex">👋 {profile?.fname}</h1>
+                  <p className="text-base">Member #{profile.id}</p>
+
+                  <div className="link-container flex space-x-1 mt-3">
+                    {profile.website && (
+                      <a
+                        className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                        href={profile.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaGlobe />
+                      </a>
+                    )}
+                    {profile.github && (
+                      <a
+                        className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                        href={profile.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaGithub />
+                      </a>
+                    )}
+                    {profile.linkedin && (
+                      <a
+                        className="links p-2 bg-black text-white rounded-md border border-black border-2"
+                        href={profile.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaLinkedin />
+                      </a>
+                    )}
+                    <button
+                      className="primary-button px-3 py-1 bg-white text-black font-semibold rounded-md border border-black border-2"
+                      onClick={toggleEditMode}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="mt-3 w-full">
                 <div className="link-container flex space-x-3 items-center mb-3">
-                  {profile.website && (
-                    <a
-                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
-                      href={profile.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaGlobe />
-                    </a>
-                  )}
-                  {profile.github && (
-                    <a
-                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
-                      href={profile.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaGithub />
-                    </a>
-                  )}
-                  {profile.linkedin && (
-                    <a
-                      className="links p-2 bg-black text-white rounded-md border border-black border-2"
-                      href={profile.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaLinkedin />
-                    </a>
-                  )}
-                  <button
-                    className="primary-button px-3 py-1 bg-white text-black font-semibold rounded-md border border-black border-2"
-                    onClick={toggleEditMode}
-                  >
-                    Edit Profile
-                  </button>
+                  <p className="font-semibold">Bio:</p>
+                  <p>{profile.bio}</p>
                 </div>
 
                 <label className="flex items-center space-x-3 w-full">

@@ -4,7 +4,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 import "react-toggle/style.css";
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const EditHackathonForm = ({ userEmail }) => {
   const [hackathons, setHackathons] = useState([]);

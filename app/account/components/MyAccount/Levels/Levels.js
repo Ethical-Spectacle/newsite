@@ -3,32 +3,32 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // default tooltip styling
 import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const levelDetails = {
   Trainee: {
     icon: "🔭",
-    range: [0, 3],
+    range: [0, 2],
     color: "#FFE82D", // Yellow
-    perks: ["Invitations to events"]
+    perks: ["Technical workshops", "Join our hackathons"]
   },
   "Space Cadet": {
     icon: "🧑‍🚀️",
-    range: [4, 6],
+    range: [2, 5],
     color: "#FFA500", // Orange
-    perks: ["Creative collective access", "Join a project"]
+    perks: ["Creative collective access", "Game night invites"]
   },
   Alien: {
     icon: "🛸",
-    range: [7, 10],
+    range: [6, 10],
     color: "#32CD32", // Green
-    perks: ["Post a project", "Priority access to events and research positions"]
+    perks: ["Career services for devs", "Priority hackathon access"]
   },
   "Star Master": {
     icon: "🧙",
     range: [11, 15],
     color: "#1E90FF", // Blue
-    perks: ["Invite-only mixer events", "Leadership roles"]
+    perks: ["Become an event host", "Invite-only mixer events", "Leadership roles"]
   },
   "Cosmic Overlord": {
     icon: "👾",
@@ -75,8 +75,8 @@ function Levels({ userEmail }) {
 
   const getProgress = (points, range) => {
     const [min, max] = range;
-    const progress = ((points - min) / (max - min)) * 100;
-    return Math.max(progress, 5); // Ensure a minimum progress of 5%
+    const progress = ((points - min) / (max - min)) * 90;
+    return Math.max(progress, 5);
   };
 
   if (!userLevel) return <div>Loading...</div>;
@@ -106,12 +106,9 @@ function Levels({ userEmail }) {
   };
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full border-b-6">
-      {/* Header */}
-      <h2 className="text-3xl font-semibold mb-3">Levels</h2>
-
+    <div className="bg-white py-3 px-1 w-full">
       {/* Level Progress */}
-      <div className="mb-4">
+      <div className="mb-6">
         <div className="text-xl mb-2">
           <span>Current Level: </span>
           <span className="font-bold">
@@ -141,7 +138,7 @@ function Levels({ userEmail }) {
                 left: `${progress}%`,
                 transform: `translateX(-${progress}%)`,
                 width: 'fit-content',
-                padding: '0 5px',
+                padding: '0 10px',
               }}
             >
               <span className="text-lg font-semibold">{userPoints}</span>

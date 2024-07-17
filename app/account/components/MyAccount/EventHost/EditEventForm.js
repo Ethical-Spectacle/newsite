@@ -3,7 +3,7 @@ import Toggle from 'react-toggle';
 import { FaTrashAlt, FaChevronRight, FaChevronDown } from 'react-icons/fa';
 import "react-toggle/style.css";
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const EditEventForm = ({ userEmail }) => {
   const [events, setEvents] = useState([]);

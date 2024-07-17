@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const AddHackathonForm = ({ userEmail, onHackathonAdded }) => {
   const [formData, setFormData] = useState({

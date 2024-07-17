@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css"; 
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 const CreativeCollectives = ({ userEmail }) => {
   const [membership, setMembership] = useState({});
@@ -82,8 +82,8 @@ const CreativeCollectives = ({ userEmail }) => {
   ];
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full">
-      <h1 className="text-3xl font-semibold mb-3">Creative Collectives</h1>
+    <div className="bg-white pt-3 pb-5 w-full">
+      <h1 className="text-3xl font-semibold mb-3">Creative Collective</h1>
       <div className="space-y-2">
         {collectives.map((collective) => (
           <div key={collective.field} className={`p-3 border ${membership[collective.field] === 1 ? 'bg-black text-white' : 'border-gray-300 shadow-sm'} rounded-lg`}>
@@ -110,7 +110,7 @@ const CreativeCollectives = ({ userEmail }) => {
                   rel="noopener noreferrer"
                   className="underline text-white"
                 >
-                    Our Discord Channel
+                    Discord Channel
                 </a>
               </div>
             )}

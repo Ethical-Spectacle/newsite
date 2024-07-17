@@ -4,7 +4,7 @@ import EditHackathonForm from './EditHackathonForm';
 import AddEventForm from './AddEventForm'; 
 import EditEventForm from './EditEventForm';
 
-const EventHostDashboard = ({ userEmail }) => {
+const EventHostTab = ({ userEmail }) => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleHackathonAdded = () => {
@@ -28,4 +28,4 @@ const EventHostDashboard = ({ userEmail }) => {
   );
 };
 
-export default EventHostDashboard;
+export default EventHostTab;

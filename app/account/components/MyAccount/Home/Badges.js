@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tippy from '@tippyjs/react'; 
 import 'tippy.js/dist/tippy.css'; // default tooltip styling
 
-const { API_URL_PROD } = require('../../../config/config');
+const { API_URL_PROD } = require('../../../../config/config');
 
 function Badges({ userEmail }) {
   const [badges, setBadges] = useState([]);
@@ -38,7 +38,7 @@ function Badges({ userEmail }) {
   };
 
   return (
-    <div className="bg-white p-5 border border-black border-3 w-full border-b-6">
+    <div className="bg-white px-5 pt-5 w-full">
       <h2 className="text-3xl font-semibold mb-3">Badges</h2>
       <div className="badges-list space-y-4">
         {badges.length > 0 ? (
