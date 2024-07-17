@@ -5,7 +5,6 @@ import "react-toggle/style.css";
 
 const { API_URL_PROD } = require('../../../../config/config');
 
-
 const ProfileInfo = ({ userEmail }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,6 +28,7 @@ const ProfileInfo = ({ userEmail }) => {
       }
 
       const data = await response.json();
+      console.log(data);
       setProfile(data);
       setIsLeaderboardVisible(data.leaderboard === 1);
       setLoading(false);
@@ -46,7 +46,6 @@ const ProfileInfo = ({ userEmail }) => {
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    updateProfile(event.target.files[0]);
   };
 
   const updateProfile = async (file = null) => {
@@ -58,6 +57,7 @@ const ProfileInfo = ({ userEmail }) => {
     updatedProfile.append('website', document.getElementById('website').value);
     updatedProfile.append('github', document.getElementById('github').value);
     updatedProfile.append('linkedin', document.getElementById('linkedin').value);
+    updatedProfile.append('discord', document.getElementById('discord').value);
 
     if (file) {
       updatedProfile.append('profile_pic', file);
@@ -195,8 +195,8 @@ const ProfileInfo = ({ userEmail }) => {
                 placeholder="Discord Username"
                 className="border border-gray-300 p-2 w-full"
               />
-              <div className="flex flex-row space-y-2">
 
+              <div className="flex flex-row space-y-2">
                 <label className="px-3 py-2 mt-2 rounded bg-black text-white font-semibold text-center cursor-pointer text-base w-full">
                   <input type="file" onChange={handleFileChange} className="hidden" />
                   Upload Profile Pic
@@ -210,10 +210,9 @@ const ProfileInfo = ({ userEmail }) => {
                     Delete Profile Pic
                   </button>
                 )}
-
               </div>
               <button
-                onClick={updateProfile}
+                onClick={() => updateProfile(selectedFile)}
                 className="px-3 py-2 mt-4 rounded bg-black text-white font-semibold text-xl w-full"
               >
                 Save
@@ -239,7 +238,7 @@ const ProfileInfo = ({ userEmail }) => {
                   <p className="text-base">Member #{profile.id}</p>
                   <div className="flex space-x-3 items-center mb-3">
                     <p className="text-sm">Discord:</p>
-                    <p>{profile.discord}</p>
+                    <p className="text-sm">@{profile.discord}</p>
                   </div>
 
                   <div className="link-container flex space-x-1 mt-3">
