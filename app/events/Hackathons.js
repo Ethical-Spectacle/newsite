@@ -10,6 +10,7 @@ const Hackathons = () => {
   const [hackathons, setHackathons] = useState([]);
   const [applications, setApplications] = useState({});
   const [expanded, setExpanded] = useState({});
+  const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
     const fetchHackathons = async () => {
@@ -52,7 +53,7 @@ const Hackathons = () => {
 
   const applyForHackathon = async (hackathon_id) => {
     try {
-      await fetch(`${API_URL_PROD}/add_application`, {
+      const response = await fetch(`${API_URL_PROD}/add_application`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -62,12 +63,28 @@ const Hackathons = () => {
           email: userEmail
         })
       });
-      setApplications((prev) => ({
-        ...prev,
-        [hackathon_id]: 'Applied'
-      }));
+      if (response.ok) {
+        setApplications((prev) => ({
+          ...prev,
+          [hackathon_id]: 'Applied'
+        }));
+        setErrorMessages((prev) => ({
+          ...prev,
+          [hackathon_id]: '' // Clear error message on successful application
+        }));
+      } else {
+        const errorText = await response.text();
+        setErrorMessages((prev) => ({
+          ...prev,
+          [hackathon_id]: errorText
+        }));
+      }
     } catch (error) {
       console.error('Error applying for hackathon:', error);
+      setErrorMessages((prev) => ({
+        ...prev,
+        [hackathon_id]: 'An unexpected error occurred.'
+      }));
     }
   };
 
@@ -97,8 +114,8 @@ const Hackathons = () => {
 
               <div className="block font-semibold text-xl text-left pt-3 pb-5 md:pb-10 flex flex-row">
                 {hackathon.sponsors_list.map((sponsor, index) => (
-                  <a href={sponsor.link} target="_blank" rel="noopener noreferrer">
-                    <img key={index} src={sponsor.logo} alt={sponsor.name} className="h-10 md:h-16 px-2 md:px-3" />
+                  <a href={sponsor.link} target="_blank" rel="noopener noreferrer" key={index}>
+                    <img src={sponsor.logo} alt={sponsor.name} className="h-10 md:h-16 px-2 md:px-3" />
                   </a>
                 ))}
               </div>
@@ -156,12 +173,15 @@ const Hackathons = () => {
                 applications[hackathon.id] ? (
                   <p className="text-green-600 font-semibold mt-2">Status: {applications[hackathon.id]}</p>
                 ) : (
-                  <button 
-                    className="bg-blue-500 text-white py-2 px-4 rounded mt-2 hover:bg-blue-600" 
-                    onClick={() => applyForHackathon(hackathon.id)}
-                  >
-                    Apply
-                  </button>
+                  <>
+                    <button 
+                      className="bg-blue-500 text-white py-2 px-4 rounded mt-2 hover:bg-blue-600" 
+                      onClick={() => applyForHackathon(hackathon.id)}
+                    >
+                      Apply
+                    </button>
+                    {errorMessages[hackathon.id] && <p className="text-red-600 mt-2 text-sm">{errorMessages[hackathon.id]}</p>}
+                  </>
                 )
               ) : (
                 <p className="text-red-600 mt-2">Sign in to apply</p>

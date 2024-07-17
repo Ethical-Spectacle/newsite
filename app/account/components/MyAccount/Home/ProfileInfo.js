@@ -188,6 +188,13 @@ const ProfileInfo = ({ userEmail }) => {
                 placeholder="LinkedIn URL"
                 className="border border-gray-300 p-2 w-full"
               />
+              <input
+                type="text"
+                defaultValue={profile.discord}
+                id="discord"
+                placeholder="Discord Username"
+                className="border border-gray-300 p-2 w-full"
+              />
               <div className="flex flex-row space-y-2">
 
                 <label className="px-3 py-2 mt-2 rounded bg-black text-white font-semibold text-center cursor-pointer text-base w-full">
@@ -230,6 +237,10 @@ const ProfileInfo = ({ userEmail }) => {
                 <div className="ml-3 w-48">
                   <h1 className="text-2xl md:text-3xl mb-1 flex">👋 {profile?.fname}</h1>
                   <p className="text-base">Member #{profile.id}</p>
+                  <div className="flex space-x-3 items-center mb-3">
+                    <p className="text-sm">Discord:</p>
+                    <p>{profile.discord}</p>
+                  </div>
 
                   <div className="link-container flex space-x-1 mt-3">
                     {profile.website && (
@@ -272,7 +283,7 @@ const ProfileInfo = ({ userEmail }) => {
                 </div>
               </div>
               <div className="mt-3 w-full">
-                <div className="link-container flex space-x-3 items-center mb-3">
+                <div className="flex space-x-3 items-center mb-3">
                   <p className="font-semibold">Bio:</p>
                   <p>{profile.bio}</p>
                 </div>
