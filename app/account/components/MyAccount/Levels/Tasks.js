@@ -110,7 +110,7 @@ function Tasks({ userEmail }) {
           </AnimatePresence>
         ) : (
           <div className="text-center py-5 text-lg font-semibold">
-            No tasks available.
+            No more tasks available.
           </div>
         )}
       </div>
