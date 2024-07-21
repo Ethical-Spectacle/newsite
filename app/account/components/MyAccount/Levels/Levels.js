@@ -41,7 +41,7 @@ const levelDetails = {
 function Levels({ userEmail }) {
   const [userLevel, setUserLevel] = useState(null);
   const [userPoints, setUserPoints] = useState(0);
-  const [isPerksExpanded, setIsPerksExpanded] = useState(false);
+  const [isPerksExpanded, setIsPerksExpanded] = useState(true);
 
   useEffect(() => {
     fetchUserLevel();
@@ -174,19 +174,23 @@ function Levels({ userEmail }) {
         </div>
 
         {isPerksExpanded && (
-          <ul className="list-disc pl-5">
-            {allCurrentPerks.map((perk, index) => (
-              <li key={index} className="text-lg">{perk}</li>
-            ))}
-            {nextLevelDetails && (
-              <>
-                {nextLevelDetails.perks.map((perk, index) => (
-                  <li key={index} className="text-lg text-gray-400">{perk}</li>
-                ))}
-                <p className="text-sm text-gray-400 mt-1">*upcoming perks*</p>
-              </>
-            )}
-          </ul>
+          <div>
+            <p className="mb-2">As your level increases, you get cool perks and access to hidden parts of our site ;)</p>
+
+            <ul className="list-disc pl-5">
+              {allCurrentPerks.map((perk, index) => (
+                <li key={index} className="text-lg">{perk}</li>
+              ))}
+              {nextLevelDetails && (
+                <>
+                  {nextLevelDetails.perks.map((perk, index) => (
+                    <li key={index} className="text-lg text-gray-400">{perk}</li>
+                  ))}
+                  <p className="text-sm text-gray-400 mt-1">*upcoming perks*</p>
+                </>
+              )}
+            </ul>
+          </div>
         )}
       </div>
     </div>

@@ -17,9 +17,10 @@ const Hackathons = () => {
       try {
         const res = await fetch(`${API_URL_PROD}/get_hackathons`);
         const data = await res.json();
-        setHackathons(data);
+        const publishedHackathons = data.filter(hackathon => hackathon.published === 1);
+        setHackathons(publishedHackathons);
         if (isLoggedIn) {
-          data.forEach(hackathon => fetchApplications(hackathon.id));
+          publishedHackathons.forEach(hackathon => fetchApplications(hackathon.id));
         }
       } catch (error) {
         console.error('Error fetching hackathons:', error);
