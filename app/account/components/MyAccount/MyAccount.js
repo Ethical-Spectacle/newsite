@@ -64,9 +64,8 @@ function MyAccount({ userEmail }) {
         {organizingHackathons.map(hackathon => (
           <button key={hackathon.id} onClick={() => setActiveTab(`hackathonOrganizer_${hackathon.id}`)} className="px-3 md:px-10 py-2 bg-yellow-500">{hackathon.name}</button>
         ))}
-        <div className="bg-yellow-500 flex-grow"></div>
+        <div className="bg-purple-500 flex-grow"></div>
       </div>
-      {/* Make a separate flex row for additional tabs if needed */}
 
       {activeTab === 'home' && <HomeTab userEmail={userEmail} />}
       {activeTab === 'levels' && <LevelsTab userEmail={userEmail} />}
