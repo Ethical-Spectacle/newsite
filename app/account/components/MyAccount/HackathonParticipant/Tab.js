@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InfoCard from './InfoCard'; // Import InfoCard component
+import TeamDetails from './TeamDetails'; // Import TeamDetails component
+import HackathonTimeline from './Timeline'; // Import Timeline component
 
 const { API_URL_PROD } = require('../../../../config/config');
 
@@ -33,6 +35,8 @@ const HackathonParticipantTab = ({ userEmail, hackathonId }) => {
   return (
     <div className="md:mt-5 md:p-4 bg-white shadow-md rounded-lg max-w-4xl mx-auto">
       <InfoCard hackathon={hackathon} />
+      <TeamDetails hackathonId={hackathonId} userEmail={userEmail} />
+      <HackathonTimeline hackathonId={hackathonId} />
       {/* Add other participant details and features as needed */}
     </div>
   );

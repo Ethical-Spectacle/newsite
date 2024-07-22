@@ -18,7 +18,7 @@ const InfoCard = ({ hackathon }) => {
   };
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 flex flex-col mb-4">
+    <div className="rounded-lg p-4 flex flex-col mb-4">
       <div className="block font-semibold text-xl text-left pt-3 pb-5 md:pb-10 flex flex-row">
         {hackathon.sponsors_list.map((sponsor, index) => (
           <a href={sponsor.link} target="_blank" rel="noopener noreferrer" key={index}>
