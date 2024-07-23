@@ -189,9 +189,12 @@ const Apply = ({ hackathon }) => {
       )}
       {!isLoggedIn ? (
         !countdown && (
-          <div className="mt-4">
-            <p className="text-red-500">Log in to apply for this hackathon.</p>
-          </div>
+        <button
+            className="w-full mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+            onClick={() => window.location.href = '/account'}
+            >
+            Log In to Apply
+        </button>
         )
       ) : (
         renderStatusMessage()

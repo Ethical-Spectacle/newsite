@@ -5,11 +5,12 @@ import HackathonDetails from './Details';
 import Timeline from '../account/components/MyAccount/HackathonParticipant/Timeline';
 import Projects from './Projects';
 import Apply from './Apply';
+import OrganizerCard from './OrganizerCard';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
 const HackathonPage = () => {
   const [hackathon, setHackathon] = useState(null);
-  const [hackathonId, setHackathonId] = useState(null);
+  const [organizers, setOrganizers] = useState([]);
   const [error, setError] = useState('');
   const [isTimelineExpanded, setIsTimelineExpanded] = useState(true);
   const { API_URL_PROD } = require('../config/config');
@@ -19,23 +20,47 @@ const HackathonPage = () => {
     const hackathonId = query.get('id');
 
     if (hackathonId) {
-      fetch(`${API_URL_PROD}/hackathon_details/${hackathonId}`)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          setHackathon(data);
-          setHackathonId(hackathonId);
-        })
-        .catch(error => {
-          setError(`Failed to fetch hackathon details: ${error.message}`);
-          console.error('There was a problem with your fetch operation:', error);
-        });
+      fetchHackathonDetails(hackathonId);
     }
   }, []);
+
+  const fetchHackathonDetails = async (hackathonId) => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/hackathon_details/${hackathonId}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setHackathon(data);
+
+      if (data.hackathon_info.organizer_emails_list) {
+        fetchOrganizers(data.hackathon_info.organizer_emails_list);
+      }
+    } catch (error) {
+      setError(`Failed to fetch hackathon details: ${error.message}`);
+      console.error('There was a problem with your fetch operation:', error);
+    }
+  };
+
+  const fetchOrganizers = async (emails) => {
+    try {
+      const uniqueEmails = [...new Set(emails)];
+      const organizersData = await Promise.all(
+        uniqueEmails.map(email =>
+          fetch(`${API_URL_PROD}/get_profile`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+          }).then(res => res.json())
+        )
+      );
+      setOrganizers(organizersData);
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
 
   if (error) {
     return (
@@ -80,12 +105,22 @@ const HackathonPage = () => {
           </div>
           {isTimelineExpanded && (
             <div className="">
-              <Timeline hackathonId={hackathonId} />
+              <Timeline hackathonId={hackathon.hackathon_info.id} />
             </div>
           )}
         </div>
-
         {/* <Projects projects={hackathon.hackathon_projects} /> */}
+
+
+        <div className="w-full mb-4 border border-gray-300 rounded-lg p-4">
+          <h3 className="text-xl font-semibold">Organizers</h3>
+          <div className="flex flex-wrap">
+            {organizers.map((organizer, index) => (
+              <OrganizerCard key={index} organizer={organizer} />
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
   );
