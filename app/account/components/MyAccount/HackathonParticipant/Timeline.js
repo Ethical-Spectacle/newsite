@@ -60,8 +60,10 @@ const HackathonTimeline = ({ hackathonId }) => {
 
   const groupedEvents = groupEventsByDay(timelineEvents);
 
+  const colors = ['#1E90FF', '#32CD32', '#FF4500', '#FFD700', '#9370DB', '#FFA500'];
+
   return (
-    <div className="border border-gray-300 m-4 p-5 rounded-lg md:flex md:justify-center">
+    <div className="border border-gray-300 m-4 p-5 rounded-lg md:flex md:flex-col md:pl-20">
       {Object.keys(groupedEvents).map((day, idx) => (
         <div key={idx}>
           <h1 className="font-semibold text-black text-2xl rounded-md">{day}</h1>
@@ -73,14 +75,13 @@ const HackathonTimeline = ({ hackathonId }) => {
             }}
           >
             {groupedEvents[day].map((event, index) => (
-              <TimelineItem key={index} >
-                
+              <TimelineItem key={index}>
                 <TimelineOppositeContent color="textSecondary">
                   {new Date(event.start_date_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </TimelineOppositeContent>
 
                 <TimelineSeparator>
-                  <TimelineDot color="primary"/>
+                  <TimelineDot sx={{ backgroundColor: colors[index % colors.length] }} />
                   {index < groupedEvents[day].length - 1 && <TimelineConnector />}
                 </TimelineSeparator>
 

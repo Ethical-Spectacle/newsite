@@ -103,13 +103,14 @@ function MyAccount({ userEmail }) {
       {activeTab === 'home' && <HomeTab userEmail={userEmail} />}
       {activeTab === 'levels' && <LevelsTab userEmail={userEmail} />}
       {activeTab === 'getInvolved' && <GetInvolvedTab userEmail={userEmail} />}
+      {participantHackathons.map(hackathon => (
+        activeTab === `hackathonParticipant_${hackathon.id}` && <HackathonParticipantTab key={hackathon.id} userEmail={userEmail} hackathonId={hackathon.id} />
+      ))}
       {activeTab === 'eventHost' && <EventHostTab userEmail={userEmail} />}
       {organizingHackathons.map(hackathon => (
         activeTab === `hackathonOrganizer_${hackathon.id}` && <HackathonOrganizerTab key={hackathon.id} userEmail={userEmail} hackathonId={hackathon.id} />
       ))}
-      {participantHackathons.map(hackathon => (
-        activeTab === `hackathonParticipant_${hackathon.id}` && <HackathonParticipantTab key={hackathon.id} userEmail={userEmail} hackathonId={hackathon.id} />
-      ))}
+
     </div>
   );
 }
