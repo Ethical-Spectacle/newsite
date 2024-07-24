@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa';
 
 const OrganizerCard = ({ organizer }) => {
   return (
-    <div className="border border-gray-300 rounded-lg p-4 m-2 w-full md:w-1/2 lg:w-1/3">
+    <div className="border border-gray-300 rounded-lg p-4 m-2 w-full">
       <div className="flex items-center mb-2">
         <img
           src={`data:image/jpeg;base64,${organizer.profile_pic_base64}`}

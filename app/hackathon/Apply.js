@@ -60,7 +60,12 @@ const Apply = ({ hackathon }) => {
             setCountdown('');
             setApplicationsOpen(true); // Applications are now open
           } else {
-            setCountdown(`${duration.days()}d ${duration.hours()}h ${duration.minutes()}m ${duration.seconds()}s`);
+            const months = duration.months();
+            const days = duration.days();
+            const hours = duration.hours();
+            const minutes = duration.minutes();
+            const seconds = duration.seconds();
+            setCountdown(`${months}m ${days}d ${hours}h ${minutes}m ${seconds}s`);
           }
         }, 1000);
 
@@ -76,7 +81,12 @@ const Apply = ({ hackathon }) => {
             setApplicationsClosingCountdown('');
             setApplicationsClosed(true); // Applications are now closed
           } else {
-            setApplicationsClosingCountdown(`${duration.days()}d ${duration.hours()}h ${duration.minutes()}m ${duration.seconds()}s`);
+            const months = duration.months();
+            const days = duration.days();
+            const hours = duration.hours();
+            const minutes = duration.minutes();
+            const seconds = duration.seconds();
+            setApplicationsClosingCountdown(`${months}m ${days}d ${hours}h ${minutes}m ${seconds}s`);
           }
         }, 1000);
 
@@ -182,7 +192,7 @@ const Apply = ({ hackathon }) => {
               {hackathon.use_discord && (
                 <p>3. This hackathon will use Discord, make sure you have a username in your profile.</p>
               )}
-              {applicationsClosingCountdown && (<p className="text-red-400 text-base">Applications close in: {applicationsClosingCountdown}</p>)} 
+              {applicationsClosingCountdown && (<p className="text-red-400 text-base">Applications close in: {applicationsClosingCountdown}</p>)}
             </div>
           </div>
         )
