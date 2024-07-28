@@ -31,6 +31,9 @@ const EditHackathonForm = ({ userEmail }) => {
     max_participants: '',
     kickoff_date_time: '',
     emoji: '',
+    voting_enabled: false,
+    voting_open_date_time: '',
+    voting_close_date_time: '',
   });
   const [newSponsor, setNewSponsor] = useState({ name: '', logo: '', link: '' });
   const [newEmail, setNewEmail] = useState('');
@@ -103,6 +106,9 @@ const EditHackathonForm = ({ userEmail }) => {
       max_participants: hackathon.max_participants || '',
       kickoff_date_time: hackathon.kickoff_date_time || '',
       emoji: hackathon.emoji || '',
+      voting_enabled: hackathon.voting_enabled || false,
+      voting_open_date_time: hackathon.voting_open_date_time || '',
+      voting_close_date_time: hackathon.voting_close_date_time || '',
     });
   };
 
@@ -290,7 +296,7 @@ const EditHackathonForm = ({ userEmail }) => {
               </div>
               <p className="col-span-3 mt-2">
                 {new Date(hackathon.start_date_time).toLocaleDateString()} - {new Date(hackathon.end_date_time).toLocaleDateString()}
-                </p>
+              </p>
               <div className="md:col-span-1 mt-2 items-center flex">
                 <Toggle
                   defaultChecked={hackathon.published}
@@ -590,7 +596,7 @@ const EditHackathonForm = ({ userEmail }) => {
                       </button>
                     </div>
                   </div>
-
+                  
                   <div className="py-5 md:py-8 border-b-2 border-grey-500">
                     <label className="block text-2xl text-gray-700 font-bold">Links/Resources</label>
                     <p className="mb-2 mt-1">These links will be shared conditionally to your hackers.</p>
@@ -702,6 +708,56 @@ const EditHackathonForm = ({ userEmail }) => {
                       </div>
                     </div>
                   </div>
+
+                  <div className="py-5 md:py-8 border-b-2 border-grey-500">
+                    <label className="block text-2xl text-gray-700 font-bold mb-2">Voting Settings</label>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center col-span-2">
+                        <Toggle
+                          defaultChecked={formData.voting_enabled}
+                          icons={false}
+                          onChange={(e) => setFormData({ ...formData, voting_enabled: e.target.checked })}
+                          onBlur={handleBlur}
+                          name="voting_enabled"
+                        />
+                        <label className="ml-2 text-gray-700 font-bold">Voting Enabled</label>
+                      </div>
+                      <div className="col-span-2">
+                        <label className="block text-gray-700 font-bold mb-2">Submission Deadline:</label>
+                        <input
+                          type="datetime-local"
+                          name="submission_deadline_date_time"
+                          value={formData.submission_deadline_date_time}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className="w-full px-3 py-2 border rounded col-span-3"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-700 font-bold mb-2">Voting Open Date</label>
+                        <input
+                          type="datetime-local"
+                          name="voting_open_date_time"
+                          value={formData.voting_open_date_time}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className="w-full px-3 py-2 border rounded"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-700 font-bold mb-2">Voting Close Date</label>
+                        <input
+                          type="datetime-local"
+                          name="voting_close_date_time"
+                          value={formData.voting_close_date_time}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className="w-full px-3 py-2 border rounded"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                 </form>
               </div>
             )}

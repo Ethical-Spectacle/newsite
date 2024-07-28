@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { useAuth } from '../context/AuthContext';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const { API_URL_PROD } = require('../config/config');
 
@@ -14,6 +15,8 @@ const Apply = ({ hackathon }) => {
   const [applicationsClosed, setApplicationsClosed] = useState(false);
   const [applicationsOpen, setApplicationsOpen] = useState(false);
   const [applicationsClosingCountdown, setApplicationsClosingCountdown] = useState('');
+  const [preferredTeammates, setPreferredTeammates] = useState([]);
+  const [newTeammateEmail, setNewTeammateEmail] = useState('');
 
   useEffect(() => {
     const fetchApplicationStatus = async () => {
@@ -29,6 +32,7 @@ const Apply = ({ hackathon }) => {
         const userApplication = data.find(app => app.email === userEmail);
         if (userApplication) {
           setApplicationStatus(userApplication.status);
+          setPreferredTeammates(userApplication.preferred_teammates_emails_list ? JSON.parse(userApplication.preferred_teammates_emails_list) : []);
         }
       } catch (error) {
         console.error('Error fetching application status:', error);
@@ -122,6 +126,57 @@ const Apply = ({ hackathon }) => {
     }
   };
 
+  const addTeammate = async () => {
+    if (preferredTeammates.length >= 5) {
+      setErrorMessage('You can only request up to 5 teammates.');
+      return;
+    }
+
+    if (!validateEmail(newTeammateEmail)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    const updatedTeammates = [...preferredTeammates, newTeammateEmail];
+    setPreferredTeammates(updatedTeammates);
+    setNewTeammateEmail('');
+    await updateTeammates(updatedTeammates);
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const removeTeammate = async (index) => {
+    const updatedTeammates = preferredTeammates.filter((_, i) => i !== index);
+    setPreferredTeammates(updatedTeammates);
+    await updateTeammates(updatedTeammates);
+  };
+
+  const updateTeammates = async (updatedTeammates) => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/update_application_teammates`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          hackathon_id: hackathon.id,
+          email: userEmail,
+          preferred_teammates_emails_list: JSON.stringify(updatedTeammates)
+        })
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        setErrorMessage(errorText);
+      }
+    } catch (error) {
+      console.error('Error updating teammates:', error);
+      setErrorMessage('An unexpected error occurred while updating teammates.');
+    }
+  };
+
   if (!hackathon) {
     return <div>Loading...</div>;
   }
@@ -130,8 +185,8 @@ const Apply = ({ hackathon }) => {
     switch (applicationStatus) {
       case 'accepted':
         return (
-        <div>
-            <p className="text-green-500 font-semibold mt-2">Application Status: Accepted, let's gooooo</p> 
+          <div>
+            <p className="text-green-500 font-semibold mt-2">Application Status: Accepted, let's gooooo</p>
             <p className="text-base text-gray-600">Visit your dashboard, you'll have access to a new tab for all your hackathon updates ;)</p>
             {hackathon.acceptance_link && (
               <div className="mt-4">
@@ -141,10 +196,44 @@ const Apply = ({ hackathon }) => {
                 </a>
               </div>
             )}
-        </div>
+          </div>
         );
       case 'pending':
-        return <div><p className="text-green-600 font-semibold mt-2">Application Status: Pending...</p> <p className="text-base text-gray-600">Check back here to see your application status.</p></div>;
+        return (
+          <div>
+            <p className="text-green-600 font-semibold mt-2">Application Status: Pending...</p>
+            <p className="text-base text-gray-600">Applications selected based on your provided links, but adding a funny profile pic can't hurt.</p>
+            <div className="mt-4">
+              <h2 className="text-lg">Preferred Teammates</h2>
+              <div className="space-y-2">
+                {preferredTeammates.map((email, index) => (
+                  <div key={index} className="flex items-center justify-between p-2 bg-gray-50 border rounded">
+                    <span>{email}</span>
+                    <button onClick={() => removeTeammate(index)} className="text-red-500">
+                      <FaTrashAlt />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="flex">
+                <input
+                  type="email"
+                  value={newTeammateEmail}
+                  onChange={(e) => setNewTeammateEmail(e.target.value)}
+                  placeholder="Add Teammate Email"
+                  className="flex-grow px-3 py-2 border rounded"
+                />
+                <button
+                  onClick={addTeammate}
+                  className="ml-2 bg-green-500 text-white py-2 px-4 mt-1 rounded hover:bg-green-700"
+                >
+                  Request
+                </button>
+              </div>
+              {errorMessage && <p className="text-red-600 mt-2 text-sm">{errorMessage}</p>}
+            </div>
+          </div>
+        );
       case 'declined':
         return <p className="text-red-600 font-semibold mt-2">Application Status: Declined, we're sorry :(</p>;
       default:
@@ -179,8 +268,7 @@ const Apply = ({ hackathon }) => {
     <div className="border border-gray-300 p-4 mt-4 rounded-lg">
       {countdown ? (
         <div>
-          <h2 className="text-xl font-semibold">Applications open in...</h2>
-          <p className="text-2xl font-bold">{countdown}</p>
+          {/* add waitlist signup here for before applications are open */}
         </div>
       ) : (
         !applicationStatus && !applicationsClosed && applicationsOpen && (
@@ -199,12 +287,12 @@ const Apply = ({ hackathon }) => {
       )}
       {!isLoggedIn ? (
         !countdown && (
-        <button
+          <button
             className="w-full mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
             onClick={() => window.location.href = '/account'}
-            >
+          >
             Log In to Apply
-        </button>
+          </button>
         )
       ) : (
         renderStatusMessage()

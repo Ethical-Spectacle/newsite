@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaGlobe, FaGithub, FaLinkedin } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaGlobe, FaGithub, FaLinkedin, FaUsers } from 'react-icons/fa';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -27,6 +27,27 @@ const Applications = ({ userEmail, hackathonId, applications, setApplications })
     }
   };
 
+  const fetchTeammateDetails = async (email) => {
+    try {
+      const response = await fetch(`${API_URL_PROD}/get_profile`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        const profile = await response.json();
+        return profile.fname && profile.lname ? `${profile.fname} ${profile.lname} (${email})` : email;
+      } else {
+        return email;
+      }
+    } catch (error) {
+      console.error('Error fetching teammate details:', error);
+      return email;
+    }
+  };
+
   const skillIcons = {
     graphic_design: '🎨',
     frontend: '📱',
@@ -47,6 +68,28 @@ const Applications = ({ userEmail, hackathonId, applications, setApplications })
     </div>
   );
 
+  const renderTeammates = (teammates) => {
+    const [tooltipContent, setTooltipContent] = useState('Loading...');
+    const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+
+    useEffect(() => {
+      const fetchAllDetails = async () => {
+        const detailsList = await Promise.all(teammates.map(email => fetchTeammateDetails(email)));
+        setTooltipContent(detailsList.join(', '));
+      };
+
+      if (isTooltipVisible) {
+        fetchAllDetails();
+      }
+    }, [isTooltipVisible]);
+
+    return (
+      <Tippy content={tooltipContent} onShow={() => setIsTooltipVisible(true)} onHide={() => setIsTooltipVisible(false)}>
+        <span className="text-xl mt-1"><FaUsers /></span>
+      </Tippy>
+    );
+  };
+
   const pendingApplications = applications.filter(app => app.status === 'pending');
 
   return (
@@ -62,6 +105,9 @@ const Applications = ({ userEmail, hackathonId, applications, setApplications })
             <div className="flex justify-between">
               <div className="flex justify-start space-x-4">
                 <span className="text-xl my-auto">{`${applicant.fname} ${applicant.lname}`}</span>
+                {applicant.preferred_teammates_emails_list && applicant.preferred_teammates_emails_list !== '[]' && (
+                  renderTeammates(JSON.parse(applicant.preferred_teammates_emails_list))
+                )}
               </div>
               <div className="hidden md:block md:grid md:grid-cols-2 md:gap-2">
                 <button
