@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HackathonDetails = ({ hackathon }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const formatDate = (date) => {
     const optionsDate = { month: 'short', day: 'numeric', year: 'numeric' };
     const optionsTime = { hour: 'numeric', minute: 'numeric', hour12: true };
@@ -26,13 +28,35 @@ const HackathonDetails = ({ hackathon }) => {
           {startDateTime} - {endDateTime}
         </p>
       )}
-      <p className="text-lg text-gray-600 text-center mb-5">{hackathon.hackathon_info.description}</p>
-      {hackathon.hackathon_info.public_files_link && (
-        <div className="text-center mt-5">
-          <a href={hackathon.hackathon_info.public_files_link} target="_blank" rel="noopener noreferrer" className="text-black underline hover:underline">
-            Study Resources 🧠
-          </a>
-        </div>
+      <button 
+        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 my-4 mx-auto block"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {isExpanded ? 'Hide Details' : 'Show Details'}
+      </button>
+      {isExpanded && (
+        <>
+          <p className="text-lg text-gray-600 text-center mb-5">{hackathon.hackathon_info.description}</p>
+          {hackathon.hackathon_info.prizes.length > 0 && (
+            <div className="text-center mt-5">
+              <h2 className="text-2xl font-bold">Prizes</h2>
+              <ul className="list-disc list-inside">
+                {hackathon.hackathon_info.prizes.map((prize, index) => (
+                  <div key={index} className="text-lg text-gray-600">
+                    <p><strong>{prize.name}</strong>: {prize.description} - ${prize.prize_money}</p>
+                  </div>
+                ))}
+              </ul>
+            </div>
+          )}
+          {hackathon.hackathon_info.public_files_link && (
+            <div className="text-center mt-5">
+              <a href={hackathon.hackathon_info.public_files_link} target="_blank" rel="noopener noreferrer" className="text-black underline hover:underline">
+                Study Resources 🧠
+              </a>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

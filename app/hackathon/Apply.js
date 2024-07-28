@@ -202,7 +202,7 @@ const Apply = ({ hackathon }) => {
         return (
           <div>
             <p className="text-green-600 font-semibold mt-2">Application Status: Pending...</p>
-            <p className="text-base text-gray-600">Applications selected based on your provided links, but adding a funny profile pic can't hurt.</p>
+            <p className="text-base text-gray-600">Applications are selected based on your profile links, but adding a funny profile pic can't hurt.</p>
             <div className="mt-4">
               <h2 className="text-lg">Preferred Teammates</h2>
               <div className="space-y-2">
@@ -225,9 +225,9 @@ const Apply = ({ hackathon }) => {
                 />
                 <button
                   onClick={addTeammate}
-                  className="ml-2 bg-green-500 text-white py-2 px-4 mt-1 rounded hover:bg-green-700"
+                  className="ml-2 bg-blue-500 text-white py-2 px-4 mt-1 rounded hover:bg-green-700"
                 >
-                  Request
+                  Add
                 </button>
               </div>
               {errorMessage && <p className="text-red-600 mt-2 text-sm">{errorMessage}</p>}

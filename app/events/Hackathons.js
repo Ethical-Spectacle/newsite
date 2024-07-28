@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 const { API_URL_PROD } = require('../config/config');
 
@@ -9,7 +9,6 @@ const Hackathons = () => {
   const { isLoggedIn, userEmail } = useAuth();
   const [hackathons, setHackathons] = useState([]);
   const [applications, setApplications] = useState({});
-  const [expanded, setExpanded] = useState({});
   const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
@@ -98,13 +97,6 @@ const Hackathons = () => {
     return `${month}/${day}/${year}`;
   };
 
-  const toggleExpand = (id) => {
-    setExpanded((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
-
   return (
     <div className="bg-white py-3 container mx-auto px-5">
       <h1 className="text-3xl font-bold text-gray-800 mb-3">Hackathons</h1>
@@ -121,12 +113,14 @@ const Hackathons = () => {
                 ))}
               </div>
 
-              <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleExpand(hackathon.id)}>
+              <div className="flex justify-between items-center">
                 <div>
-                  <div className="flex flex-row">
-                    <div className="mt-1">{expanded[hackathon.id] ? <FaChevronDown size={20} /> : <FaChevronRight size={20} />}</div>
-                    <h2 className="pl-1">{hackathon.name}</h2>
-                  </div>
+                  <h2 className="text-2xl text-black">
+                    <a href={`https://ethicalspectacle.org/hackathon?id=${hackathon.id}`} className="hover:underline flex items-center">
+                      {hackathon.name}
+                      <FaArrowRight className="text-base ml-1" />
+                    </a>
+                  </h2>
                   <h3 className="text-base md:text-xl mt-4">
                     {formatDate(hackathon.start_date_time)} - {formatDate(hackathon.end_date_time)}
                   </h3>
@@ -135,41 +129,6 @@ const Hackathons = () => {
                 </div>
               </div>
 
-              {expanded[hackathon.id] && (
-                <div className="">
-                  <div className="text-gray-600 mt-2">{hackathon.description}</div>
-
-                  {hackathon.url && (
-                    <a href={hackathon.url} target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg py-2 px-3 font-semibold mt-1 border border-black border-5">Hackathon Info/Resources</a>
-                  )}
-
-                  {hackathon.prizes && hackathon.prizes.length > 0 && (
-                    <div className="text-gray-600 mt-4 mb-5">
-                      <span className="font-semibold">Prizes:</span>
-                      <div className="list-disc ml-5 mt-2">
-                        {hackathon.prizes.map((prize, index) => (
-                          <div key={index}>
-                            <span className="font-semibold">{prize.name}:</span> 
-                            {prize.description} (${prize.prize_money})
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {hackathon.organizer_emails_list && hackathon.organizer_emails_list.length > 0 && (
-                    <div className="text-gray-600 mt-4 mb-2">
-                      <span className="font-semibold">Organizers:</span>
-                      <div className="ml-5 mt-2">
-                        {hackathon.organizer_emails_list.map((email, index) => (
-                          <div key={index}>{email}</div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                </div>
-              )}
               {isLoggedIn ? (
                 applications[hackathon.id] ? (
                   <p className="text-green-600 font-semibold mt-2">Status: {applications[hackathon.id]}</p>
