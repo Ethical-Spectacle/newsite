@@ -20,7 +20,7 @@
     "@material/web": "^1.4.1",
     "@mui/icons-material": "^5.16.4",
     "@mui/lab": "^5.0.0-alpha.172",
-    "@mui/material": "^5.16.4",
+    "@mui/material": "^5.16.6",
     "@tippyjs/react": "^4.2.6",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",

@@ -45,11 +45,11 @@ const Navbar = () => {
             <a href="/" className="text-xl hover:text-pink-300">
               Home
             </a>
-            <a href="/leaderboard" className="text-xl hover:text-pink-300">
-              Leaderboard
+            <a href="/research" className="text-xl hover:text-pink-300">
+              Research
             </a>
             <a href="/events" className="text-xl hover:text-pink-300">
-              Events
+              Hackathons+
             </a>
             <a href="/account" className="text-xl">Dashboard</a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
@@ -106,6 +106,15 @@ const Navbar = () => {
             >
               Home 🏠
             </a>
+            <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a>
+            <a
+              href="/events"
+              onClick={() => setIsOpen(false)}
+              className="p-4 text-xl border-b border-gray-300"
+            >
+              Hackathons+ ☕
+            </a>
+            {/* <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a> */}
             <a
               href="/leaderboard"
               onClick={() => setIsOpen(false)}
@@ -113,15 +122,6 @@ const Navbar = () => {
             >
               Leaderboard 🏆
             </a>
-            <a
-              href="/events"
-              onClick={() => setIsOpen(false)}
-              className="p-4 text-xl border-b border-gray-300"
-            >
-              Events ☕
-            </a>
-            {/* <a href="/research" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">Research 🔬</a> */}
-            {/* <a href="/about" onClick={() => setIsOpen(false)} className="p-4 text-xl border-b border-gray-300">About Us 🆒</a> */}
             <a
               href="/account"
               onClick={() => setIsOpen(false)}

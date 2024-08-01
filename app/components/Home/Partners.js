@@ -72,7 +72,7 @@ const Partners = () => {
           <div className="px-5 pt-5">
             <a href="https://www.startupworldcup.io/" target="_blank" rel="noopener noreferrer">
               <img
-                src="/assets/partners/startup_world_cup.jpg"
+                src="/assets/partners/startup_world_cup.jpeg"
                 alt="Startup World Cup Logo"
                 className="h-32 mx-auto"
               />
