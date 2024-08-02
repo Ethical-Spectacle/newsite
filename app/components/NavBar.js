@@ -32,16 +32,17 @@ const Navbar = () => {
       <div className="w-full">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="ml-5 md:ml-10">
+          <Link href="/" className="ml-5 md:ml-10 flex flex-row">
             <img
               src="/assets/light_logo_no_bg.png"
               alt="Logo"
               className="h-10"
             />
+            <p className="text-sm text-white mt-5 ml-1">beta</p>
           </Link>
 
           {/* Primary Navigation - Hidden on mobile */}
-          <div className="hidden md:flex items-center space-x-10 text-white gap-10 mr-10">
+          <div className="hidden md:flex items-center space-x-10 text-white gap-5 mr-10">
             <a href="/" className="text-xl hover:text-pink-300">
               Home
             </a>
