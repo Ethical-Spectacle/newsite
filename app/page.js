@@ -5,11 +5,12 @@ import PicsCarousel from "./components/Home/PicsCarousel";
 import BiasProjectCarousel from "./components/Home/ResearchProjectBias";
 import AgentsProjectCarousel from "./components/Home/ResearchProjectAgents";
 import Partners from "./components/Home/Partners";
-import Loader from "./Loader/Loader";
+import NewHero from "./components/Home/NewHero";
 
 const Home = () => {
   return (
     <>
+      {/* <NewHero /> */}
       <Hero />
       <PicsCarousel />
       <BiasProjectCarousel />
