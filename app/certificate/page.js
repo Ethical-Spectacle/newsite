@@ -54,7 +54,7 @@ const CertificatePage = () => {
   if (!certificate) {
     return (
       <div className="flex items-center justify-center m-5 md:m-20">
-        <div className="p-8 border-4 border-black bg-white">
+        <div className="p-8 border-2 rounded-lg bg-white">
           <p className="text-xl text-black">Loading...</p>
         </div>
       </div>

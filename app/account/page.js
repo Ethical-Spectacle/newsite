@@ -34,7 +34,7 @@ const Account = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen min-h-screen flex flex-col pt-20">
+      <div className="loading-screen min-h-screen flex flex-col px-5 py-4 mt-15 border-2 border-black rounded-lg">
         <p className="text-center text-xl">Loading...</p>
       </div>
     );

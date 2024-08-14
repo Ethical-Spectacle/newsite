@@ -278,7 +278,10 @@ const Apply = ({ hackathon }) => {
               <p>1. Add a Github, LinkedIn, or personal website link to your profile.</p>
               <p>2. Tell us your skills by joining creative groups (Dashboard/Participate/Creative Collective)</p>
               {hackathon.use_discord && (
-                <p>3. This hackathon will use Discord, make sure you have a username in your profile.</p>
+                <div>
+                  <p>3. This hackathon will use Discord, make sure you have a username in your profile, and have <a href="https://discord.gg/MMkUr6P8zv" className="text-blue-500">joined our server</a>.</p>
+                  
+                </div>
               )}
               {applicationsClosingCountdown && (<p className="text-red-400 text-base">Applications close in: {applicationsClosingCountdown}</p>)}
             </div>
