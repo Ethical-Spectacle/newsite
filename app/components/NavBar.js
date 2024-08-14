@@ -48,7 +48,7 @@ const Navbar = () => {
             <a href="/events" className="text-xl hover:text-pink-300">
               Hackathons+
             </a>
-            <a href="/account" className="text-xl">
+            <a href="/account" className="text-xl hover:text-pink-300">
               Dashboard
             </a>
             {/* <a href="/about" className="text-xl">About Us</a> */}
