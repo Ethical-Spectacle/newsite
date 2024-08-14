@@ -1,3 +1,9 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,25 +19,37 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       maxWidth: {
-        '1440': '1440px'
+        1440: "1440px",
       },
       colors: {
-        'cpink': '#FE93B1',
-        'cpinklight': '#FE93B1',
-        'cream': '#F9F4F0',
+        cpink: "#FE93B1",
+        cpinklight: "#FE93B1",
+        cream: "#F9F4F0",
       },
       keyframes: {
-        'border-spin': {
-          '100%': { transform: 'rotate(-360deg)' }
-        }
+        "border-spin": {
+          "100%": { transform: "rotate(-360deg)" },
+        },
       },
       animation: {
-        'border-spin': 'border-spin 4s linear infinite',
-      }
+        "border-spin": "border-spin 4s linear infinite",
+      },
     },
     fontFamily: {
       jost: ["Jost", "system-ui", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors],
 };
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
