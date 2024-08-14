@@ -119,7 +119,7 @@ function MyAccount({ userEmail }) {
         <button onClick={() => setActiveTab('home')} className={`px-3 md:px-6 py-2 text-white ${activeTab === 'home' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-600 m-1 rounded`}>Home</button>
         <button onClick={() => setActiveTab('levels')} className={`px-3 md:px-6 py-2 text-white ${activeTab === 'levels' ? 'bg-green-700' : 'bg-green-500'} hover:bg-green-600 m-1 rounded`}>Levels</button>
         <button onClick={() => setActiveTab('getInvolved')} className={`px-3 md:px-6 py-2 text-white ${activeTab === 'getInvolved' ? 'bg-red-700' : 'bg-red-500'} hover:bg-red-600 m-1 rounded`}>Participate</button>
-        {userPoints > 6 && (
+        {userPoints > 3 && (
           <button onClick={() => setActiveTab('research')} className={`px-3 md:px-6 py-2 text-white ${activeTab === 'research' ? 'bg-teal-700' : 'bg-teal-500'} hover:bg-teal-600 m-1 rounded`}>Research</button>
         )}
         {badges.some(badge => badge.badge_name.toLowerCase() === 'event host') && (

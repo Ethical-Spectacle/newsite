@@ -103,13 +103,6 @@ const ProjectTeam = ({ projectId }) => {
             </div>
           </div>
         ))}
-        {discordLink && (
-          <div className="text-center mt-4">
-            <a href={discordLink} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" target="_blank" rel="noopener noreferrer">
-              Join Discord Channel
-            </a>
-          </div>
-        )}
       </div>
     </div>
   );

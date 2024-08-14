@@ -11,6 +11,7 @@ function Tasks({ userEmail }) {
   const [error, setError] = useState(null);
   const [taskErrors, setTaskErrors] = useState({});
   const [completedTasks, setCompletedTasks] = useState({});
+  const [userPoints, setUserPoints] = useState(0);
 
   useEffect(() => {
     fetchTasks();
@@ -27,13 +28,27 @@ function Tasks({ userEmail }) {
       });
       if (!response.ok) throw new Error("Network response was not ok");
       const tasksJson = await response.json();
-      setTasks(tasksJson);
+
+      // Calculate the total points of the user
+      const totalPoints = calculateUserPoints(tasksJson);
+      setUserPoints(totalPoints);
+
+      // Filter tasks based on user's total points and task's min_score and max_score
+      const filteredTasks = tasksJson.filter(task => 
+        totalPoints >= task.min_score && totalPoints <= task.max_score
+      );
+      setTasks(filteredTasks);
     } catch (error) {
       console.error("Error fetching tasks:", error);
       setError(error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const calculateUserPoints = (tasks) => {
+    // You might need a more accurate calculation based on how points are stored and accumulated
+    return tasks.reduce((total, task) => total + task.potential_pts, 0);
   };
 
   const handleCheckTask = async (endpoint, taskId, potentialPts) => {
@@ -62,7 +77,7 @@ function Tasks({ userEmail }) {
   };
 
   return (
-    <div className="bg-white pt-10 pb-5 px-1 md:px-10w-full">
+    <div className="bg-white pb-5 px-1 md:px-10 w-full">
       <h2 className="text-3xl font-semibold mb-3 my-2">Tasks</h2>
       <div className="tasks-list space-y-3 mb-3">
         {loading ? (
@@ -97,7 +112,7 @@ function Tasks({ userEmail }) {
                   </div>
                   <div className="flex-none">
                     <button
-                      onClick={() => handleCheckTask(task.endpoint_url, task.id)}
+                      onClick={() => handleCheckTask(task.endpoint_url, task.id, task.potential_pts)}
                       className="w-full h-full px-3 py-3 bg-black text-white rounded-md text-xs"
                     >
                       +{task.potential_pts} pts
@@ -110,7 +125,7 @@ function Tasks({ userEmail }) {
           </AnimatePresence>
         ) : (
           <div className="text-center py-5 text-lg font-semibold">
-            No more tasks available.
+            Good job, level up for access to more bonus pts.
           </div>
         )}
       </div>

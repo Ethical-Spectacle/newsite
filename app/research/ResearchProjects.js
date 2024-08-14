@@ -10,6 +10,7 @@ const ResearchProjects = () => {
   const [projects, setProjects] = useState([]);
   const [applications, setApplications] = useState({});
   const [errorMessages, setErrorMessages] = useState({});
+  const [userPoints, setUserPoints] = useState(0);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -20,6 +21,7 @@ const ResearchProjects = () => {
         setProjects(publishedProjects);
         if (isLoggedIn) {
           publishedProjects.forEach(project => fetchApplications(project.id));
+          fetchUserPoints();
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -48,10 +50,34 @@ const ResearchProjects = () => {
       }
     };
 
+    const fetchUserPoints = async () => {
+      try {
+        const res = await fetch(`${API_URL_PROD}/get_user_points`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: userEmail })
+        });
+        const data = await res.json();
+        setUserPoints(data.points);
+      } catch (error) {
+        console.error('Error fetching user points:', error);
+      }
+    };
+
     fetchProjects();
   }, [isLoggedIn, userEmail]);
 
   const applyForProject = async (project_id) => {
+    if (userPoints <= 4) {
+      setErrorMessages((prev) => ({
+        ...prev,
+        [project_id]: 'Members with 4+ pts can apply to research projects.'
+      }));
+      return;
+    }
+
     try {
       const response = await fetch(`${API_URL_PROD}/submit_researcher_application`, {
         method: 'POST',

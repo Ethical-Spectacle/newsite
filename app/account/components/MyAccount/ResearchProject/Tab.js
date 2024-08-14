@@ -37,9 +37,20 @@ const ResearchProjectTab = ({ projectId }) => {
   }
 
   return (
-  <div>
-    <PrivateProjectDetails project={projectDetails} />
-    <ProjectTeam projectId={projectId} />
+  <div className="flex flex-col items-center justify-center">
+    <div className="max-w-3xl">
+      <PrivateProjectDetails project={projectDetails} />
+
+      {projectDetails.discord_link && (
+          <div className="text-center mt-7">
+            <a href={projectDetails.discord_link} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" target="_blank" rel="noopener noreferrer">
+              Discord Channel
+            </a>
+          </div>
+        )}
+
+      <ProjectTeam projectId={projectId} />
+    </div>
   </div>
   )
 };

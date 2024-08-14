@@ -6,42 +6,42 @@ import { FaChevronRight, FaChevronDown } from 'react-icons/fa';
 const { API_URL_PROD } = require('../../../../config/config');
 
 const levelDetails = {
-  Trainee: {
-    icon: "🔭",
-    range: [0, 2],
+  newbie: {
+    icon: "🌱",
+    range: [0, 3],
     color: "#FFE82D", // Yellow
-    perks: ["Technical workshops", "Join our hackathons"]
+    perks: ["Workshops", "Hackathons"]
   },
-  "Space Cadet": {
-    icon: "🧑‍🚀️",
-    range: [2, 5],
+  trainee: {
+    icon: "🌿",
+    range: [3, 5],
     color: "#FFA500", // Orange
-    perks: ["Creative collective access", "Game night invites"]
+    perks: ["Game nights", "Apply to research projects"]
   },
-  Alien: {
-    icon: "🛸",
+  developer: {
+    icon: "🪴",
     range: [6, 10],
     color: "#32CD32", // Green
-    perks: ["Career services for devs", "Priority hackathon access"]
+    perks: ["Priority applications", "Become an event host"]
   },
-  "Star Master": {
-    icon: "🧙",
+  scientist: {
+    icon: "🌳",
     range: [11, 15],
     color: "#1E90FF", // Blue
-    perks: ["Become an event host", "Invite-only mixer events", "Leadership roles"]
+    perks: ["Start a research project", "All-access pass"]
   },
-  "Cosmic Overlord": {
-    icon: "👾",
+  expert: {
+    icon: "🌎",
     range: [16, Infinity],
     color: "#8A2BE2", // Purple
-    perks: ["All-access pass", "Personalized support", "Hall of fame status in the community"]
+    perks: ["Personalized support", "Hall of fame status"]
   }
 };
 
 function Levels({ userEmail }) {
   const [userLevel, setUserLevel] = useState(null);
   const [userPoints, setUserPoints] = useState(0);
-  const [isPerksExpanded, setIsPerksExpanded] = useState(true);
+  const [isPerksExpanded, setIsPerksExpanded] = useState(false);
 
   useEffect(() => {
     fetchUserLevel();
@@ -112,7 +112,7 @@ function Levels({ userEmail }) {
         <div className="text-xl mb-2">
           <span>Current Level: </span>
           <span className="font-bold">
-            {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)}
+            {userLevel}
           </span>
         </div>
 
@@ -124,7 +124,7 @@ function Levels({ userEmail }) {
           </div>
 
           {/* Progress Bar Container */}
-          <div className="relative w-full bg-gray-200 h-6 rounded-full overflow-hidden flex-grow mx-2">
+          <div className="relative w-full h-8 bg-gray-200 rounded-lg overflow-hidden flex-grow mx-2">
             <div
               className="absolute top-0 left-0 h-full"
               style={{

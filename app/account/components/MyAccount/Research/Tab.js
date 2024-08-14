@@ -54,7 +54,7 @@ const ResearchTab = ({ userEmail, userPoints }) => {
         ) : (
           <div className="text-gray-500">Members with over 10pts can start research projects here 🚀</div>
         )}
-        {userPoints >= 10 && (<AddResearchProjectForm userEmail={userEmail} onProjectAdded={handleProjectAdded} />)}
+        {userPoints > 10 && (<AddResearchProjectForm userEmail={userEmail} onProjectAdded={handleProjectAdded} />)}
       </div>
     </div>
   );
