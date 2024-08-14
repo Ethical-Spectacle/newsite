@@ -11,7 +11,7 @@ const Account = () => {
   const { isLoggedIn, isAdmin, login, logout, userEmail, checkEmailVerification, isEmailVerified } = useAuth();
   const [showLogin, setShowLogin] = useState(true);
   const [badgeId, setBadgeId] = useState(null);
-  const [emailChecked, setEmailChecked] = useState(false);  // State to track if verification was checked
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -21,14 +21,24 @@ const Account = () => {
     }
   }, []);
 
-  // Invoke email verification check
-  if (userEmail && isLoggedIn && !emailChecked) {
-    console.log("Checking email verification for:", userEmail);
-    checkEmailVerification(userEmail);
-    setEmailChecked(true);  // Ensure this only runs once per render cycle
-  }
+  useEffect(() => {
+    if (userEmail && isLoggedIn && !isEmailVerified) {
+      console.log("Checking email verification for:", userEmail);
+      checkEmailVerification(userEmail).finally(() => setLoading(false)); // Set loading to false once the check is done
+    } else {
+      setLoading(false); // No need to check, so stop loading
+    }
+  }, [userEmail, isLoggedIn, isEmailVerified]);
 
   const toggleForm = () => setShowLogin(prev => !prev);
+
+  if (loading) {
+    return (
+      <div className="loading-screen min-h-screen flex flex-col pt-20">
+        <p className="text-center text-xl">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="AccountPage">

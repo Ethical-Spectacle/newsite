@@ -71,7 +71,14 @@ const Signup = ({ toggleForm, badge_id }) => {
           </div>
           <button className="bg-blue-500 text-white py-2 w-full rounded hover:bg-blue-600" type="submit">Sign Up</button>
         </form>
-        <button className="mt-3 text-black bg-transparent hover:bg-gray-100 w-full" onClick={toggleForm}>Switch to Login</button>
+        <button 
+          className="mt-3 text-black bg-transparent hover:bg-gray-100 w-full" 
+          onClick={() => {
+            console.log("Switching to login form");
+            toggleForm();
+          }}>
+          Switch to Login
+        </button>
       </div>
     </div>
   );
