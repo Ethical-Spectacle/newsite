@@ -18,7 +18,7 @@ const ProjectTimeline = ({ timelineList }) => {
     <div className="w-full mb-4 border border-gray-300 rounded-lg p-4">
       <h3 className="text-xl font-semibold">Project Timeline</h3>
       <div className="flex overflow-x-auto hide-scrollbar">
-        <Timeline position="alternate">
+        <Timeline position="right">
           {timelineList && Array.isArray(timelineList) && timelineList
             .sort((a, b) => new Date(a.date) - new Date(b.date))
             .map((event, index) => (

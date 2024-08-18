@@ -34,6 +34,13 @@ const HackathonDetails = ({ hackathon }) => {
       >
         {isExpanded ? 'Hide Details' : 'Show Details'}
       </button>
+      {hackathon?.hackathon_info?.public_files_link && (
+        <div className="text-center mt-5 mb-5">
+          <a href={hackathon.hackathon_info.public_files_link} target="_blank" rel="noopener noreferrer" className="text-black underline hover:underline">
+            Study Resources 🧠
+          </a>
+      </div>
+      )}
       {isExpanded && (
         <>
           <p className="text-lg text-gray-600 text-center mb-5">{hackathon?.hackathon_info?.description}</p>
@@ -49,15 +56,9 @@ const HackathonDetails = ({ hackathon }) => {
               </ul>
             </div>
           )}
-          {hackathon?.hackathon_info?.public_files_link && (
-            <div className="text-center mt-5">
-              <a href={hackathon.hackathon_info.public_files_link} target="_blank" rel="noopener noreferrer" className="text-black underline hover:underline">
-                Study Resources 🧠
-              </a>
-            </div>
-          )}
         </>
       )}
+
     </div>
   );
 };

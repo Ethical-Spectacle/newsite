@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import { useAuth } from '../../context/AuthContext';
 
-const Login = ({ toggleForm, badge_id }) => {
+const Login = ({ toggleForm, badge_id, setLoading }) => {
   const { API_URL_PROD } = require('../../config/config');
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +17,7 @@ const Login = ({ toggleForm, badge_id }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Reset error message before login attempt
     try {
       const requestBody = { ...formData };
       if (badge_id) {
@@ -32,11 +34,15 @@ const Login = ({ toggleForm, badge_id }) => {
         const data = await response.json();
         console.log(data);
         login(formData.email, data.email_verified ?? false);
+        setLoading(true); // Set loading to true only if the login is successful
       } else {
-        console.error("Authentication failed:", response.statusText);
+        const errorData = await response.json();
+        console.error("Authentication failed:", errorData.message || response.statusText);
+        setErrorMessage(errorData.message || "Authentication failed. Double check your email and password.");
       }
     } catch (error) {
       console.error("Error:", error);
+      setErrorMessage("An error occurred. Please try again.");
     }
   };
 
@@ -44,6 +50,7 @@ const Login = ({ toggleForm, badge_id }) => {
     <div className="flex m-5 md:m-20 pt-5 pb-10 items-center justify-center bg-white">
       <div className="w-full max-w-md p-8 bg-white border-2 rounded-lg">
         <h2 className="mb-6 text-2xl font-bold text-black text-center">Login 🥽</h2>
+        {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"

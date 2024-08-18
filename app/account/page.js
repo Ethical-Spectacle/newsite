@@ -11,7 +11,7 @@ const Account = () => {
   const { isLoggedIn, isAdmin, login, logout, userEmail, checkEmailVerification, isEmailVerified } = useAuth();
   const [showLogin, setShowLogin] = useState(true);
   const [badgeId, setBadgeId] = useState(null);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(false); // Modified initial loading state to false
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -24,6 +24,7 @@ const Account = () => {
   useEffect(() => {
     if (userEmail && isLoggedIn && !isEmailVerified) {
       console.log("Checking email verification for:", userEmail);
+      setLoading(true); // Set loading to true before checking email verification
       checkEmailVerification(userEmail).finally(() => setLoading(false)); // Set loading to false once the check is done
     } else {
       setLoading(false); // No need to check, so stop loading
@@ -34,7 +35,7 @@ const Account = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen min-h-screen flex flex-col px-5 py-4 mt-15 border-2 border-black rounded-lg">
+      <div className="loading-screen min-h-screen flex flex-col px-5 py-4 mt-15">
         <p className="text-center text-xl">Loading...</p>
       </div>
     );
@@ -54,9 +55,9 @@ const Account = () => {
         )
       ) : (
         showLogin ? (
-          <Login handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} />
+          <Login handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} setLoading={setLoading} />
         ) : (
-          <Signup handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} />
+          <Signup handleAuthentication={login} toggleForm={toggleForm} badge_id={badgeId} setLoading={setLoading} />
         )
       )}
     </div>
