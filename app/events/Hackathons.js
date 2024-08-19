@@ -97,6 +97,13 @@ const Hackathons = () => {
     return `${month}/${day}/${year}`;
   };
 
+  const isApplicationOpen = (applicationOpenDate) => {
+    if (!applicationOpenDate) return true;
+    const currentDate = new Date();
+    const openDate = new Date(applicationOpenDate);
+    return currentDate >= openDate;
+  };
+
   return (
     <div className="bg-white py-3 container mx-auto px-5">
       <h1 className="text-3xl font-bold text-gray-800 mb-3">Hackathons</h1>
@@ -130,18 +137,22 @@ const Hackathons = () => {
               </div>
 
               {isLoggedIn ? (
-                applications[hackathon.id] ? (
-                  <p className="text-green-600 font-semibold mt-2">Status: {applications[hackathon.id]}</p>
+                isApplicationOpen(hackathon.application_open_date_time) ? (
+                  applications[hackathon.id] ? (
+                    <p className="text-green-600 font-semibold mt-2">Status: {applications[hackathon.id]}</p>
+                  ) : (
+                    <>
+                      <button 
+                        className="bg-blue-500 text-white py-2 px-4 rounded mt-2 hover:bg-blue-600" 
+                        onClick={() => applyForHackathon(hackathon.id)}
+                      >
+                        Apply
+                      </button>
+                      {errorMessages[hackathon.id] && <p className="text-red-600 mt-2 text-sm">{errorMessages[hackathon.id]}</p>}
+                    </>
+                  )
                 ) : (
-                  <>
-                    <button 
-                      className="bg-blue-500 text-white py-2 px-4 rounded mt-2 hover:bg-blue-600" 
-                      onClick={() => applyForHackathon(hackathon.id)}
-                    >
-                      Apply
-                    </button>
-                    {errorMessages[hackathon.id] && <p className="text-red-600 mt-2 text-sm">{errorMessages[hackathon.id]}</p>}
-                  </>
+                  <p className="text-gray-500 mt-2">Applications not open yet</p>
                 )
               ) : (
                 <p className="text-red-600 mt-2">Sign in to apply</p>
