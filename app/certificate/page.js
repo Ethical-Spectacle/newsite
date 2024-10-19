@@ -68,8 +68,6 @@ const CertificatePage = () => {
         {/* logos */}
         <div className="flex flex-row justify-center my-8 mx-5">
           <img src="/assets/dark_logo_no_bg.png" alt="Ethical Spectacle Research Logo" className="h-16 md:h-25" />
-          <span className="mx-3 text-xl font-bold my-3">X</span>
-          <img src="/assets/partners/AZVC_Transparent.png" alt="AZVC Logo" className="h-16 md:h-25"/>
         </div>
         <h1 className="mb-4 text-4xl font-bold text-center text-black">Certificate of Completion</h1>
         <h2 className="mb-2 text-3xl font-semibold text-center text-black">{certificate.hackathon_name}</h2>
@@ -83,12 +81,12 @@ const CertificatePage = () => {
         
         {certificate.repo_link && <p className="text-lg text-black mt-5 text-center"><a href={certificate.repo_link} className="text-blue-500">Project Repo</a></p>}
 
-       <div className="flex flex-wrap justify-around mt-5">
+       {/* <div className="flex flex-wrap justify-around mt-5">
           
           {certificate.website && <p className="text-lg text-black"><a href={certificate.website} className="text-blue-500">Website</a></p>}
           {certificate.github && <p className="text-lg text-black"><a href={certificate.github} className="text-blue-500">GitHub</a></p>}
           {certificate.linkedin && <p className="text-lg text-black"><a href={certificate.linkedin} className="text-blue-500">LinkedIn</a></p>}
-        </div>
+        </div> */}
       </div>
     </div>
   );
